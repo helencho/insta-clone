@@ -134,10 +134,11 @@ function getPhotoDetails(req, res, next) {
 //     })(req, res, next)
 // }
 
+// Registers user using email, username, password, fullname 
 function registerUser(req, res, next) {
     let hash = authHelpers.createHash(req.body.password)
-    db.none('INSERT INTO users (username, password_digest) VALUES ($1, $2)',
-        [req.body.username, hash])
+    db.none('INSERT INTO users (username, password_digest, email_add, fullname) VALUES ($1, $2, $3, $4)',
+        [req.body.username, hash, req.body.email, req.body.fullname])
         .then(() => {
             res.status(200).json({
                 message: 'Registration successful'
