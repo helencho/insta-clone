@@ -6,6 +6,7 @@ class NewUserMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      fullname:'', 
       email: this.props.email, 
       username: "",
       password: "",
@@ -24,7 +25,7 @@ class NewUserMain extends Component {
   // When user submits form
   handleFormSubmit = e => {
     e.preventDefault();
-    const { username, password, email } = this.state;
+    const { username, password, email, fullname } = this.state;
     if (username && password) {
       if (password.length < 6){
         return this.setState({
@@ -36,6 +37,7 @@ class NewUserMain extends Component {
         if (!response.data.data.find(n => n.email === email && n.username ===username)) {
           axios
             .post("/users/new", {
+              fullname: fullname, 
               username: username,
               password: password
             })
@@ -69,7 +71,7 @@ class NewUserMain extends Component {
   };
 
   render() {
-    const { username, password, message } = this.state;
+    const { username, password, message, fullname } = this.state;
     console.log(this.state);
 
     return (
@@ -77,6 +79,13 @@ class NewUserMain extends Component {
       <Link to ="/users/login">Login</Link>
         <h1>Register</h1>
         <form onSubmit={this.handleFormSubmit}>
+        <input
+            type="text"
+            placeholder="fullname"
+            name="fullname"
+            onChange={this.handleInput}
+            value={fullname}
+          />
           <input
             type="text"
             placeholder="username"

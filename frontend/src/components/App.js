@@ -4,7 +4,7 @@ import axios from "axios"
 import './App.css'
 import NewUserEmail from "./users/NewUserEmail"
 import LoginUser from "./users/LoginUser"
-import Profile from "./SingleUserFunctions/profile"
+import Profile from "./LoggedInUser/profile"
 import LogOut from "./users/LogOut"
 
 class App extends React.Component {
@@ -37,7 +37,7 @@ class App extends React.Component {
     if (!user) {
       return <LoginUser setUser={this.setUser} />
     }
-    return <Profile id={user.username} />
+    return <Profile id={user} />
   }
 
   renderLogOut = () => {
