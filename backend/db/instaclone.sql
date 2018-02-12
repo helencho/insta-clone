@@ -15,7 +15,10 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (username, password_digest, email_add, fullname, profile_pic, user_description)
-  VALUES ('OptimusPrime', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'optimusprime@gmail.com', 'Morgan Freeman', 'https://i.imgur.com/dM53kPP.jpg', 'this is me user one');
+  VALUES ('OptimusPrime', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'optimusprime@gmail.com', 'Morgan Freeman', 'https://i.imgur.com/dM53kPP.jpg', 'this is me user one'),
+    ('CookieMonster', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'cookiemonster@gmail.com', 'Kevin Malone', 'https://i.imgur.com/dM53kPP.jpg', 'Cooooookies'),
+    ('Bird', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'bird@gmail.com', 'Big Bird', 'https://i.imgur.com/dM53kPP.jpg', 'Bird is the word');
+;
 
 CREATE TABLE photos (
     photo_id SERIAL PRIMARY KEY,
@@ -33,7 +36,8 @@ CREATE TABLE likes (
 );
 
 INSERT INTO likes (user_id, photo_id)
-    VALUES (1, 1);
+    VALUES (1, 1),
+    (2, 1);
 
 
 CREATE TABLE user_followers (
@@ -50,4 +54,5 @@ CREATE TABLE user_following (
 );
 
 INSERT INTO user_following (user_id, following_id)
-    VALUES (1, 2);
+    VALUES (1, 2),
+    (1, 3);
