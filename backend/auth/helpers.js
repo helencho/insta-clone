@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 const pgp = require('pg-promise')({})
-const db = pgp('postgres://localhost/userlist') 
+const db = pgp('postgres://localhost/instaclone') 
 
 function comparePassword(userPassword, dbPassword) {
     return bcrypt.compareSync(userPassword, dbPassword)
