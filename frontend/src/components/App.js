@@ -37,7 +37,7 @@ class App extends React.Component {
     if (!user) {
       return <LoginUser setUser={this.setUser} />
     }
-    return <Profile id={user.username} />
+    return <Profile id={user} />
   }
 
   renderLogOut = () => {
