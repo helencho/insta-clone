@@ -16,7 +16,7 @@ class Profile extends React.Component {
 render(){
 return (
     <div id='header'>
-        <div className='appHeader'>
+        <div className='topbar'>
           <h1> Instagram</h1>
         </div>
         </div>

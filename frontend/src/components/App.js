@@ -4,7 +4,7 @@ import axios from "axios"
 import './App.css'
 import NewUserEmail from "./users/NewUserEmail"
 import LoginUser from "./users/LoginUser"
-import Profile from "./SingleUserFunctions/profile"
+import Profile from "./LoggedInUser/profile"
 import LogOut from "./users/LogOut"
 
 class App extends React.Component {
@@ -48,7 +48,7 @@ class App extends React.Component {
     const { user, newUser } = this.state
     return (
       <div className="App">
-        <div className='appHeader'>
+        <div className="topbar">
           <h1> Instagram</h1>
         </div>
 
