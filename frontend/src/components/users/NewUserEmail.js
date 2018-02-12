@@ -7,9 +7,9 @@ class NewUserEmail extends Component {
   constructor() {
     super();
     this.state = {
-     email:'', 
-     message:'', 
-     validEmail:false 
+      email: '',
+      message: '',
+      validEmail: false
     };
   }
 
@@ -20,42 +20,42 @@ class NewUserEmail extends Component {
     });
   };
 
-  emailValidation = (email) =>{
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
-    {
+  emailValidation = (email) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       return (true)
     }
-      return (false)
+    return (false)
   }
-  
+
   // When user submits form
   handleFormSubmit = e => {
     e.preventDefault();
     const { email } = this.state;
- 
+
     if (email) {
-      if (!this.emailValidation(email)){
+      if (!this.emailValidation(email)) {
         return this.setState({
           message: "Please enter a valid email"
         })
-      
-      this.setState({
-        validEmail:true
-      })
+      } else {
+        this.setState({
+          validEmail: true
+        })
+      }
     }
   }
-}
-    
+
+
   render() {
     const { email, validEmail, message } = this.state;
     console.log(this.state);
     if (validEmail) {
-      return <NewUserMain email={email}/> ;
+      return <NewUserMain email={email} />;
     }
 
     return (
       <div>
-      <Link to ="/users/login">Login</Link>
+        <Link to="/users/login">Login</Link>
         <h1>Register</h1>
         <form onSubmit={this.handleFormSubmit}>
           <input
@@ -65,7 +65,7 @@ class NewUserEmail extends Component {
             onChange={this.handleInput}
             value={email}
           />
-        
+
           <input type="submit" value="Register" />
         </form>
         <p>{message}</p>
