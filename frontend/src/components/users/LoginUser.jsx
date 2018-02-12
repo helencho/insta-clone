@@ -76,7 +76,7 @@ class LoginUser extends React.Component {
             Password:
             <input
               type="password"
-              name="passwordiInput"
+              name="passwordInput"
               value={passwordInput}
               onChange={this.handleInput}
             />
