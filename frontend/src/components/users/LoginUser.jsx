@@ -66,7 +66,7 @@ class LoginUser extends React.Component {
             Username:
             <input
               type="text"
-              name="username"
+              name="usernameInput"
               value={usernameInput}
               onChange={this.handleInput}
             />
@@ -76,7 +76,7 @@ class LoginUser extends React.Component {
             Password:
             <input
               type="password"
-              name="password"
+              name="passwordiInput"
               value={passwordInput}
               onChange={this.handleInput}
             />
