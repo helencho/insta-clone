@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Link, Switch } from "react-router-dom"
-
+import '../App.css'
 
 
 class Profile extends React.Component {
@@ -15,10 +15,11 @@ class Profile extends React.Component {
 
 render(){
 return (
-    <div>
-
-<h2> Welcome</h2>
-    </div>
+    <div id='header'>
+        <div className='appHeader'>
+          <h1> Instagram</h1>
+        </div>
+        </div>
 
 )
 }
