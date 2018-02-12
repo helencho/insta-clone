@@ -7,14 +7,15 @@
   height: 80px;
 }
 
-.appHeader {
+
+/* .appHeader {
   background-color:white;
   border: 1px solid grey;
   margin: 0;
   padding: 15px 0px;
   color: black;
   text-shadow: black 2px 2px
-}
+} */
 
 .App-title {
   font-size: 1.5em;
@@ -27,4 +28,19 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.topbar {
+  background-color: #ffff;
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+  /* position: fixed; */
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  height: 77px;
+}
+
+.userPhotos {
+  height: 293px;
+  width: 293px;
 }
