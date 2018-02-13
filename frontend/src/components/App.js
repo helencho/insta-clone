@@ -35,7 +35,6 @@ class App extends React.Component {
 
   renderProfile = props => {
     const { user } = this.state;
-
     if (!user) {
       return <LoginUser setUser={this.setUser} />;
     }
@@ -48,7 +47,6 @@ class App extends React.Component {
 
   render() {
     const { user, newUser } = this.state;
-
     return (
       <div className="App">
         <div className="topbar instaCloneFont">
@@ -69,10 +67,10 @@ class App extends React.Component {
 
         <Route exact path="/" render={this.renderLogin} />
         <Route path="/users/new" component={NewUserEmail} />
-        <Route path="/users/profile" component={Profile} />
+        <Route exact path="/users/profile" component={Profile} />
         <Route exact path="/users/login" render={this.renderLogin} />
         <Route path="/users/logout" render={this.renderLogOut} />
-        <Route path="/users/p/:id" component={SinglePhoto} />
+        <Route path="/users/profile/:id" component={SinglePhoto} />
 
       </div>
     );
