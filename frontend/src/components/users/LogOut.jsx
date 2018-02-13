@@ -14,8 +14,8 @@ class LogOut extends Component {
         axios
             .get('/users/logout')
             .then(res => {
-                console.log(res)
-                this.props.logOutUser()
+                console.log("logout response", res)
+                // this.props.logOutUser()
                 this.setState({
                 loggedOut: true
                 })
@@ -29,7 +29,8 @@ class LogOut extends Component {
         const { loggedOut } = this.state
 
         if (loggedOut) {
-            return <Redirect to='/users/login' />
+            // return <Redirect to='/users/login' />
+            <div>you are logged out.</div>
         }
         return (
             <div>
