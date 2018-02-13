@@ -5,7 +5,10 @@ class SinglePhoto extends Component {
     constructor() {
         super()
         this.state = {
-            photoUrl: ''
+            photoUrl: '',
+            photoCaption: '',
+            likedByUsers: [],
+            liked: false
         }
     }
 
@@ -32,6 +35,7 @@ class SinglePhoto extends Component {
 
     render() {
         const { photoUrl } = this.state
+        console.log(this.state) 
 
         return (
             <div className='single-photo-container'>
