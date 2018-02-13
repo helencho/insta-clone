@@ -18,7 +18,7 @@ class Images extends Component {
 
     componentDidMount = () => {
         axios
-            .get('LINK HEREEEEEE')
+            .get('/p')
             .then (res =>{
                 console.log(res.data)
                 this.setState({
@@ -40,7 +40,7 @@ class Images extends Component {
                 </div>
             
                 <ul>
-                    {dogs.map(dog => (
+                    {images.map(img => (
                         <li>
                             <img  alt='img' src={img} />
                         </li>
