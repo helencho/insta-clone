@@ -8,6 +8,7 @@ class SinglePhoto extends Component {
         this.state = {
             authorId: '',
             authorName: '',
+            authorUrl: '',
             following: false,
             photoUrl: '',
             photoCaption: '',
@@ -28,10 +29,26 @@ class SinglePhoto extends Component {
         axios
             .get(`/p/${id}`)
             .then(res => {
-                let data = console.log(res.data)
+                let photoData = res.data
+                console.log(photoData)
+                // setState -- 
                 // authorId: user_id 
                 // photoUrl: photo_link 
                 // photoCaption: caption 
+
+                // Make a get request to get user's information 
+                axios
+                    .get(`/u/${this.state.authorId}`)
+                    .then(res => {
+                        let userData = res.data
+                        console.log(userData)
+                        // setState -- 
+                        // authorName: 
+                        // authorUrl: 
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
             .catch(err => {
                 console.log(err)
@@ -65,16 +82,28 @@ class SinglePhoto extends Component {
     }
 
     doesUserLikePhoto = () => {
-        // true or false depending on whether current user's ID is included in the likedByUsers array 
         const { authorId, likedByUsers } = this.state
         const userFound = likedByUsers.find(user => user.id === authorId)
+
+        // If user is found, set liked to true 
+        if (userFound) {
+            this.setState({
+                liked: true
+            })
+        } else {
+            this.setState({
+                liked: false
+            })
+        }
     }
 
-    // Clicking on heart will toggle true or false 
-    // Will also send an ajax request (post request) to a route that doesn't exist yet 
+    toggleLike = () => {
+        // Clicking on heart will toggle true or false 
+        // Will also send an ajax request (post request) to a route that doesn't exist yet 
+    }
 
     render() {
-        const { authorId, authorName, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
+        const { authorId, authorName, authorUrl, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
         console.log(this.state)
         const totalLikes = likedByUsers.length
 
