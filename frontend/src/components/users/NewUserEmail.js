@@ -33,17 +33,24 @@ class NewUserEmail extends Component {
     const { email } = this.state;
 
     if (email) {
-      if (!this.emailValidation(email)) {
-        return this.setState({
-          message: "Please enter a valid email"
-        })
-      } else {
+      axios.get('/users').then(response =>{
+        console.log("RESPONSE FOR GET REQUEST", response.data.data);
+        console.log(email)
+        
+        if (!response.data.data.find(n => n.email_add === email)) {
+          this.setState({
+            validEmail:true, 
+          })
+        } else {
         this.setState({
-          validEmail: true
+          validEmail: false, 
+          message:'email already in use'
         })
       }
-    }
+    })
   }
+}
+
 
 
   render() {
