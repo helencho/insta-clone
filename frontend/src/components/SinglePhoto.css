@@ -1,0 +1,26 @@
+.single-photo-container {
+    display: flex;
+    width: 933px;
+    height: 600px;
+    background-color: rgb(163, 163, 255);
+}
+
+.single-photo {
+    width: 70%;
+}
+
+.single-photo-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.single-photo-details {
+    width: 335px;
+}
+
+.prof-img-small {
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}
