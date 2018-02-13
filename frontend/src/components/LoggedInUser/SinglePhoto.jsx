@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import '../SinglePhoto.css'
 
 class SinglePhoto extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             authorId: '',
             authorName: '',
-            authorUrl: '',
+            authorUsername: '',
+            authorImgUrl: '',
             following: false,
             photoUrl: '',
             photoCaption: '',
@@ -17,43 +19,46 @@ class SinglePhoto extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     this.getSinglePhoto()
-    //     this.getPhotoDetails()
-    // }
+    componentDidMount() {
+        this.getSinglePhoto()
+        // this.getPhotoDetails()
+    }
 
-    // getSinglePhoto = () => {
-    //     // Photo id 
-    //     const id = props.params.match.id
+    getSinglePhoto = () => {
+        // Photo id 
+        const id = this.props.match.params.id
 
-    //     axios
-    //         .get(`/p/${id}`)
-    //         .then(res => {
-    //             let photoData = res.data
-    //             console.log(photoData)
-    //             // setState -- 
-    //             // authorId: user_id 
-    //             // photoUrl: photo_link 
-    //             // photoCaption: caption 
+        axios
+            .get(`/users/p/${id}`)
+            .then(res => {
+                let photoData = res.data.data
+                this.setState({
+                    authorId: photoData.user_id,
+                    authorName: photoData.fullname,
+                    authorUsername: photoData.username,
+                    authorImgUrl: photoData.profile_pic,
+                    photoUrl: photoData.photo_link,
+                    photoCaption: photoData.caption
+                })
 
-    //             // Make a get request to get user's information 
-    //             axios
-    //                 .get(`/u/${this.state.authorId}`)
-    //                 .then(res => {
-    //                     let userData = res.data
-    //                     console.log(userData)
-    //                     // setState -- 
-    //                     // authorName: 
-    //                     // authorUrl: 
-    //                 })
-    //                 .catch(err => {
-    //                     console.log(err)
-    //                 })
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
+                // Make a get request to get user's information 
+                // axios
+                //     .get(`/u/${this.state.authorId}`)
+                //     .then(res => {
+                //         let userData = res.data
+                //         console.log(userData)
+                //         // setState -- 
+                //         // authorName: 
+                //         // authorUrl: 
+                //     })
+                //     .catch(err => {
+                //         console.log(err)
+                //     })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     // getPhotoDetails = () => {
     //     // Photo id 
@@ -102,22 +107,23 @@ class SinglePhoto extends Component {
     //     // Will also send an ajax request (post request) to a route that doesn't exist yet 
     // }
 
+
     render() {
-        const { authorId, authorName, authorUrl, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
-        console.log(this.state)
+        const { authorId, authorName, authorUsername, authorImgUrl, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
+        console.log(this.state.photoUrl)
         const totalLikes = likedByUsers.length
 
         return (
             <div className='single-photo-container'>
                 <div className='single-photo'>
-                    <img alt='image' />
+                    <img className='single-photo-img' src={photoUrl} alt='image' />
                 </div>
                 <div classname='single-photo-details'>
-                    <div>profile pic, author, Following || {following ? 'Following' : 'Unfollowing'}</div>
-                    <div>author, caption</div>
+                    <div><img className='prof-img-small' src={authorImgUrl} /> {authorUsername} • {following ? 'Following' : 'Unfollowing'}</div>
+                    <div>{authorUsername} {photoCaption}</div>
                     <div>{liked ? 'heart' : 'empty heart'}</div>
                     <div>{totalLikes} likes</div>
-                    <div>Add a comment...</div>
+                    <form><input type='text' placeholder='Add a comment...' /></form>
                 </div>
             </div>
         )
