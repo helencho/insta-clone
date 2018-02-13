@@ -86,3 +86,95 @@ font-family: 'Quicksand', sans-serif;
   margin-top: 2%;
   left: 46%
 }
+
+.loginBox{
+  text-align: center;
+  width: 22.25%;
+  height: 45%;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 1px;
+  margin-left: 38%;
+  margin-top: 5%;
+  padding: 10px 0;
+}
+
+.siteFont{
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Grand Hotel', cursive;
+  color: #262626;
+}
+
+.loginBtn{
+  top: 16px;
+  height: 38px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: white;
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  width: 80%;
+  background-color: #3897f0;
+  font-weight: bold;
+}
+
+.usernameBox{
+  height: 38px;
+  /* -webkit-box-align: center; */
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #262626;
+  /* display: flex; */
+  /* -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal; */
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  /* -webkit-appearance: none; */
+  width: 80%;
+  border: 1px solid #efefef;
+}
+
+.passwordBox{
+  top: 8px;
+  height: 38px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #262626;
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  width: 80%;
+  border: 1px solid #efefef;
+}
+
+.messageSize{
+  font-size: 12px;
+  color: #262626;
+  text-align: center;
+}
+
+.smallerBox{
+  text-align: center;
+  width: 22.25%;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 1px;
+  margin-left: 38%;
+  top: 10px;
+  position: relative;
+}
+
+.dontHaveAcct{
+  font-size: 14px;
+  color: #262626;
+}
+
+.getTheApp{
+  font-size: 14px;
+  color: #262626;
+  padding-top: 1.5%;
+}

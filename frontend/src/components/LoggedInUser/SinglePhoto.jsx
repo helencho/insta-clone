@@ -19,6 +19,7 @@ class SinglePhoto extends Component {
         }
     }
 
+<<<<<<< HEAD
     // componentDidMount() {
     //     this.getSinglePhoto()
     //     // this.getPhotoDetails()
@@ -69,39 +70,70 @@ class SinglePhoto extends Component {
     //         .get(`/p/${id}/details`)
     //         .then(res => {
     //             let data = console.log(res.data)
+=======
+    componentDidMount() {
+        this.getPhoto()
+    }
 
-    //             // Map through the array of objects and grab information we need 
-    //             data.map(item => {
-    //                 let user = {
-    //                     id: item.liked_by_user_id,
-    //                     username: item.username,
-    //                     picUrl: item.profile_pic
-    //                 }
-    //                 this.setState({
-    //                     likedByUsers: [...this.state.likedByUsers, user]
-    //                 })
-    //             })
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
+    getPhoto = () => {
+        // Photo id 
+        const id = this.props.match.params.id
 
-    // doesUserLikePhoto = () => {
-    //     const { authorId, likedByUsers } = this.state
-    //     const userFound = likedByUsers.find(user => user.id === authorId)
+        // Get request to grab photo and photo's author information 
+        axios
+            .get(`/users/p/${id}`)
+            .then(res => {
+                let photoData = res.data.data
+                this.setState({
+                    authorId: photoData.user_id,
+                    authorName: photoData.fullname,
+                    authorUsername: photoData.username,
+                    authorImgUrl: photoData.profile_pic,
+                    photoUrl: photoData.photo_link,
+                    photoCaption: photoData.caption
+                })
 
-    //     // If user is found, set liked to true 
-    //     if (userFound) {
-    //         this.setState({
-    //             liked: true
-    //         })
-    //     } else {
-    //         this.setState({
-    //             liked: false
-    //         })
-    //     }
-    // }
+                // Get request to grab information on who liked the photo 
+                axios
+                    .get(`/users/p/${id}/details`)
+                    .then(res => {
+                        let detailData = res.data.data
+                        let users = []
+                        detailData.map(item => {
+                            let user = {
+                                id: item.liked_by_user_id,
+                                username: item.username,
+                                picUrl: item.profile_pic
+                            }
+                            users = [...users, user]
+                        })
+
+                        // Find out if current user likes the photo 
+                        const userFound = users.find(user => user.id === this.state.authorId)
+
+                        // If user not found, liked is set to false 
+                        if (!userFound) {
+                            this.setState({
+                                liked: false,
+                                likedByUsers: users
+                            })
+                        } else {
+                            this.setState({
+                                liked: true,
+                                likedByUsers: users
+                            })
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    }) // End second ajax request 
+            })
+            .catch(err => {
+                console.log(err)
+            }) // End first ajax request 
+>>>>>>> 4ce9a990a8e35ab57e0c7be0ea5bdd4303f4fa6b
+
+    }
 
     // toggleLike = () => {
     //     // Clicking on heart will toggle true or false 
@@ -111,19 +143,23 @@ class SinglePhoto extends Component {
 
     render() {
         const { authorId, authorName, authorUsername, authorImgUrl, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
-        console.log(this.state.photoUrl)
+        console.log(this.state.liked)
         const totalLikes = likedByUsers.length
+        const likedStatus = liked ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>
+        console.log('user liked: ' + liked)
 
         return (
             <div className='single-photo-container'>
                 <div className='single-photo'>
                     <img className='single-photo-img' src={photoUrl} alt='image' />
                 </div>
-                <div classname='single-photo-details'>
-                    <div><img className='prof-img-small' src={authorImgUrl} /> {authorUsername} • {following ? 'Following' : 'Unfollowing'}</div>
-                    <div>{authorUsername} {photoCaption}</div>
-                    <div>{liked ? 'heart' : 'empty heart'}</div>
-                    <div>{totalLikes} likes</div>
+                <div className='single-photo-details'>
+                    <div className='single-photo-author'>
+                        <img className='prof-img-small' src={authorImgUrl} /> <span className='author-name'>{authorUsername}</span> • {following ? 'Following' : 'Follow'}
+                    </div>
+                    <div className='single-photo-caption'><span className='author-name'>{authorUsername}</span> {photoCaption}</div>
+                    <div className='single-photo-liked-status'>{likedStatus}</div>
+                    <div className='single-photo-likes'>{totalLikes} likes</div>
                     <form><input type='text' placeholder='Add a comment...' /></form>
                 </div>
             </div>
