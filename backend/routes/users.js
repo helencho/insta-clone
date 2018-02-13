@@ -16,7 +16,7 @@ router.get('/p/:id/details', db.getPhotoDetails)
 
 // User authentication functions 
 router.post('/login', passport.authenticate('local'), (req, res) => res.json(req.user))
-router.post('/register', db.registerUser)
+router.post('/new', db.registerUser)
 router.get('/logout', loginRequired, db.logoutUser)
 
 module.exports = router;
