@@ -72,7 +72,7 @@ function getAllPhotos(req, res, next) {
             res.status(200).json({
                 status: 'success',
                 data: data,
-                message: 'Retrieved all users'
+                message: 'Retrieved all photos'
             })
         })
         .catch((err) => {
@@ -82,7 +82,8 @@ function getAllPhotos(req, res, next) {
 
 // Information on photo, including caption and image url 
 function getSinglePhoto(req, res, next) {
-    db.one('SELECT * FROM photos WHERE photo_id=$1', [req.params.id])
+    db.one('SELECT photos.photo_id, photos.photo_link, photos.caption, users.user_id, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON users.user_id=photos.user_id WHERE photos.photo_id=$1',
+        [req.params.id])
         .then(data => {
             res.status(200).json({
                 status: 'Success',
