@@ -48,8 +48,11 @@ class App extends React.Component {
     const { user, newUser } = this.state
     return (
       <div className="App">
-        <div className="topbar">
-          <h1> Instagram</h1>
+        <div className="topbar instaCloneFont">
+          <div className="cameraIcon">
+            <i class="fab fa-instagram fa-2x"></i>
+            <h1 className="site">Instagram</h1> 
+          </div>
         </div>
 
 

@@ -44,3 +44,32 @@
   height: 293px;
   width: 293px;
 }
+
+.instaCloneFont {
+font-family: 'Grand Hotel', cursive;
+}
+
+.usernameFont {
+font-family: 'Quicksand', sans-serif;
+}
+
+.site {
+  padding-top: 20px;
+  width: 176px;
+  height: 35px;
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+}
+
+.cameraIcon {
+  margin-left: 18%;
+  padding-top: 20px;
+  width: 50px;
+  height: 35px;
+  display: inline-block;
+  justify-content: flex-start;
+  cursor: pointer;
+  color: black;
+  position: fixed;
+}
