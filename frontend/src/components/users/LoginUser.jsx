@@ -53,7 +53,7 @@ class LoginUser extends React.Component {
     const { usernameInput, passwordInput, message, loggedIn } = this.state;
 
     if (loggedIn) {
-      return <Redirect to="/users/homepage" />;
+      return <Redirect to="/users/profile" />;
     }
 
     return (
