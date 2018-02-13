@@ -35,6 +35,7 @@ class App extends React.Component {
 
   renderProfile = props => {
     const { user } = this.state
+ 
     if (!user) {
       return <LoginUser setUser={this.setUser} />
     }
@@ -47,6 +48,7 @@ class App extends React.Component {
 
   render() {
     const { user, newUser } = this.state
+    console.log(this.state)
     return (
       <div className="App">
         <div className="topbar">
