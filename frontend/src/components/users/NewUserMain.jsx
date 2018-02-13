@@ -34,9 +34,11 @@ class NewUserMain extends Component {
       }
       axios.get("/users").then(response => {
         console.log("RESPONSE FOR GET REQUEST", response.data.data);
+        console.log(email)
         if (!response.data.data.find(n => n.email === email && n.username ===username)) {
           axios
             .post("/users/new", {
+              email: email, 
               fullname: fullname, 
               username: username,
               password: password
@@ -44,6 +46,7 @@ class NewUserMain extends Component {
             .then(res => {
               console.log(res);
               this.setState({
+                fullname: "", 
                 username: "",
                 password: "",
                 message: "Registered user"
@@ -52,6 +55,7 @@ class NewUserMain extends Component {
             .catch(err => {
               console.log(err);
               this.setState({
+                fullname: "",
                 username: "",
                 password: "",
                 message: "Error registering user"
@@ -59,7 +63,7 @@ class NewUserMain extends Component {
             });
         } else {
           this.setState({
-            message: "Username already exists"
+            message: "Username or email already exists"
           });
         }
       });

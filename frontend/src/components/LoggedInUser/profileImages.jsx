@@ -20,7 +20,7 @@ class Images extends Component {
         axios
             .get('/p')
             .then (res =>{
-                console.log(res.data)
+                console.log(res.data.)
                 this.setState({
                     images: res.data.data.images
                 })
