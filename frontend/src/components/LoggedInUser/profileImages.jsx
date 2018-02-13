@@ -1,54 +1,36 @@
-import React, { Component } from 'react';
-const styles = {
-    img: {
-        height: "10em"
-    }
-
-};
+import React from 'react'
+import { Route, Link, Switch } from "react-router-dom"
+import '../App.css'
+import axios from "axios";
 
 
-class Images extends Component {
-    constructor() {
-        super();
+class ProfileImages extends React.Component {
+    constructor(props) {
+        super(props);
         this.state = {
-            images: []
+            images: this.props.images
         }
     }
-
-
-    componentDidMount = () => {
-        axios
-            .get('/p')
-            .then (res =>{
-                console.log(res.data.)
-                this.setState({
-                    images: res.data.data.images
-                })
-            })
-                .catch(err => {
-                    console.log(err)
-                })
-        }
-   
+       
     render() {
         const { images } = this.state
+        console.log(this.state)
 
         return (
             <div>
                 <div class='rowOfPics'> 
-
                 </div>
-            
-                <ul>
-                    {images.map(img => (
-                        <li>
-                            <img  alt='img' src={img} />
-                        </li>
+                
+                    {this.props.images.map(img => (
+                        <figure id={img.photo_id}>
+                        <Link to= {`p/${img.photo_id}`}> 
+                            <img  alt='img' src={img.photo_link} width='223' height='223'/>
+                        </Link>
+                        </figure>
                     ))}
-                </ul>
             </div>
         )
     }
 }
 
-export default Images
+export default ProfileImages
