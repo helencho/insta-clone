@@ -34,8 +34,7 @@ class NewUserMain extends Component {
       }
       axios.get("/users").then(response => {
         console.log("RESPONSE FOR GET REQUEST", response.data.data);
-        console.log(email)
-        if (!response.data.data.find(n => n.email === email && n.username ===username)) {
+        if (!response.data.data.find(n =>n.username ===username)) {
           axios
             .post("/users/new", {
               email: email, 
@@ -46,6 +45,7 @@ class NewUserMain extends Component {
             .then(res => {
               console.log(res);
               this.setState({
+                email:'', 
                 fullname: "", 
                 username: "",
                 password: "",
@@ -55,6 +55,7 @@ class NewUserMain extends Component {
             .catch(err => {
               console.log(err);
               this.setState({
+                email:'', 
                 fullname: "",
                 username: "",
                 password: "",
@@ -63,13 +64,13 @@ class NewUserMain extends Component {
             });
         } else {
           this.setState({
-            message: "Username or email already exists"
+            message: "Username  already exists"
           });
         }
       });
     } else {
       this.setState({
-        message: "Please fill out both forms"
+        message: "Please fill all forms"
       })
     }
   };
