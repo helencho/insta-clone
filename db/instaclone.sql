@@ -22,7 +22,7 @@ INSERT INTO users (username, password_digest, email_add, fullname, profile_pic, 
 
 CREATE TABLE photos (
     photo_id SERIAL PRIMARY KEY,
-    user_id INTEGER,
+    user_id INTEGER REFERENCES users,
     photo_link VARCHAR,
     caption VARCHAR
 );
@@ -31,8 +31,8 @@ INSERT INTO photos (user_id, photo_link, caption)
     VALUES (1, 'https://i.imgur.com/GAbRAat.jpg', 'exactly');
 
 CREATE TABLE likes (
-    user_id INTEGER,
-    photo_id INTEGER
+    user_id INTEGER REFERENCES users,
+    photo_id INTEGER REFERENCES photos
 );
 
 INSERT INTO likes (user_id, photo_id)
@@ -41,7 +41,7 @@ INSERT INTO likes (user_id, photo_id)
 
 
 CREATE TABLE user_followers (
-    user_id INTEGER,
+    user_id INTEGER REFERENCES users,
     follower_id INTEGER
 );
 
@@ -49,7 +49,7 @@ INSERT INTO user_followers (user_id, follower_id)
     VALUES (1, 3);
 
 CREATE TABLE user_following (
-    user_id INTEGER,
+    user_id INTEGER REFERENCES users,
     following_id INTEGER
 );
 
