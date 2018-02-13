@@ -18,10 +18,10 @@ class Profile extends React.Component {
 
     componentDidMount = () => {
         axios
-            .get('/users/p')
+            .get('/users/p') //need a username
             .then (res => {
                 console.log(res.data.data)
-                console.log("res dot data", res.data)
+                console.log("res dot!!!!!! data", res.data)
                 const photoData= res.data.data
                 console.log(photoData.map(photo=> photo.photo_link))
                 this.setState({
