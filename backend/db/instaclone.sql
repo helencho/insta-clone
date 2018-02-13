@@ -28,7 +28,8 @@ CREATE TABLE photos (
 );
 
 INSERT INTO photos (user_id, photo_link, caption)
-    VALUES (1, 'https://i.imgur.com/GAbRAat.jpg', 'exactly');
+    VALUES (1, 'https://i.imgur.com/GAbRAat.jpg', 'exactly'),
+    (1, 'https://i.imgur.com/wuRt0VA.jpg', 'pupz')
 
 CREATE TABLE likes (
     user_id INTEGER,
