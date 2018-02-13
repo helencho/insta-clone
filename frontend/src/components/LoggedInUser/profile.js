@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Link, Switch } from "react-router-dom"
 import '../App.css'
 import axios from "axios";
+import ProfileImages from './profileImages';
 
 
 class Profile extends React.Component {
@@ -29,21 +30,15 @@ class Profile extends React.Component {
                 })
         }
    
+
+       
     render() {
         const { images } = this.state
 
         return (
             <div>
-                <div class='rowOfPics'> 
-
-                </div>
                 
-                    {images.map(img => (
-                        <figure id={img.photo_id}>
-                            <img  alt='img' src={img.photo_link} width='223' height='223'/>
-                            {/* <figcaption> {img.caption} </figcaption> */}
-                        </figure>
-                    ))}
+                <ProfileImages images={images} />
             </div>
         )
     }
