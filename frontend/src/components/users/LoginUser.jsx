@@ -21,7 +21,7 @@ class LoginUser extends React.Component {
 
   submitForm = e => {
     e.preventDefault();
-    const { usernameInput, passwordInput } = this.state;
+    const { usernameInput, passwordInput, loggedIn } = this.state;
 
     if (usernameInput.length < 3) {
       this.setState({
@@ -34,6 +34,7 @@ class LoginUser extends React.Component {
         username: usernameInput,
         password: passwordInput
       })
+    
       .then(res => {
         this.props.setUser(res.data);
         this.setState({
