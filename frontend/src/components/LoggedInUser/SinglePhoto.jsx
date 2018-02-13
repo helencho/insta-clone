@@ -19,46 +19,47 @@ class SinglePhoto extends Component {
         }
     }
 
-    componentDidMount() {
-        this.getSinglePhoto()
-        // this.getPhotoDetails()
-    }
+    // componentDidMount() {
+    //     this.getSinglePhoto()
+    //     // this.getPhotoDetails()
+    // }
 
-    getSinglePhoto = () => {
-        // Photo id 
-        const id = this.props.match.params.id
+    // getSinglePhoto = () => {
+    //     // Photo id 
+    //     const id = this.props.match.params.id
+    //     console.log("id", id)
 
-        axios
-            .get(`/users/p/${id}`)
-            .then(res => {
-                let photoData = res.data.data
-                this.setState({
-                    authorId: photoData.user_id,
-                    authorName: photoData.fullname,
-                    authorUsername: photoData.username,
-                    authorImgUrl: photoData.profile_pic,
-                    photoUrl: photoData.photo_link,
-                    photoCaption: photoData.caption
-                })
+    //     axios
+    //         .get(`/users/p/${id}`)
+    //         .then(res => {
+    //             let photoData = res.data.data
+    //             this.setState({
+    //                 authorId: photoData.user_id,
+    //                 authorName: photoData.fullname,
+    //                 authorUsername: photoData.username,
+    //                 authorImgUrl: photoData.profile_pic,
+    //                 photoUrl: photoData.photo_link,
+    //                 photoCaption: photoData.caption
+    //             })
 
-                // Make a get request to get user's information 
-                // axios
-                //     .get(`/u/${this.state.authorId}`)
-                //     .then(res => {
-                //         let userData = res.data
-                //         console.log(userData)
-                //         // setState -- 
-                //         // authorName: 
-                //         // authorUrl: 
-                //     })
-                //     .catch(err => {
-                //         console.log(err)
-                //     })
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
+    //             // Make a get request to get user's information 
+    //             // axios
+    //             //     .get(`/u/${this.state.authorId}`)
+    //             //     .then(res => {
+    //             //         let userData = res.data
+    //             //         console.log(userData)
+    //             //         // setState -- 
+    //             //         // authorName: 
+    //             //         // authorUrl: 
+    //             //     })
+    //             //     .catch(err => {
+    //             //         console.log(err)
+    //             //     })
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    // }
 
     // getPhotoDetails = () => {
     //     // Photo id 

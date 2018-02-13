@@ -51,7 +51,7 @@ class App extends React.Component {
       <div className="App">
         <div className="topbar instaCloneFont">
           <div className="cameraIcon">
-            <span className="cursor"><i class="fab fa-instagram fa-2x"/></span><span className="site cursor"><h1>Instagram</h1></span>        
+            <span className="cursor"><i className="fab fa-instagram fa-2x"/></span><span className="site cursor"><h1>Instagram</h1></span>        
           </div>
           <div>
             <input className="inputBar"
@@ -59,9 +59,9 @@ class App extends React.Component {
             />
             </div>
           <div className="iconTop">
-            <span className="cursor"><i class="far fa-compass fa-2x" /></span>
-            <span className="iconDistance cursor"><i class="far fa-heart fa-2x" /></span>
-            <span className="iconDistance cursor"><i class="far fa-user fa-2x" /></span>            
+            <span className="cursor"><i className="far fa-compass fa-2x" /></span>
+            <span className="iconDistance cursor"><i className="far fa-heart fa-2x" /></span>
+            <span className="iconDistance cursor"><i className="far fa-user fa-2x" /></span>            
           </div>
         </div>
 
