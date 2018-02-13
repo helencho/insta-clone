@@ -17,90 +17,90 @@ class SinglePhoto extends Component {
         }
     }
 
-    componentDidMount() {
-        this.getSinglePhoto()
-        this.getPhotoDetails()
-    }
+    // componentDidMount() {
+    //     this.getSinglePhoto()
+    //     this.getPhotoDetails()
+    // }
 
-    getSinglePhoto = () => {
-        // Photo id 
-        const id = props.params.match.id
+    // getSinglePhoto = () => {
+    //     // Photo id 
+    //     const id = props.params.match.id
 
-        axios
-            .get(`/p/${id}`)
-            .then(res => {
-                let photoData = res.data
-                console.log(photoData)
-                // setState -- 
-                // authorId: user_id 
-                // photoUrl: photo_link 
-                // photoCaption: caption 
+    //     axios
+    //         .get(`/p/${id}`)
+    //         .then(res => {
+    //             let photoData = res.data
+    //             console.log(photoData)
+    //             // setState -- 
+    //             // authorId: user_id 
+    //             // photoUrl: photo_link 
+    //             // photoCaption: caption 
 
-                // Make a get request to get user's information 
-                axios
-                    .get(`/u/${this.state.authorId}`)
-                    .then(res => {
-                        let userData = res.data
-                        console.log(userData)
-                        // setState -- 
-                        // authorName: 
-                        // authorUrl: 
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
+    //             // Make a get request to get user's information 
+    //             axios
+    //                 .get(`/u/${this.state.authorId}`)
+    //                 .then(res => {
+    //                     let userData = res.data
+    //                     console.log(userData)
+    //                     // setState -- 
+    //                     // authorName: 
+    //                     // authorUrl: 
+    //                 })
+    //                 .catch(err => {
+    //                     console.log(err)
+    //                 })
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    // }
 
-    getPhotoDetails = () => {
-        // Photo id 
-        const id = props.params.match.id
+    // getPhotoDetails = () => {
+    //     // Photo id 
+    //     const id = props.params.match.id
 
-        axios
-            .get(`/p/${id}/details`)
-            .then(res => {
-                let data = console.log(res.data)
+    //     axios
+    //         .get(`/p/${id}/details`)
+    //         .then(res => {
+    //             let data = console.log(res.data)
 
-                // Map through the array of objects and grab information we need 
-                data.map(item => {
-                    let user = {
-                        id: item.liked_by_user_id,
-                        username: item.username,
-                        picUrl: item.profile_pic
-                    }
-                    this.setState({
-                        likedByUsers: [...this.state.likedByUsers, user]
-                    })
-                })
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
+    //             // Map through the array of objects and grab information we need 
+    //             data.map(item => {
+    //                 let user = {
+    //                     id: item.liked_by_user_id,
+    //                     username: item.username,
+    //                     picUrl: item.profile_pic
+    //                 }
+    //                 this.setState({
+    //                     likedByUsers: [...this.state.likedByUsers, user]
+    //                 })
+    //             })
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    // }
 
-    doesUserLikePhoto = () => {
-        const { authorId, likedByUsers } = this.state
-        const userFound = likedByUsers.find(user => user.id === authorId)
+    // doesUserLikePhoto = () => {
+    //     const { authorId, likedByUsers } = this.state
+    //     const userFound = likedByUsers.find(user => user.id === authorId)
 
-        // If user is found, set liked to true 
-        if (userFound) {
-            this.setState({
-                liked: true
-            })
-        } else {
-            this.setState({
-                liked: false
-            })
-        }
-    }
+    //     // If user is found, set liked to true 
+    //     if (userFound) {
+    //         this.setState({
+    //             liked: true
+    //         })
+    //     } else {
+    //         this.setState({
+    //             liked: false
+    //         })
+    //     }
+    // }
 
-    toggleLike = () => {
-        // Clicking on heart will toggle true or false 
-        // Will also send an ajax request (post request) to a route that doesn't exist yet 
-    }
+    // toggleLike = () => {
+    //     // Clicking on heart will toggle true or false 
+    //     // Will also send an ajax request (post request) to a route that doesn't exist yet 
+    // }
 
     render() {
         const { authorId, authorName, authorUrl, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
