@@ -32,7 +32,7 @@ class NewUserMain extends Component {
           message: "Password must be at least 6 characters"
         })
       }
-      axios.get("/users/new").then(response => {
+      axios.get("/users").then(response => {
         console.log("RESPONSE FOR GET REQUEST", response.data.data);
         if (!response.data.data.find(n => n.email === email && n.username ===username)) {
           axios
