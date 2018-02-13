@@ -72,7 +72,7 @@ function getAllPhotos(req, res, next) {
             res.status(200).json({
                 status: 'success',
                 data: data,
-                message: 'Retrieved all users'
+                message: 'Retrieved all photos'
             })
         })
         .catch((err) => {
