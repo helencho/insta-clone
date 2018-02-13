@@ -3,10 +3,12 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { Route, Link, Switch } from "react-router-dom";
 import NewUserEmail from "./NewUserEmail";
+import Profile from "../LoggedInUser/profile"
 import "../App.css"
 
 class LoginUser extends React.Component {
   state = {
+    user:'', 
     usernameInput: "",
     passwordInput: "",
     message: "Forgot password?",
@@ -18,6 +20,8 @@ class LoginUser extends React.Component {
       [e.target.name]: e.target.value
     });
   };
+
+
 
   submitForm = e => {
     e.preventDefault();
@@ -36,8 +40,9 @@ class LoginUser extends React.Component {
       })
     
       .then(res => {
-        this.props.setUser(res.data);
+        this.props.setUser(res.data.username);
         this.setState({
+            user: res.data.username, 
           loggedIn: true
         });
       })
@@ -50,10 +55,19 @@ class LoginUser extends React.Component {
       });
   };
 
+   setUser= ()=>{
+      const {user}= this.state
+      return(
+    <Profile user={user}/>
+      )
+  }
+
+
   render() {
     const { usernameInput, passwordInput, message, loggedIn } = this.state;
 
     if (loggedIn) {
+        this.setUser()
       return <Redirect to="/users/profile" />;
     }
 
