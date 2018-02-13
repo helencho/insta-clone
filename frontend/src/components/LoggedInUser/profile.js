@@ -21,9 +21,11 @@ class Profile extends React.Component {
             .get('/users/p')
             .then (res => {
                 console.log(res.data.data)
+                console.log("res dot data", res.data)
                 const photoData= res.data.data
                 console.log(photoData.map(photo=> photo.photo_link))
                 this.setState({
+                    user: res.data,
                     images: res.data.data
                 })
             })
