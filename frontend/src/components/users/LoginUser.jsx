@@ -2,14 +2,14 @@ import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
 import { Route, Link, Switch } from "react-router-dom";
-
 import NewUserEmail from "./NewUserEmail";
+import "../App.css"
 
 class LoginUser extends React.Component {
   state = {
     usernameInput: "",
     passwordInput: "",
-    message: "",
+    message: "Forgot password?",
     loggedIn: false
   };
 
@@ -59,33 +59,44 @@ class LoginUser extends React.Component {
 
     return (
       <div>
-        <Link to="/users/new">New User</Link>
-        <h1> Log In </h1>
+      <div className="loginBox">
+        <h1 className="siteFont"> Instagram </h1>
 
         <form onSubmit={this.submitForm}>
-          <label>
-            Username:
+          
             <input
+              className="usernameBox"
+              placeholder="Username"
               type="text"
               name="usernameInput"
               value={usernameInput}
               onChange={this.handleInput}
             />
-          </label>
-
-          <label>
-            Password:
+          <br></br>
+          
             <input
+            className="passwordBox"
+              placeholder="Password"
               type="password"
               name="passwordInput"
               value={passwordInput}
               onChange={this.handleInput}
             />
-          </label>
-
-          <input type="submit" value="Submit" />
+          <br></br>
+          <input className="loginBtn" type="submit" value="Log in" />
         </form>
-        <p>{message}</p>
+        <br></br>
+        <p className="messageSize">{message}</p>
+      </div>
+      <div className="smallerBox">
+      <p className="dontHaveAcct">Don't have an account?<Link to="/users/new"> Sign up</Link></p>
+      </div>
+      <div>
+        <p className="getTheApp">Get the app.</p>
+      </div>
+      <div>
+        <img src="./app-store-badge-128x128.png" alt="available on the app store" width="200" height="100"/>
+      </div>
       </div>
     );
   }
