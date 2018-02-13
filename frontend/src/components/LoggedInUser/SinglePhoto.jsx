@@ -19,58 +19,6 @@ class SinglePhoto extends Component {
         }
     }
 
-<<<<<<< HEAD
-    // componentDidMount() {
-    //     this.getSinglePhoto()
-    //     // this.getPhotoDetails()
-    // }
-
-    // getSinglePhoto = () => {
-    //     // Photo id 
-    //     const id = this.props.match.params.id
-    //     console.log("id", id)
-
-    //     axios
-    //         .get(`/users/p/${id}`)
-    //         .then(res => {
-    //             let photoData = res.data.data
-    //             this.setState({
-    //                 authorId: photoData.user_id,
-    //                 authorName: photoData.fullname,
-    //                 authorUsername: photoData.username,
-    //                 authorImgUrl: photoData.profile_pic,
-    //                 photoUrl: photoData.photo_link,
-    //                 photoCaption: photoData.caption
-    //             })
-
-    //             // Make a get request to get user's information 
-    //             // axios
-    //             //     .get(`/u/${this.state.authorId}`)
-    //             //     .then(res => {
-    //             //         let userData = res.data
-    //             //         console.log(userData)
-    //             //         // setState -- 
-    //             //         // authorName: 
-    //             //         // authorUrl: 
-    //             //     })
-    //             //     .catch(err => {
-    //             //         console.log(err)
-    //             //     })
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
-
-    // getPhotoDetails = () => {
-    //     // Photo id 
-    //     const id = props.params.match.id
-
-    //     axios
-    //         .get(`/p/${id}/details`)
-    //         .then(res => {
-    //             let data = console.log(res.data)
-=======
     componentDidMount() {
         this.getPhoto()
     }
@@ -131,7 +79,6 @@ class SinglePhoto extends Component {
             .catch(err => {
                 console.log(err)
             }) // End first ajax request 
->>>>>>> 4ce9a990a8e35ab57e0c7be0ea5bdd4303f4fa6b
 
     }
 
