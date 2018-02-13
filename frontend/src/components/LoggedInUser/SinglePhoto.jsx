@@ -20,11 +20,10 @@ class SinglePhoto extends Component {
     }
 
     componentDidMount() {
-        this.getSinglePhoto()
-        // this.getPhotoDetails()
+        this.getPhoto()
     }
 
-    getSinglePhoto = () => {
+    getPhoto = () => {
         // Photo id 
         const id = this.props.match.params.id
 
@@ -41,66 +40,51 @@ class SinglePhoto extends Component {
                     photoCaption: photoData.caption
                 })
 
-                // Make a get request to get user's information 
-                // axios
-                //     .get(`/u/${this.state.authorId}`)
-                //     .then(res => {
-                //         let userData = res.data
-                //         console.log(userData)
-                //         // setState -- 
-                //         // authorName: 
-                //         // authorUrl: 
-                //     })
-                //     .catch(err => {
-                //         console.log(err)
-                //     })
+                axios
+                    .get(`/p/${id}/details`)
+                    .then(res => {
+                        let detailData = res.data.data
+                        let users = []
+
+                        detailData.map(item => {
+                            let user = {
+                                id: item.liked_by_user_id,
+                                username: item.username,
+                                picUrl: item.profile_pic
+                            }
+                            users = [...users, user]
+                            // this.setState({
+                            //     likedByUsers: [...this.state.likedByUsers, user]
+                            // })
+                        })
+                        this.setState({
+                            likedByUser: users
+                        })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
             .catch(err => {
                 console.log(err)
             })
     }
 
-    // getPhotoDetails = () => {
-    //     // Photo id 
-    //     const id = props.params.match.id
+    doesUserLikePhoto = () => {
+        const { authorId, likedByUsers } = this.state
+        const userFound = likedByUsers.find(user => user.id === authorId)
 
-    //     axios
-    //         .get(`/p/${id}/details`)
-    //         .then(res => {
-    //             let data = console.log(res.data)
-
-    //             // Map through the array of objects and grab information we need 
-    //             data.map(item => {
-    //                 let user = {
-    //                     id: item.liked_by_user_id,
-    //                     username: item.username,
-    //                     picUrl: item.profile_pic
-    //                 }
-    //                 this.setState({
-    //                     likedByUsers: [...this.state.likedByUsers, user]
-    //                 })
-    //             })
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
-
-    // doesUserLikePhoto = () => {
-    //     const { authorId, likedByUsers } = this.state
-    //     const userFound = likedByUsers.find(user => user.id === authorId)
-
-    //     // If user is found, set liked to true 
-    //     if (userFound) {
-    //         this.setState({
-    //             liked: true
-    //         })
-    //     } else {
-    //         this.setState({
-    //             liked: false
-    //         })
-    //     }
-    // }
+        // If user is found, set liked to true 
+        if (userFound) {
+            this.setState({
+                liked: true
+            })
+        } else {
+            this.setState({
+                liked: false
+            })
+        }
+    }
 
     // toggleLike = () => {
     //     // Clicking on heart will toggle true or false 
@@ -121,7 +105,7 @@ class SinglePhoto extends Component {
                 <div classname='single-photo-details'>
                     <div><img className='prof-img-small' src={authorImgUrl} /> {authorUsername} • {following ? 'Following' : 'Unfollowing'}</div>
                     <div>{authorUsername} {photoCaption}</div>
-                    <div>{liked ? 'heart' : 'empty heart'}</div>
+                    <div>{liked ? 'full heart' : 'empty heart'}</div>
                     <div>{totalLikes} likes</div>
                     <form><input type='text' placeholder='Add a comment...' /></form>
                 </div>
