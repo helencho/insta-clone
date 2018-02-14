@@ -100,10 +100,6 @@ class LoginUser extends React.Component {
             <input className="loginBtn" type="submit" value="Log in" />
           </form>
           <br></br>
-
-          <input className="loginBtn" type="submit" value="Log in" />
-        </form>
-        <br></br>
         <p className="messageSize">{message}</p>
       </div>
       <div className="smallerBox">
