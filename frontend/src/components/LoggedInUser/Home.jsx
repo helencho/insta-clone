@@ -111,7 +111,7 @@ class Home extends Component {
     }
 
     render() {
-        const { loggedInAs, followings, photoFeed } = this.state
+        const { loggedInAs, followings, photoFeed, likedByUsers } = this.state
         console.log(this.state)
 
         return (
@@ -130,6 +130,11 @@ class Home extends Component {
                                 <i class="far fa-heart"></i>
                             </div>
                             <div className='homefeed-card-likes'>
+                                {likedByUsers.map(item => {
+                                    if (item.photo_id === photo.photo_id) {
+                                        // do this 
+                                    }
+                                })}
                                 <p>___ likes</p>
                             </div>
                             <div className='homefeed-card-caption'>
