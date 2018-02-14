@@ -3,15 +3,16 @@ import axios from "axios";
 import { Link } from 'react-router-dom'
 
 class NewUserMain extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
+      email: '', 
       fullname:'', 
-      email: this.props.email, 
       username: "",
       password: "",
       userAvailable: "",
-      message: ""
+      message: "", 
+      validEmail:false
     };
   }
 
@@ -25,7 +26,24 @@ class NewUserMain extends Component {
   // When user submits form
   handleFormSubmit = e => {
     e.preventDefault();
-    const { username, password, email, fullname } = this.state;
+    const { email, username, password, fullname } = this.state;
+    if (email) {
+      axios.get('/users').then(response =>{
+        console.log("RESPONSE FOR GET REQUEST", response.data.data);
+        console.log(email)
+        
+        if (!response.data.data.find(n => n.email_add === email)) {
+          this.setState({
+            validEmail:true, 
+          })
+        } else {
+        this.setState({
+          validEmail: false, 
+          message:'email already in use'
+        })
+      }
+    })
+  }
     if (username && password) {
       if (password.length < 6){
         return this.setState({
@@ -76,7 +94,7 @@ class NewUserMain extends Component {
   };
 
   render() {
-    const { username, password, message, fullname } = this.state;
+    const { email, username, password, message, fullname } = this.state;
     console.log(this.state);
 
     return (
@@ -84,6 +102,13 @@ class NewUserMain extends Component {
       <Link to ="/users/login">Login</Link>
         <h1>Register</h1>
         <form onSubmit={this.handleFormSubmit}>
+        <input
+            type="email"
+            placeholder="email"
+            name="email"
+            onChange={this.handleInput}
+            value={email}
+          />
         <input
             type="text"
             placeholder="fullname"

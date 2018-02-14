@@ -2,12 +2,12 @@ import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
-import NewUserEmail from "./users/NewUserEmail";
 import LoginUser from "./users/LoginUser";
 // import Profile from "./LoggedInUser/profile";
 import LogOut from "./users/LogOut";
 import User from './LoggedInUser/User';
 import Home from './LoggedInUser/Home';
+import NewUserMain from "./users/NewUserMain";
 
 class App extends React.Component {
   constructor() {
@@ -35,7 +35,7 @@ class App extends React.Component {
   };
 
   renderNew = () => {
-    return <NewUserEmail />
+    return <NewUserMain />
   } 
 
   // Home is the feed screen 
