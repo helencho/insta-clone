@@ -290,11 +290,11 @@ font-family: 'Quicksand', sans-serif;
 }
 /*****PROFILE PAGE********/
 
-.infoContainer{
+/* .infoContainer{
   display: flex;
 justify-content: center;
 
-}
+} */
 .userIMG{
   display: flex;
   justify-content: flex-start;

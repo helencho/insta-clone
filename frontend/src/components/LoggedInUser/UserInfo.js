@@ -1,6 +1,6 @@
 import React from 'react'
 import {Route, Link, Switch} from "react-router-dom"
-import '../App.css';
+import './profile.css';
 import axios from 'axios'
 
 class UserInfo extends React.Component{
@@ -14,8 +14,7 @@ class UserInfo extends React.Component{
             numOfFollowers:'', 
             numOfFollowing:'',
             userImageURL:this.props.user.profile_pic, 
-            
-            fullName:''
+            fullName:this.props.user.fullname
         }
     }
 
@@ -90,12 +89,10 @@ getNumberOfPosts = () =>{
        console.log(this.state)
     return (
        
-        <div className="infoContainer">
+        <div className="infoContainer" width='75%'>
             <header className="allUserInfo">
                 <section className="userStats">
-                    <div className="usernameDiv">
-                        <h1 id="usernameH1">{userName}</h1>
-                    </div>
+                  
                     <div className="userImageContainer">
                         <div className="containerForBtn">
                             <div className="divForBtn">
@@ -105,6 +102,10 @@ getNumberOfPosts = () =>{
                             </div>
                         </div>
                     </div>
+                    <div className="usernameDiv">
+                        <h1 id="usernameH1">{userName}</h1>
+                    </div>
+                    <div className = "Followingbtn"> <button> FOLLOWING </button></div>
                     <div className="containerForNumberStats">
                         <div className="numOfPosts">{"Posts"} {numOfPosts}</div>
                         <div className="numOfFollowers">{"Followers"} {numOfFollowers}</div>

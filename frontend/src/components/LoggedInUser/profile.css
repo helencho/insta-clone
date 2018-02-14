@@ -1,0 +1,29 @@
+.infoContainer{
+    display: flex;
+  justify-content: center;
+  margin-top:61px;
+  margin-left:15%;
+  padding-top:20px;
+  margin-bottom:44px;
+  width: 70%;
+
+  }
+  #usernameH1{
+      color:green
+
+  }
+
+  .userImageContainer,.usernameDiv, Followingbtn,.userStats, .containerForNumberStats{
+      display:flex;
+      flex-wrap:wrap;
+  }
+  .userImageContainer{
+      margin-left:-30%
+  }
+  .usernameDiv{
+      margin-left:75px;
+  }
+
+  .Followingbtn{
+      margin-left:20px;
+  }
