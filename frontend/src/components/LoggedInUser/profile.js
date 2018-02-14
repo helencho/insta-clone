@@ -28,7 +28,7 @@ class Profile extends React.Component {
         .get(`/users/u/${userID}/photos`)
         .then(res =>{
             let UserImages = res.data.data
-                        
+
             console.log('this is the user images', UserImages)
             this.setState({
                 images: UserImages
@@ -67,9 +67,7 @@ class Profile extends React.Component {
         // console.log("single photo info", SinglePhoto.authorUsername)
         return (
             <div>
-                {/* <SinglePhoto /> */}
-                <UserInfo user={ user } userImageURL={ user.profile_pic } userName = { user.username } 
-                fullName = { user.fullname }/>
+
                 <ProfileImages images={ images } />
             </div>
         )
