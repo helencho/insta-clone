@@ -60,15 +60,16 @@ class Profile extends React.Component {
         }
    
     render() {
-        const { images,user, userID } = this.state
-    console.log(this.state)
+        const { images,user, userID, userPhoto } = this.state
+    console.log("STIZZATE",this.state, "fullname?", user.fullname, "username?", user.username )
         console.log("the user is:", user)
         console.log('the user ID is', userID)
         // console.log("single photo info", SinglePhoto.authorUsername)
         return (
             <div>
                 {/* <SinglePhoto /> */}
-                <UserInfo user={ user } userImageURL={ images } />
+                <UserInfo user={ user } userImageURL={ user.profile_pic } userName = { user.username } 
+                fullName = { user.fullname }/>
                 <ProfileImages images={ images } />
             </div>
         )

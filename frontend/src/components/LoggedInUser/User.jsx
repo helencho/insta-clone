@@ -67,11 +67,13 @@ getUserInfo= () =>{
 
     
     renderFollowing = () => {
-        return <Following />
+        const { following } = this.state;
+        return <Following following = { following }/>
     }
 
     renderFollowers = () => {
-        return <Followers />
+        const { followers } = this.state;
+        return <Followers followers = { followers } />
     }
 
     renderPhoto = () => {
