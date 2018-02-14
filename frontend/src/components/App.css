@@ -33,12 +33,12 @@
 .topbar {
   background-color: #ffff;
   border-bottom: 1px solid rgba(0,0,0,.0975);
-  /* position: fixed; */
   top: 0;
   width: 100%;
   z-index: 1;
   height: 6em;
   position: fixed;
+  display: flex;
 }
 
 .fontColor{
@@ -58,43 +58,43 @@ font-family: 'Grand Hotel', cursive;
 font-family: 'Quicksand', sans-serif;
 }
 
-.cameraIcon {
+/* .cameraIcon {
   padding-left: 15%;
   top: 1.5em;
   width: 2em;
   height: 1.5em;
   color: black;
   position: fixed;
-}
+} */
 
-.site{
+/* .site{
   position: fixed;
   padding-left: 2em;
   top: 0;
-}
+} */
 
-.iconDistance{
+/* .iconDistance{
   padding-left: 2em;
-}
+} */
 
-.iconTop{
+/* .iconTop{
   padding-top: 1.5em;
   padding-left: 80%;
   position: fixed;
-}
+} */
 
 .cursor {
   cursor: pointer;
 }
 
-.searchBar{
+/* .searchBar{
   position: fixed;
   margin-top: 1%;
   left: 43.35%;
   width: 13%;
   height: 26px;
   text-align: center;
-}
+} */
 
 .loginBox{
   text-align: center;

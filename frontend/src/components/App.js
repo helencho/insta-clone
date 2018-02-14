@@ -56,55 +56,46 @@ class App extends React.Component {
     }
 
     return (
-      <div className="App">
-        <div className="topbar instaCloneFont">
-          <div className="cameraIcon">
-            <span className="cursor">
+      <div>
+        <div className="App">
+          <div className="topbar instaCloneFont">
+            <div className="topbar-left">
+              <span><Link to="/users/home"><i className="fab fa-instagram fa-2x" /></Link></span>
+              <span><Link to="/users/home">Instagram</Link></span>
+            </div> {/* End topbar-left */}
 
-              <Link to="/users/home">
-                <i className="fab fa-instagram fa-2x" />
-              </Link>
-            </span>
-            <span className="site cursor">
-              <Link to="/users/home">
-                <h1> Instagram </h1>
-              </Link>{" "}
-            </span>
+            <div className="topbar-middle">
+              <form>
+                <input className="searchBar" placeholder="Search" />
+              </form>
+            </div> {/* End topbar-middle */}
 
-          </div>
-          <div>
-            <input className="searchBar" placeholder="Search" />
-          </div>
-          <div className="iconTop">
-            <span className="cursor">
+            <div className="topbar-right">
               <i className="far fa-compass fa-2x" />
-            </span>
-            <span className="iconDistance cursor">
               <i className="far fa-heart fa-2x" />
-            </span>
-            {user ? (
-              <span className="iconDistance cursor">
+              {user ?
                 <Link to={`/users/u/${user.user_id}/profile`}>
-                  <i className="far fa-user fa-2x" />{" "}
+                  <i className="far fa-user fa-2x" />
                 </Link>
-              </span>
-            ) : (
-              <span className="iconDistance cursor">
-                <Link to={`/users/u/id/profile`}>
-                  <i className="far fa-user fa-2x" />{" "}
+                :
+                <Link to={`/users`}>
+                  <i className="far fa-user fa-2x" />
                 </Link>
-              </span>
-            )}
-          </div>
-        </div>
+              }
+            </div> {/* End topbar-right */}
 
-        <Route exact path="/" render={this.renderLogin} />
-        <Route exact path="/users" render={this.renderLogin} />
-        <Route path="/users/login" render={this.renderLogin} />
-        <Route path="/users/new" render={this.renderNew} />
-        <Route path="/users/logout" render={this.renderLogout} />
-        <Route path="/users/home" render={this.renderHome} />
-        <Route path="/users/u/:id" component={User} />
+          </div> {/* End topbar */}
+        </div> {/* End App */}
+
+        <div>
+          <Route exact path="/" render={this.renderLogin} />
+          <Route exact path="/users" render={this.renderLogin} />
+          <Route path="/users/login" render={this.renderLogin} />
+          <Route path="/users/new" render={this.renderNew} />
+          <Route path="/users/logout" render={this.renderLogout} />
+          <Route path="/users/home" render={this.renderHome} />
+          <Route path="/users/u/:id" component={User} />
+        </div>
       </div>
     );
   }
