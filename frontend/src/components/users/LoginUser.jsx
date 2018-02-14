@@ -3,12 +3,12 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { Route, Link, Switch } from "react-router-dom";
 import NewUserEmail from "./NewUserEmail";
-import Profile from "../LoggedInUser/profile"
-import "../App.css"
+import Profile from "../LoggedInUser/profile";
+import "../App.css";
 
 class LoginUser extends React.Component {
   state = {
-    user: '',
+    user: "",
     usernameInput: "",
     passwordInput: "",
     message: "Forgot password?",
@@ -20,7 +20,6 @@ class LoginUser extends React.Component {
       [e.target.name]: e.target.value
     });
   };
-
 
   submitForm = e => {
     e.preventDefault();
@@ -39,8 +38,8 @@ class LoginUser extends React.Component {
       })
 
       .then(res => {
-          console.log(res.data)
-          console.log(res.data)
+        console.log(res.data);
+        console.log(res.data);
         this.props.setUser(res.data);
         this.setState({
           user: res.data.username,
@@ -56,13 +55,12 @@ class LoginUser extends React.Component {
       });
   };
 
-//   setUser = () => {
-//     const { user } = this.state
-//     return (
-//       <Profile user={user} />
-//     )
-//   }
-
+  //   setUser = () => {
+  //     const { user } = this.state
+  //     return (
+  //       <Profile user={user} />
+  //     )
+  //   }
 
   render() {
     const { usernameInput, passwordInput, message, loggedIn } = this.state;
@@ -77,7 +75,6 @@ class LoginUser extends React.Component {
           <h1 className="siteFont"> Instagram </h1>
 
           <form onSubmit={this.submitForm}>
-
             <input
               className="usernameBox"
               placeholder="Username"
@@ -86,7 +83,7 @@ class LoginUser extends React.Component {
               value={usernameInput}
               onChange={this.handleInput}
             />
-            <br></br>
+            <br />
 
             <input
               className="passwordBox"
@@ -96,26 +93,34 @@ class LoginUser extends React.Component {
               value={passwordInput}
               onChange={this.handleInput}
             />
-            <br></br>
+            <br />
             <input className="loginBtn" type="submit" value="Log in" />
           </form>
-          <br></br>
-
-          <input className="loginBtn" type="submit" value="Log in" />
-        </form>
-        <br></br>
-        <p className="messageSize">{message}</p>
-      </div>
-      <div className="smallerBox">
-      <p className="dontHaveAcct">Don't have an account?<Link to="/users/new"> Sign up</Link></p>
-      </div>
-      <div>
-        <p className="getTheApp">Get the app.</p>
-      </div>
-      <div>
-        <img className="appStore" src="https://i.imgur.com/UAP0XMk.png" alt="available on the app store" width="136" height="40" />
-      <img src="https://i.imgur.com/1dnbtWG.png" alt="available on google play" width="136" height="40" />
-
+          <br />
+          <p className="messageSize">{message}</p>
+        </div>
+        <div className="smallerBox">
+          <p className="dontHaveAcct">
+            Don't have an account?<Link to="/users/new"> Sign up</Link>
+          </p>
+        </div>
+        <div>
+          <p className="getTheApp">Get the app.</p>
+        </div>
+        <div>
+          <img
+            className="appStore"
+            src="https://i.imgur.com/UAP0XMk.png"
+            alt="available on the app store"
+            width="136"
+            height="40"
+          />
+          <img
+            src="https://i.imgur.com/1dnbtWG.png"
+            alt="available on google play"
+            width="136"
+            height="40"
+          />
         </div>
       </div>
     );
