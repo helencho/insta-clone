@@ -54,7 +54,7 @@ class LoginUser extends React.Component {
     const { usernameInput, passwordInput, message, loggedIn } = this.state;
 
     if (loggedIn) {
-      return <Redirect to="/users/profile" />;
+      return <Redirect to="/users/home" />;
     }
 
     return (
