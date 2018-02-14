@@ -28,8 +28,6 @@ class Profile extends React.Component {
         .get(`/users/u/${userID}/photos`)
         .then(res =>{
             let UserImages = res.data.data
-
-            console.log('this is the user images', UserImages)
             this.setState({
                 images: UserImages
             })
@@ -61,13 +59,12 @@ class Profile extends React.Component {
    
     render() {
         const { images,user, userID, userPhoto } = this.state
-    console.log("STIZZATE",this.state, "fullname?", user.fullname, "username?", user.username )
-        console.log("the user is:", user)
-        console.log('the user ID is', userID)
+
+
         // console.log("single photo info", SinglePhoto.authorUsername)
         return (
             <div>
-
+                <UserInfo user={user}/>
                 <ProfileImages images={ images } />
             </div>
         )
