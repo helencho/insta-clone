@@ -3,28 +3,53 @@
 /*--------------------------------------------*/
 
 .homefeed-page-container {
-    background-color: salmon;
+    background-color: rgb(250,250,250);
+    font-size: 10px;
+    color: rgb(55, 55, 55);
+    padding: 3% 0;
+}
+
+.homefeed-page-container p {
+    padding: 0;
+    margin: 0;
 }
 
 .homefeed-card-container {
-    background-color: blueviolet;
-    width: 50%;
-    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+    width: 59%;
+    margin: 5% auto;
     transition: 0.5s all;
+    text-align: left;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 0.5%;
 }
 
 .homefeed-card-meta {
-    background-color: greenyellow;
+    /* background-color: rgb(255, 255, 255); */
+    display: flex;
+    padding: 2%;
+    align-items: center;
+}
+
+.homefeed-card-meta p {
+    margin-left: 2%;
 }
 
 .homefeed-card-userprof {
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+}
+
+.homefeed-card-username a {
+    text-decoration: none;
+    font-size: 1.4em;
+    color: rgb(55, 55, 55);
+    font-weight: 600;
 }
 
 .homefeed-card-img {
-    background-color: violet;
-    /* width: 500px; */
+    background-color: rgb(255, 255, 255);
 }
 
 .homefeed-card-img img {
@@ -32,8 +57,25 @@
     width: 100%;
 }
 
+.homefeed-card-heart,
+.homefeed-card-likes,
 .homefeed-card-caption {
-    background-color: skyblue;
+    font-size: 1.4em;
+    padding: 2%;
+}
+
+.homefeed-card-heart {
+    /* background-color: rgb(255, 255, 255); */
+    font-size: 2em;
+}
+
+.homefeed-card-likes {
+    /* background-color: rgb(255, 255, 255); */
+    font-weight: 600;
+}
+
+.homefeed-card-caption {
+    /* background-color: rgb(255, 255, 255); */
 }
 
 @media screen and (max-width: 940px) {

@@ -60,7 +60,7 @@ class Home extends Component {
 
                 // Get photos by current user 
                 axios
-                    .get(`/users/u/${user.user_id}/photos`)
+                    .get(`/users/u/${user.following_id}/photos`)
                     .then(res => {
                         let photos = res.data.data
                         // console.log(photos)
@@ -95,6 +95,9 @@ class Home extends Component {
                             </div>
                             <div className='homefeed-card-img'>
                                 <img src={photo.photo_link} alt='Awesome photo' />
+                            </div>
+                            <div className='homefeed-card-heart'>
+                                <i class="far fa-heart"></i>
                             </div>
                             <div className='homefeed-card-likes'>
                                 <p>___ likes</p>
