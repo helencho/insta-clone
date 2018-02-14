@@ -7,6 +7,9 @@
   height: 80px;
 }
 
+body {
+   background-color: aqua;
+ }
 
 /* .appHeader {
   background-color:white;
@@ -177,4 +180,8 @@ font-family: 'Quicksand', sans-serif;
   font-size: 14px;
   color: #262626;
   padding-top: 1.5%;
+}
+
+.appStore{
+  padding-right: .5%;
 }

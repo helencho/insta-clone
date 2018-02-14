@@ -95,8 +95,9 @@ class LoginUser extends React.Component {
         <p className="getTheApp">Get the app.</p>
       </div>
       <div>
-        <img src="./app-store-badge-128x128.png" alt="available on the app store" width="200" height="100"/>
-      </div>
+        <img className="appStore" src="https://i.imgur.com/UAP0XMk.png" alt="available on the app store" width="136" height="40" />
+      <img src="https://i.imgur.com/1dnbtWG.png" alt="available on google play" width="136" height="40" />
+        </div>
       </div>
     );
   }
