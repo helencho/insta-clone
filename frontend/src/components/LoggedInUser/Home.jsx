@@ -57,19 +57,20 @@ class Home extends Component {
             // Map through each user 
             followings.map(user => {
                 // Get photos by current user 
-                // axios
-                //     .get(`/users/something/${user.user_id}`)
-                //     .then(res => {
-                // let photos = res.data.data
-                // console.log(photos)
-                // add to photoFeed using spread operator
-                // this.setState({
-                //     photoFeed: [...this.state.photoFeed, photos]
-                // })
-                //     })
-                //     .catch(err => {
-                //         console.log(err)
-                //     })
+                // console.log(user)
+                axios
+                    .get(`/users/u/${user.user_id}/photos`)
+                    .then(res => {
+                        let photos = res.data.data
+                        // console.log(photos)
+                        // add to photoFeed using spread operator
+                        this.setState({
+                            photoFeed: [...this.state.photoFeed, photos]
+                        })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
 
         }
@@ -88,11 +89,11 @@ class Home extends Component {
                     photoFeed.map(photo => (
                         <div className='homefeed-card-container'>
                             <div className='homefeed-card-meta'>
-                                <img alt={`Profile picture`} className='homefeed-card-userprof' />
-                                <p className='homefeed-card-username'><Link to={`/users/u/:id/profile`}>Username</Link></p>
+                                <img src={photo.profile_pic} alt={`Profile picture`} className='homefeed-card-userprof' />
+                                <p className='homefeed-card-username'><Link to={`/users/u/:id/profile`}>{photo.username}</Link></p>
                             </div>
                             <div className='homefeed-card-img'>
-                                <img alt='Awesome photo' />
+                                <img src={photo.photo_link} alt='Awesome photo' />
                             </div>
                             <div className='homefeed-card-likes'>
                                 <p>___ likes</p>
@@ -100,7 +101,7 @@ class Home extends Component {
                         </div>
                     ))
                     :
-                    <h1>No followers to show :(</h1>
+                    <h1>Nothing to show :(</h1>
                 }
 
             </div>
