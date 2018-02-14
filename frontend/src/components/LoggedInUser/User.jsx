@@ -19,23 +19,29 @@ class User extends Component {
 
 
 
+getUserInfo= () =>{
+    const id = this.props.match.params.id
+    console.log('id!!!' + id)
 
+    axios
+    .get(`/users/u/${id}`)
+    .then(res => {
+        let UserInfo = res.data.data 
+        // console.log("res.data",res.data.data)
 
-    getUserInfo = () => {
-        const id = this.props.match.params.id
-        console.log(id)
-        axios.get(`/users/u/${id}/`)
-        .then(res=>{
-            console.log(res.data)
-            console.log(res.data.data)
-            let UserInfo= res.data.data 
+        this.setState({
+            user: UserInfo
         })
+        console.log('UserINFO: ' , UserInfo)
+    })
+    .catch(err =>{
+        console.log(err)
+    })
 
-        .catch(err =>{
-            console.log(err)
-        })
-    }
+}
+
     componentDidMount() {
+        console.log("component mounted!!!!!!!!!!!!")
         this.getUserInfo()
        
         // Grab user's information based on user ID (but backend takes username instead of ID) 
@@ -50,13 +56,15 @@ class User extends Component {
 
     // Render the user's profile based on user ID 
     renderProfile = () => {
-        return (
-            <div>
-                <Profile />
-            </div>
+        const {user} = this.state
+        if (user){
+            return (
+           
+                <Profile user= {user} />
         )
     }
-
+}
+    
     renderFollowing = () => {
         return <Following />
     }
@@ -70,7 +78,7 @@ class User extends Component {
     }
 
     render() {
-        console.log(this.props.match.params.id)
+        console.log("THe fucking state:",this.state)
 
         return (
             <div>

@@ -50,7 +50,7 @@ class App extends React.Component {
 
   render() {
     const { user, newUser } = this.state;
-    console.log(user)
+    
     if(user){
     console.log(user.fullname)
     }
