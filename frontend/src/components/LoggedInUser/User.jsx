@@ -8,14 +8,15 @@ import SinglePhoto from './SinglePhoto'
 
 class User extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             user: '',
             following: [],
             followers: [],
-            photos: []
+            photos: [],
         }
     }
+
 
 
 
@@ -39,9 +40,8 @@ getUserInfo= () =>{
     })
 
 }
-
     componentDidMount() {
-        console.log("component mounted!!!!!!!!!!!!")
+        console.log("component mounted")
         this.getUserInfo()
        
         // Grab user's information based on user ID (but backend takes username instead of ID) 
