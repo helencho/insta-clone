@@ -7,9 +7,6 @@
   height: 80px;
 }
 
-body {
-   background-color: aqua;
- }
 
 /* .appHeader {
   background-color:white;
@@ -126,17 +123,12 @@ font-family: 'Quicksand', sans-serif;
 
 .usernameBox{
   height: 38px;
-  /* -webkit-box-align: center; */
   border-radius: 3px;
   box-sizing: border-box;
   color: #262626;
-  /* display: flex; */
-  /* -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal; */
   flex-direction: row;
   font-size: 14px;
   position: relative;
-  /* -webkit-appearance: none; */
   width: 80%;
   border: 1px solid #efefef;
 }
@@ -184,4 +176,55 @@ font-family: 'Quicksand', sans-serif;
 
 .appStore{
   padding-right: .5%;
+}
+
+/* NewUserMain page */
+.registerBox{
+  text-align: center;
+  width: 22.25%;
+  height: 45%;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 1px;
+  margin-left: 38%;
+  margin-top: 5%;
+  padding: 10px 0;
+}
+
+.inputBoxes{
+  height: 38px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #262626;
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  width: 80%;
+  border: 1px solid #efefef;
+}
+
+.topSpacing1{
+  top: 8px;
+}
+
+.topSpacing2{
+  top: 16px;
+}
+
+.topSpacing3{
+  top: 24px;
+}
+
+.topSpacing4{
+  top: 32px;
+}
+
+.messageColor{
+  color: #999;
+}
+
+.haveAnAcct{
+  font-size: 14px;
+  color: #262626;
 }

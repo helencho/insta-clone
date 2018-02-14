@@ -20,45 +20,66 @@ function getAllUsers(req, res, next) {
 }
 
 // Information on the single user, including username and password 
-function getSingleUser(req, res, next) {
-    db.one('SELECT * FROM users WHERE username=$1', [req.params.username])
+// function getSingleUser(req, res, next) {
+//     db.one('SELECT * FROM users WHERE username=$1', [req.params.username])
+//         .then(data => {
+//             res.status(200).json({
+//                 status: 'Success',
+//                 data: data,
+//                 message: 'Retrieved one user'
+//             })
+//         })
+//         .catch(err => {
+//             return next(err)
+//         })
+// }
+
+//Updating a single user's username, email, full name, profile ic, and user description
+function updateSingleUser(req, res, next) {
+    db
+        .none('UPDATE users SET users.username = ${username}, users.email_add = ${email_add}, users.fullname = ${fullname}, users.profile_pic = ${profile_pic}, users.user_description = ${user_description} WHERE users.username = ${username}',
+            req.body)
+        .then(function (data) {
+            console.log("data:", data, "req.body:", req.body)
+            res.status(200)
+                .json({
+                    status: 'success',
+                    message: 'Changed one user'
+                });
+        })
+        .catch(function (err) {
+            console.log(`backennd err`, err)
+            return next(err);
+        });
+}
+//Get all the photos from a single user
+function getAllPhotosFromSingleUser(req, res, next) {
+    db.any('SELECT photos.photo_id, photos.user_id, photos.photo_link, photos.caption, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON photos.user_id=users.user_id WHERE photos.user_id=$1;',
+        [req.params.id])
         .then(data => {
-            res.status(200).json({
-                status: 'Success',
-                data: data,
-                message: 'Retrieved one user'
-            })
+            console.log("Data from backend single user:", data)
+            res.status(200)
+                .json({
+                    status: 'Success',
+                    data: data,
+                    message: 'Retrieved the selected user'
+                })
         })
         .catch(err => {
             return next(err)
         })
 }
-//Updating a single user's username, email, full name, profile ic, and user description
-function updateSingleUser(req, res, next) {
-    db
-    .none('UPDATE users SET users.username = ${username}, users.email_add = ${email_add}, users.fullname = ${fullname}, users.profile_pic = ${profile_pic}, users.user_description = ${user_description} WHERE users.username = ${username}',
-      req.body)
-      .then(function (data) {
-          console.log("data:", data, "req.body:", req.body)
-        res.status(200)
-          .json({
-            status: 'success',
-            message: 'Changed one user'
-          });
-      })
-      .catch(function (err) {
-          console.log(`backennd err`,err)
-        return next(err);
-      });
-  }
 
+//get a user by userid
 function getSingleUserID(req, res, next) {
-    db.one('SELECT * FROM users WHERE user_id=$1', [req.params.id])
+    db.one('SELECT * FROM users WHERE user_id = $1',
+        [req.params.id])
         .then(data => {
+            console.log("Data from backend single user:", data)
             res.status(200).json({
                 status: 'Success',
                 data: data,
-                message: 'Retrieved one user'
+                message: 'Retrieved the selected user'
             })
         })
         .catch(err => {
@@ -198,14 +219,15 @@ function logoutUser(req, res, next) {
 
 module.exports = {
     getAllUsers: getAllUsers,
-    getSingleUser: getSingleUser,
+    // getSingleUser: getSingleUser,
     updateSingleUser: updateSingleUser,
     getUserFollowing: getUserFollowing,
     getUserFollowers: getUserFollowers,
     getAllPhotos: getAllPhotos,
     getSinglePhoto: getSinglePhoto,
+    getAllPhotosFromSingleUser: getAllPhotosFromSingleUser,
     getPhotoDetails: getPhotoDetails,
-    getSingleUserID: getSingleUserID, 
+    getSingleUserID: getSingleUserID,
     // loginUser: loginUser,
     registerUser: registerUser,
     logoutUser: logoutUser

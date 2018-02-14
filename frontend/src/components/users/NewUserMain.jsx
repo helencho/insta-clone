@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import "../App.css";
 
 class NewUserMain extends Component {
   constructor() {
     super();
     this.state = {
-      email: '', 
-      fullname:'', 
+      email: "",
+      fullname: "",
       username: "",
       password: "",
       userAvailable: "",
-      message: "", 
-      validEmail:false
+      message: "By signing up, you agree to our Terms and Privacy Policy",
+      validEmail: false
     };
   }
 
@@ -28,43 +29,43 @@ class NewUserMain extends Component {
     e.preventDefault();
     const { email, username, password, fullname } = this.state;
     if (email) {
-      axios.get('/users').then(response =>{
+      axios.get("/users").then(response => {
         console.log("RESPONSE FOR GET REQUEST", response.data.data);
-        console.log(email)
-        
+        console.log(email);
+
         if (!response.data.data.find(n => n.email_add === email)) {
           this.setState({
-            validEmail:true, 
-          })
+            validEmail: true
+          });
         } else {
-        this.setState({
-          validEmail: false, 
-          message:'email already in use'
-        })
-      }
-    })
-  }
+          this.setState({
+            validEmail: false,
+            message: "email already in use"
+          });
+        }
+      });
+    }
     if (username && password) {
-      if (password.length < 6){
+      if (password.length < 6) {
         return this.setState({
           message: "Password must be at least 6 characters"
-        })
+        });
       }
       axios.get("/users").then(response => {
         console.log("RESPONSE FOR GET REQUEST", response.data.data);
-        if (!response.data.data.find(n =>n.username ===username)) {
+        if (!response.data.data.find(n => n.username === username)) {
           axios
             .post("/users/new", {
-              email: email, 
-              fullname: fullname, 
+              email: email,
+              fullname: fullname,
               username: username,
               password: password
             })
             .then(res => {
               console.log(res);
               this.setState({
-                email:'', 
-                fullname: "", 
+                email: "",
+                fullname: "",
                 username: "",
                 password: "",
                 message: "Registered user"
@@ -73,7 +74,7 @@ class NewUserMain extends Component {
             .catch(err => {
               console.log(err);
               this.setState({
-                email:'', 
+                email: "",
                 fullname: "",
                 username: "",
                 password: "",
@@ -89,7 +90,7 @@ class NewUserMain extends Component {
     } else {
       this.setState({
         message: "Please fill all forms"
-      })
+      });
     }
   };
 
@@ -99,40 +100,86 @@ class NewUserMain extends Component {
 
     return (
       <div>
-      <Link to ="/users/login">Login</Link>
-        <h1>Register</h1>
-        <form onSubmit={this.handleFormSubmit}>
-        <input
-            type="email"
-            placeholder="email"
-            name="email"
-            onChange={this.handleInput}
-            value={email}
+        <div className="registerBox">
+          <h1 className="siteFont">Instagram</h1>
+          <form onSubmit={this.handleFormSubmit}>
+            <input
+              className="inputBoxes"
+              type="email"
+              placeholder="Email"
+              name="email"
+              onChange={this.handleInput}
+              value={email}
+            />
+            <br />
+            <input
+              className="inputBoxes topSpacing1"
+              type="text"
+              placeholder="Full Name"
+              name="fullname"
+              onChange={this.handleInput}
+              value={fullname}
+            />
+            <br />
+            <input
+              className="inputBoxes topSpacing2"
+              type="text"
+              placeholder="Username"
+              name="username"
+              onChange={this.handleInput}
+              value={username}
+            />
+            <br />
+            <input
+              className="inputBoxes topSpacing3"
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={this.handleInput}
+              value={password}
+            />
+            <br />
+            <input
+              className="loginBtn topSpacing4"
+              type="submit"
+              value="Sign up"
+            />
+          </form>
+          <br />
+          <p className="messageSize messageColor">{message}</p>
+        </div>
+        <div className="smallerBox">
+          <p className="haveAnAcct">
+            Have an account? <Link to="/users/login">Login</Link>
+          </p>
+        </div>
+        <div>
+          <p className="getTheApp">Get the app.</p>
+        </div>
+        <div>
+          <img
+            className="appStore"
+            src="https://i.imgur.com/UAP0XMk.png"
+            alt="available on the app store"
+            width="136"
+            height="40"
           />
-        <input
-            type="text"
-            placeholder="fullname"
-            name="fullname"
-            onChange={this.handleInput}
-            value={fullname}
+          <img
+            src="https://i.imgur.com/1dnbtWG.png"
+            alt="available on google play"
+            width="136"
+            height="40"
           />
-          <input
-            type="text"
-            placeholder="username"
-            name="username"
-            onChange={this.handleInput}
-            value={username}
+        </div>
+        <div>
+          <img 
+          src="https://i.imgur.com/EVU0sxy.png"
+          alt="Coalition for Queens"
+          width="100"
+          height="30"
+          align="center"
           />
-          <input
-            type="password"
-            placeholder="password"
-            name="password"
-            onChange={this.handleInput}
-            value={password}
-          />
-          <input type="submit" value="Register" />
-        </form>
-        <p>{message}</p>
+        </div>
       </div>
     );
   }
