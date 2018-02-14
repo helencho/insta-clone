@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
+import axios from 'axios'
 import Profile from './profile'
 import Followers from './Followers'
 import Following from './Following'
 import SinglePhoto from './SinglePhoto'
 
 class User extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             user: '',
             following: [],
@@ -16,7 +17,21 @@ class User extends Component {
         }
     }
 
+
+
+
+
+    getUserInfo = () => {
+        const id = this.props.match.params.id
+        console.log(id)
+        axios.get(`/users/u/${id}`)
+        .then(res=>{
+            let UserIfo= res.data.data
+        })
+    }
     componentDidMount() {
+        this.getUserInfo()
+       
         // Grab user's information based on user ID (but backend takes username instead of ID) 
         // Ajax get request here
         // Set state! 
