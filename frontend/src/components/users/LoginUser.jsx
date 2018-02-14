@@ -3,10 +3,12 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { Route, Link, Switch } from "react-router-dom";
 import NewUserEmail from "./NewUserEmail";
+import Profile from "../LoggedInUser/profile"
 import "../App.css"
 
 class LoginUser extends React.Component {
   state = {
+    user: '',
     usernameInput: "",
     passwordInput: "",
     message: "Forgot password?",
@@ -18,6 +20,7 @@ class LoginUser extends React.Component {
       [e.target.name]: e.target.value
     });
   };
+
 
   submitForm = e => {
     e.preventDefault();
@@ -34,10 +37,13 @@ class LoginUser extends React.Component {
         username: usernameInput,
         password: passwordInput
       })
-    
+
       .then(res => {
+          console.log(res.data)
+          console.log(res.data)
         this.props.setUser(res.data);
         this.setState({
+          user: res.data.username,
           loggedIn: true
         });
       })
@@ -50,20 +56,28 @@ class LoginUser extends React.Component {
       });
   };
 
+//   setUser = () => {
+//     const { user } = this.state
+//     return (
+//       <Profile user={user} />
+//     )
+//   }
+
+
   render() {
     const { usernameInput, passwordInput, message, loggedIn } = this.state;
 
     if (loggedIn) {
-      return <Redirect to="/users/profile" />;
+      return <Redirect to="/users/home" />;
     }
 
     return (
       <div>
-      <div className="loginBox">
-        <h1 className="siteFont"> Instagram </h1>
+        <div className="loginBox">
+          <h1 className="siteFont"> Instagram </h1>
 
-        <form onSubmit={this.submitForm}>
-          
+          <form onSubmit={this.submitForm}>
+
             <input
               className="usernameBox"
               placeholder="Username"
@@ -72,17 +86,21 @@ class LoginUser extends React.Component {
               value={usernameInput}
               onChange={this.handleInput}
             />
-          <br></br>
-          
+            <br></br>
+
             <input
-            className="passwordBox"
+              className="passwordBox"
               placeholder="Password"
               type="password"
               name="passwordInput"
               value={passwordInput}
               onChange={this.handleInput}
             />
+            <br></br>
+            <input className="loginBtn" type="submit" value="Log in" />
+          </form>
           <br></br>
+
           <input className="loginBtn" type="submit" value="Log in" />
         </form>
         <br></br>
@@ -97,6 +115,7 @@ class LoginUser extends React.Component {
       <div>
         <img className="appStore" src="https://i.imgur.com/UAP0XMk.png" alt="available on the app store" width="136" height="40" />
       <img src="https://i.imgur.com/1dnbtWG.png" alt="available on google play" width="136" height="40" />
+
         </div>
       </div>
     );

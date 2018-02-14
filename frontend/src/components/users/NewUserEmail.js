@@ -20,12 +20,12 @@ class NewUserEmail extends Component {
     });
   };
 
-  emailValidation = (email) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      return (true)
-    }
-    return (false)
-  }
+  // emailValidation = (email) => {
+  //   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+  //     return (true)
+  //   }
+  //   return (false)
+  // }
 
   // When user submits form
   handleFormSubmit = e => {
