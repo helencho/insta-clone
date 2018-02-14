@@ -52,6 +52,20 @@ function updateSingleUser(req, res, next) {
       });
   }
 
+function getSingleUserID(req, res, next) {
+    db.one('SELECT * FROM users WHERE user_id=$1', [req.params.id])
+        .then(data => {
+            res.status(200).json({
+                status: 'Success',
+                data: data,
+                message: 'Retrieved one user'
+            })
+        })
+        .catch(err => {
+            return next(err)
+        })
+}
+
 // Information on the users that current user follows including username and full name (based on current user ID)
 function getUserFollowing(req, res, next) {
     db.any('SELECT user_following.user_id, user_following.following_id, users.username, users.fullname, users.profile_pic FROM user_following JOIN users ON user_following.following_id=users.user_id WHERE user_following.user_id=$1;',
@@ -190,6 +204,7 @@ module.exports = {
     getAllPhotos: getAllPhotos,
     getSinglePhoto: getSinglePhoto,
     getPhotoDetails: getPhotoDetails,
+    getSingleUserID: getSingleUserID, 
     // loginUser: loginUser,
     registerUser: registerUser,
     logoutUser: logoutUser

@@ -22,7 +22,6 @@ class LoginUser extends React.Component {
   };
 
 
-
   submitForm = e => {
     e.preventDefault();
     const { usernameInput, passwordInput, loggedIn } = this.state;
@@ -40,7 +39,9 @@ class LoginUser extends React.Component {
       })
 
       .then(res => {
-        this.props.setUser(res.data.username);
+          console.log(res.data)
+          console.log(res.data)
+        this.props.setUser(res.data);
         this.setState({
           user: res.data.username,
           loggedIn: true
@@ -55,12 +56,12 @@ class LoginUser extends React.Component {
       });
   };
 
-  setUser = () => {
-    const { user } = this.state
-    return (
-      <Profile user={user} />
-    )
-  }
+//   setUser = () => {
+//     const { user } = this.state
+//     return (
+//       <Profile user={user} />
+//     )
+//   }
 
 
   render() {
