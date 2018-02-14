@@ -8,28 +8,33 @@ import SinglePhoto from './SinglePhoto'
 
 class User extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+
+        //made user:null because an object is coming in, not a string
         this.state = {
-            user: '',
+            user: null,
             following: [],
             followers: [],
-            photos: []
+            photos: [],
         }
     }
 
-
-
-
-
     getUserInfo = () => {
         const id = this.props.match.params.id
-        console.log(id)
-        axios.get(`/users/u/${id}`)
-        .then(res=>{
+        console.log("user id",id)
+        axios
+        .get(`/users/u/${id}`)
+        .then(res => {
             let UserIfo= res.data.data
+            console.log("get userInfo response:", res)
+        })
+        .catch(err => {
+            console.log(err)
         })
     }
+
     componentDidMount() {
+        console.log("component mounted")
         this.getUserInfo()
        
         // Grab user's information based on user ID (but backend takes username instead of ID) 
