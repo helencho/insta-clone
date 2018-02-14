@@ -1,0 +1,49 @@
+/*--------------------------------------------*/
+/*                  Home.jsx                  */
+/*--------------------------------------------*/
+
+.homefeed-page-container {
+    background-color: salmon;
+}
+
+.homefeed-card-container {
+    background-color: blueviolet;
+    width: 50%;
+    margin: 0 auto;
+    transition: 0.5s all;
+}
+
+.homefeed-card-meta {
+    background-color: greenyellow;
+}
+
+.homefeed-card-userprof {
+    height: 50px;
+    width: 50px;
+}
+
+.homefeed-card-img {
+    background-color: violet;
+    /* width: 500px; */
+}
+
+.homefeed-card-img img {
+    position: relative;
+    width: 100%;
+}
+
+.homefeed-card-caption {
+    background-color: skyblue;
+}
+
+@media screen and (max-width: 940px) {
+    .homefeed-card-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .homefeed-card-container {
+        width: 95%;
+    }
+}
