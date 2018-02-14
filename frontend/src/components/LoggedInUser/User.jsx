@@ -56,14 +56,15 @@ getUserInfo= () =>{
 
     // Render the user's profile based on user ID 
     renderProfile = () => {
-        const {user} = this.state
-        if (user){
-            return (
-           
-                <Profile user= {user} />
-        )
-    }
-}
+        const {user}= this.state
+        if (user) {
+          return <Profile user= {user} />
+        } else {
+          return <h1>Must be logged in</h1>
+        }
+      }
+   
+
     
     renderFollowing = () => {
         return <Following />

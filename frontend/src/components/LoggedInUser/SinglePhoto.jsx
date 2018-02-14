@@ -95,6 +95,7 @@ class SinglePhoto extends Component {
         const likedStatus = liked ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>
         // console.log('user liked: ' + liked)
         console.log(this.props.match)
+        console.log(photoUrl)
 
         return (
             <div className='single-photo-container'>

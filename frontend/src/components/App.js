@@ -50,7 +50,7 @@ class App extends React.Component {
 
   render() {
     const { user, newUser } = this.state;
-    
+    console.log(user)
     if(user){
     console.log(user.fullname)
     }
@@ -60,7 +60,10 @@ class App extends React.Component {
       <div className="App">
         <div className="topbar instaCloneFont">
           <div className="cameraIcon">
-            <span className="cursor"><Link to ='/users/home'><i className="fab fa-instagram fa-2x" /></Link></span><span className="site cursor"><Link to ='/users/home'><h1> Instagram </h1></Link> </span>
+            <span className="cursor">
+            <Link to ='/users/home'><i className="fab fa-instagram fa-2x" /></Link></span>
+            <span className="site cursor">
+            <Link to ='/users/home'><h1> Instagram </h1></Link> </span>
           </div>
           <div>
             <input className="inputBar"
