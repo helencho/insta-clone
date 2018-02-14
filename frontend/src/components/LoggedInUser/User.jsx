@@ -21,7 +21,7 @@ class User extends Component {
 
 getUserInfo= () =>{
     const id = this.props.match.params.id
-    console.log('id!!!' + id)
+
 
     axios
     .get(`/users/u/${id}`)
@@ -74,9 +74,9 @@ getUserInfo= () =>{
         return <Followers />
     }
 
-    renderPhoto = () => {
-        return <SinglePhoto />
-    }
+    // renderPhoto = () => {
+    //     return <SinglePhoto />
+    // }
 
     render() {
         console.log("THe fucking state:",this.state)
@@ -86,7 +86,7 @@ getUserInfo= () =>{
                 <Route path="/users/u/:id/profile" render={this.renderProfile} />
                 <Route path="/users/u/:id/following" render={this.renderFollowing} />
                 <Route path="/users/u/:id/followers" render={this.renderFollowers} />
-                <Route path="/users/u/:id/photo/:photoid" render={this.renderPhoto} />
+                <Route exact path="/users/u/:id/photo/:photoid" component={SinglePhoto} />
             </div>
         )
     }
