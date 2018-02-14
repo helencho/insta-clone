@@ -43,7 +43,7 @@ class Profile extends React.Component {
         // console.log("single photo info", SinglePhoto.authorUsername)
         return (
             <div>
-                <SinglePhoto />
+                {/* <SinglePhoto /> */}
                 <UserInfo user={ user } userImageURL={ images } />
                 <ProfileImages images={ images } />
             </div>

@@ -20,12 +20,12 @@ class SinglePhoto extends Component {
     }
 
     componentDidMount() {
-        this.getPhoto()
+        // this.getPhoto()
     }
 
     getPhoto = () => {
         // Photo id 
-        const id = this.props.match.params.id
+        const id = this.props.match.params.photoid
 
         // Get request to grab photo and photo's author information 
         axios
@@ -90,10 +90,11 @@ class SinglePhoto extends Component {
 
     render() {
         const { authorId, authorName, authorUsername, authorImgUrl, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
-        console.log(this.state.liked)
+        // console.log(this.state.liked)
         const totalLikes = likedByUsers.length
         const likedStatus = liked ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>
-        console.log('user liked: ' + liked)
+        // console.log('user liked: ' + liked)
+        console.log(this.props.match)
 
         return (
             <div className='single-photo-container'>
