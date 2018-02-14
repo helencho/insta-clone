@@ -100,16 +100,22 @@ class LoginUser extends React.Component {
             <input className="loginBtn" type="submit" value="Log in" />
           </form>
           <br></br>
-          <p className="messageSize">{message}</p>
-        </div>
-        <div className="smallerBox">
-          <p className="dontHaveAcct">Don't have an account?<Link to="/users/new"> Sign up</Link></p>
-        </div>
-        <div>
-          <p className="getTheApp">Get the app.</p>
-        </div>
-        <div>
-          <img src="./app-store-badge-128x128.png" alt="available on the app store" width="200" height="100" />
+
+          <input className="loginBtn" type="submit" value="Log in" />
+        </form>
+        <br></br>
+        <p className="messageSize">{message}</p>
+      </div>
+      <div className="smallerBox">
+      <p className="dontHaveAcct">Don't have an account?<Link to="/users/new"> Sign up</Link></p>
+      </div>
+      <div>
+        <p className="getTheApp">Get the app.</p>
+      </div>
+      <div>
+        <img className="appStore" src="https://i.imgur.com/UAP0XMk.png" alt="available on the app store" width="136" height="40" />
+      <img src="https://i.imgur.com/1dnbtWG.png" alt="available on google play" width="136" height="40" />
+
         </div>
       </div>
     );
