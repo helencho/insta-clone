@@ -47,7 +47,10 @@
   }
   .image{
       width:223px;
-      display:flex;
-      flex-wrap:wrap;
+      margin-left:40px;
+      margin-top:20px;
+    display:inline-block;
+      /* display:flex;
+      flex-wrap:wrap; */
   }
 
