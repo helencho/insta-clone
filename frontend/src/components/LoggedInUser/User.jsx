@@ -9,10 +9,8 @@ import SinglePhoto from './SinglePhoto'
 class User extends Component {
     constructor(props) {
         super(props);
-
-        //made user:null because an object is coming in, not a string
         this.state = {
-            user: null,
+            user: '',
             following: [],
             followers: [],
             photos: [],
