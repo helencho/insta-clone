@@ -41,8 +41,8 @@ class App extends React.Component {
   // Home is the feed screen 
   renderHome = () => {
     const {user}= this.state
-    if (this.state.user) {
-      return <Home user={user.username} />
+    if (user) {
+      return <Home user={user} />
     } else {
       return <h1>Must be logged in</h1>
     }
