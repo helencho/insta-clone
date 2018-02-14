@@ -151,13 +151,15 @@ font-family: 'Quicksand', sans-serif;
 /*--------------------------------------------*/
 /*           Login Page and Login Box         */
 /*--------------------------------------------*/
-.login-user-container {
+.login-user-container,
+.register-user-container {
   /* background-color: salmon; */
   margin-top: 100px;
   /* height: 100%; */
 }
 
-.loginBox{
+.loginBox,
+.registerBox {
   text-align: center;
   /* width: 22.25%; */
   width: 300px;
@@ -276,7 +278,7 @@ font-family: 'Quicksand', sans-serif;
 } */
 
 /* NewUserMain page */
-.registerBox{
+/* .registerBox{
   text-align: center;
   width: 22.25%;
   height: 45%;
@@ -287,9 +289,9 @@ font-family: 'Quicksand', sans-serif;
   margin-left: 38.4%;
   margin-top: 5%;
   padding: 10px 0;
-}
+} */
 
-.inputBoxes{
+.inputBoxes {
   height: 38px;
   border-radius: 3px;
   box-sizing: border-box;
@@ -301,7 +303,7 @@ font-family: 'Quicksand', sans-serif;
   border: 1px solid #efefef;
 }
 
-.topSpacing1{
+/* .topSpacing1{
   top: 8px;
 }
 
@@ -315,7 +317,7 @@ font-family: 'Quicksand', sans-serif;
 
 .topSpacing4{
   top: 32px;
-}
+} */
 
 .messageColor{
   color: #999;

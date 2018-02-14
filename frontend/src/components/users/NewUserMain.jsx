@@ -99,7 +99,7 @@ class NewUserMain extends Component {
     console.log(this.state);
 
     return (
-      <div>
+      <div className="register-user-container">
         <div className="registerBox">
           <h1 className="siteFont">Instagram</h1>
           <form onSubmit={this.handleFormSubmit}>
@@ -113,7 +113,7 @@ class NewUserMain extends Component {
             />
             <br />
             <input
-              className="inputBoxes topSpacing1"
+              className="inputBoxes"
               type="text"
               placeholder="Full Name"
               name="fullname"
@@ -122,7 +122,7 @@ class NewUserMain extends Component {
             />
             <br />
             <input
-              className="inputBoxes topSpacing2"
+              className="inputBoxes"
               type="text"
               placeholder="Username"
               name="username"
@@ -131,7 +131,7 @@ class NewUserMain extends Component {
             />
             <br />
             <input
-              className="inputBoxes topSpacing3"
+              className="inputBoxes"
               type="password"
               placeholder="Password"
               name="password"
@@ -140,45 +140,47 @@ class NewUserMain extends Component {
             />
             <br />
             <input
-              className="loginBtn topSpacing4"
+              className="loginBtn"
               type="submit"
               value="Sign up"
             />
           </form>
           <br />
           <p className="messageSize messageColor">{message}</p>
-        </div>
+        </div> {/* End registerBox */}
+
         <div className="smallerBox">
           <p className="haveAnAcct">
             Have an account? <Link to="/users/login" className="noUnderline">Login</Link>
           </p>
-        </div>
-        <div>
+        </div> {/* End smallerBox */}
+
+        <div className="getAppBox">
           <p className="getTheApp">Get the app.</p>
-        </div>
-        <div>
-          <img
-            className="appStore"
-            src="https://i.imgur.com/UAP0XMk.png"
-            alt="available on the app store"
-            width="136"
-            height="40"
-          />
-          <img
-            src="https://i.imgur.com/1dnbtWG.png"
-            alt="available on google play"
-            width="136"
-            height="40"
-          />
-        </div>
-        <div>
-          <img 
-          src="https://i.imgur.com/EVU0sxy.png"
-          alt="Coalition for Queens"
-          width="100"
-          height="30"
-          align="center"
-          />
+          <div>
+            <img
+              className="appStore"
+              src="https://i.imgur.com/UAP0XMk.png"
+              alt="available on the app store"
+              width="136"
+              height="40"
+            />
+            <img
+              src="https://i.imgur.com/1dnbtWG.png"
+              alt="available on google play"
+              width="136"
+              height="40"
+            />
+          </div>
+          <div>
+            <img
+              src="https://i.imgur.com/EVU0sxy.png"
+              alt="Coalition for Queens"
+              width="100"
+              height="30"
+              align="center"
+            />
+          </div>
         </div>
       </div>
     );

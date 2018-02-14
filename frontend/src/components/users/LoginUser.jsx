@@ -107,9 +107,7 @@ class LoginUser extends React.Component {
         </div> {/* End smallerBox */}
 
         <div className="getAppBox">
-          {/* <div> */}
-            <p className="getTheApp">Get the app.</p>
-          {/* </div> */}
+          <p className="getTheApp">Get the app.</p>
           <div className="appStore-container">
             <img
               className="appStore"
