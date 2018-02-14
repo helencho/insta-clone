@@ -91,7 +91,7 @@ class Home extends Component {
                         <div className='homefeed-card-container'>
                             <div className='homefeed-card-meta'>
                                 <img src={photo.profile_pic} alt={`Picture`} className='homefeed-card-userprof' />
-                                <p className='homefeed-card-username'><Link to={`/users/u/:id/profile`}>{photo.username}</Link></p>
+                                <p className='homefeed-card-username'><Link to={`/users/u/${photo.user_id}/profile`}>{photo.username}</Link></p>
                             </div>
                             <div className='homefeed-card-img'>
                                 <img src={photo.photo_link} alt='Awesome photo' />
