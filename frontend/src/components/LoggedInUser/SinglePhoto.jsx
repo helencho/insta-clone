@@ -20,10 +20,11 @@ class SinglePhoto extends Component {
     }
 
     componentDidMount() {
-        // this.getPhoto()
+        this.getPhoto()
     }
 
     getPhoto = () => {
+        console.log('props:', this.props)
         // Photo id 
         const id = this.props.match.params.photoid
 
@@ -94,7 +95,7 @@ class SinglePhoto extends Component {
         const totalLikes = likedByUsers.length
         const likedStatus = liked ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>
         // console.log('user liked: ' + liked)
-        console.log(this.props.match)
+        console.log(this.state)
         console.log(photoUrl)
 
         return (
