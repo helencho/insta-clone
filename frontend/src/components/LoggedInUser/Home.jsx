@@ -60,7 +60,7 @@ class Home extends Component {
 
                 // Get photos by current user 
                 axios
-                    .get(`/users/u/${user.user_id}/photos`)
+                    .get(`/users/u/${user.following_id}/photos`)
                     .then(res => {
                         let photos = res.data.data
                         // console.log(photos)

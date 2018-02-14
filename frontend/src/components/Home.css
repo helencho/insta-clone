@@ -4,6 +4,7 @@
 
 .homefeed-page-container {
     background-color: salmon;
+    font-size: 10px;
 }
 
 .homefeed-card-container {
@@ -15,11 +16,26 @@
 
 .homefeed-card-meta {
     background-color: greenyellow;
+    display: flex;
+    padding: 2%;
+    align-items: center;
 }
 
 .homefeed-card-userprof {
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+}
+
+.homefeed-card-username {
+    margin-left: 2%;
+}
+
+.homefeed-card-username a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: rgb(55, 55, 55);
+    font-weight: 600;
 }
 
 .homefeed-card-img {
