@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 class Home extends Component {
@@ -82,34 +82,27 @@ class Home extends Component {
         console.log(this.state)
 
         return (
-            <div>
-                <div>
-                    {/* <h1>This is the home feed.</h1> */}
-                    {photoFeed.length > 0 ?
-                        photoFeed.map(photo => (
-                            <div className='homefeed-card-container'>
-                                <div className='homefeed-card-meta'>
-                                    <img alt={`Profile picture`} className='homefeed-card-userprof' />
-                                    <p className='homefeed-card-username'>Username</p>
-                                </div>
-                                <div className='homefeed-card-img'>
-                                    <img alt='Awesome photo' />
-                                </div>
-                                <div className='homefeed-card-likes'>
-                                    <p>___ likes</p>
-                                </div>
+            <div className='homefeed-page-container'>
+                {/* <h1>This is the home feed.</h1> */}
+                {photoFeed.length > 0 ?
+                    photoFeed.map(photo => (
+                        <div className='homefeed-card-container'>
+                            <div className='homefeed-card-meta'>
+                                <img alt={`Profile picture`} className='homefeed-card-userprof' />
+                                <p className='homefeed-card-username'><Link to={`/users/u/:id/profile`}>Username</Link></p>
                             </div>
-                        ))
-                        :
-                        <h1>No followers to show :(</h1>
-                    }
+                            <div className='homefeed-card-img'>
+                                <img alt='Awesome photo' />
+                            </div>
+                            <div className='homefeed-card-likes'>
+                                <p>___ likes</p>
+                            </div>
+                        </div>
+                    ))
+                    :
+                    <h1>No followers to show :(</h1>
+                }
 
-                    {/* <p>Store logged in user in state.Look for users that the logged in user follows. Grab all photos that these users have posted, and feed them to this 'Home' page.</p> */}
-                    {/* <div>
-                        <p><Link to={`/users/u/${1}/profile`}>OptimusPrime</Link></p>
-                        <img alt='awesome photo url from an ajax request' />
-                    </div> */}
-                </div>
             </div>
         )
     }
