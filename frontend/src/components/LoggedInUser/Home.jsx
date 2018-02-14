@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Link, Route } from 'react-router-dom'
+import axios from 'axios'
 
 class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            loggedInAs: ''
+            loggedInAs: '',
+            followings: []
         }
     }
 
@@ -17,6 +19,20 @@ class Home extends Component {
     }
 
     // Make ajax request to see who the user follows 
+    getFollowing = () => {
+        const { loggedInAs } = this.state
+        if (loggedInAs) {
+            axios
+                .get(`/u/${loggedInAs.user_id}/following`)
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+
+    }
 
     // Grab all photos posted by these users 
 
