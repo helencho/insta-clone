@@ -70,7 +70,7 @@ class LoginUser extends React.Component {
     }
 
     return (
-      <div>
+      <div className="login-user-container">
         <div className="loginBox">
           <h1 className="siteFont"> Instagram </h1>
 
@@ -98,39 +98,42 @@ class LoginUser extends React.Component {
           </form>
           <br />
           <p className="messageSize">{message}</p>
-        </div>
+        </div> {/* End loginBox */}
+
         <div className="smallerBox">
           <p className="dontHaveAcct">
             Don't have an account?<Link to="/users/new" className="noUnderline"> Sign up</Link>
           </p>
-        </div>
-        <div>
+        </div> {/* End smallerBox */}
+
+        <div className="getAppBox">
           <p className="getTheApp">Get the app.</p>
-        </div>
-        <div>
-          <img
-            className="appStore"
-            src="https://i.imgur.com/UAP0XMk.png"
-            alt="available on the app store"
-            width="136"
-            height="40"
-          />
-          <img
-            src="https://i.imgur.com/1dnbtWG.png"
-            alt="available on google play"
-            width="136"
-            height="40"
-          />
-        </div>
-        <div>
-          <img 
-          src="https://i.imgur.com/EVU0sxy.png"
-          alt="Coalition for Queens"
-          width="100"
-          height="30"
-          align="center"
-          />
-        </div>
+          <div className="appStore-container">
+            <img
+              className="appStore"
+              src="https://i.imgur.com/UAP0XMk.png"
+              alt="available on the app store"
+              width="136"
+              height="40"
+            />
+            <img
+              src="https://i.imgur.com/1dnbtWG.png"
+              alt="available on google play"
+              width="136"
+              height="40"
+            />
+          </div>
+          <div className="c4q-container">
+            <img
+              src="https://i.imgur.com/EVU0sxy.png"
+              alt="Coalition for Queens"
+              width="100"
+              height="30"
+              align="center"
+            />
+          </div>
+        </div> {/* End getAppBox */}
+
       </div>
     );
   }
