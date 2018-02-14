@@ -9,7 +9,9 @@ class Home extends Component {
         this.state = {
             loggedInAs: '',
             followings: [],
-            photoFeed: []
+            photoFeed: [],
+            liked: false,
+            likedByUsers: []
         }
     }
 
@@ -63,10 +65,14 @@ class Home extends Component {
                     .get(`/users/u/${user.following_id}/photos`)
                     .then(res => {
                         let photos = res.data.data
-                        // console.log(photos)
+
                         // add to photoFeed using spread operator
                         this.setState({
                             photoFeed: photos
+                        }, () => {
+
+                            // Then get all users who like each photo 
+                            this.usersWhoLikePhoto()
                         })
                     })
                     .catch(err => {
@@ -76,16 +82,40 @@ class Home extends Component {
 
         }
     }
+    // Map through liked by users 
+    // If photo_id matches photo_id, 
+    // Count the total 
+    // Render into ___ likes 
 
-    // Map through the photos and display inside render() 
+    usersWhoLikePhoto = () => {
+        // Get request to grab information on who liked the photo 
+        const { photoFeed } = this.state
+
+        // Map through each photo information 
+        photoFeed.map(photo => {
+            let id = photo.photo_id
+
+            // Get detailed information on each photo 
+            axios
+                .get(`/users/p/${id}/details`)
+                .then(res => {
+                    let detailData = res.data.data
+                    this.setState({
+                        likedByUsers: [...this.state.likedByUsers, detailData]
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+                }) // End ajax request 
+        })
+    }
 
     render() {
-        const { loggedInAs, followings, photoFeed } = this.state
+        const { loggedInAs, followings, photoFeed, likedByUsers } = this.state
         console.log(this.state)
 
         return (
             <div className='homefeed-page-container'>
-                {/* <h1>This is the home feed.</h1> */}
                 {photoFeed.length > 0 ?
                     photoFeed.map(photo => (
                         <div className='homefeed-card-container'>
@@ -100,6 +130,11 @@ class Home extends Component {
                                 <i class="far fa-heart"></i>
                             </div>
                             <div className='homefeed-card-likes'>
+                                {likedByUsers.map(item => {
+                                    if (item.photo_id === photo.photo_id) {
+                                        // do this 
+                                    }
+                                })}
                                 <p>___ likes</p>
                             </div>
                             <div className='homefeed-card-caption'>

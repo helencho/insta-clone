@@ -6,8 +6,10 @@
     background-color: rgb(250,250,250);
     font-size: 10px;
     color: rgb(55, 55, 55);
-    padding: 3% 0;
+    padding-bottom: 3%;
+    /* margin-top: 3%; */
 }
+
 
 .homefeed-page-container p {
     padding: 0;
