@@ -21,14 +21,16 @@ class User extends Component {
 
     getUserInfo = () => {
         const id = this.props.match.params.id
-        console.log("user id",id)
-        axios
-        .get(`/users/u/${id}`)
-        .then(res => {
-            let UserIfo= res.data.data
-            console.log("get userInfo response:", res)
+
+        console.log(id)
+        axios.get(`/users/u/${id}/`)
+        .then(res=>{
+            console.log(res.data)
+            console.log(res.data.data)
+            let UserInfo= res.data.data 
         })
-        .catch(err => {
+
+        .catch(err =>{
             console.log(err)
         })
     }

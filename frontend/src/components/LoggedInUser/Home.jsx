@@ -7,30 +7,41 @@ class Home extends Component {
         super(props)
         this.state = {
             loggedInAs: '',
-            followings: []
+            followings: [],
+            photoFeed: []
         }
     }
 
     componentDidMount() {
-        this.mountLoggedInUser() 
-        this.getFollowing() 
+        this.mountLoggedInUser()
+        // this.getFollowing()
     }
 
     // Set loggedInAs as the current user logged in 
     mountLoggedInUser = () => {
         this.setState({
             loggedInAs: this.props.user
+        }, () => {
+            this.getFollowingUsers()
+        }, () => {
+            this.getPhotosFromFollowing()
         })
     }
 
     // Make ajax request to see who the user follows 
-    getFollowing = () => {
+    getFollowingUsers = () => {
         const { loggedInAs } = this.state
+        // console.log(loggedInAs.user_id)
         if (loggedInAs) {
             axios
-                .get(`/u/${loggedInAs.user_id}/following`)
+                .get(`/users/u/${loggedInAs.user_id}/following`)
                 .then(res => {
-                    console.log(res.data)
+                    // console.log('inside get following')
+                    // console.log(res.data)
+                    let followings = res.data.data
+                    this.setState({
+                        followings: followings
+                    })
                     // Set state under followings array 
                 })
                 .catch(err => {
@@ -40,13 +51,26 @@ class Home extends Component {
     }
 
     // Grab all photos posted by these users 
+    getPhotosFromFollowing = () => {
+        const { followings } = this.state
+        console.log('Inside getPhotosFromFollowing')
+        if (followings.length > 0) {
+            console.log('Get photos from users!')
+            // axios
+            //     .get(`/get photo by id`)
+            //     .then(res => {
+            //         console.log(res.data)
+            //     })
+            //     .catch(err => {
+            //         console.log(err)
+            //     })
+        }
+    }
 
-    // Map through the photos 
-
-    // Display inside render() 
+    // Map through the photos and display inside render() 
 
     render() {
-        const { loggedInAs, followings } = this.state
+        const { loggedInAs, followings, photoFeed } = this.state
         console.log(this.state)
 
         return (
