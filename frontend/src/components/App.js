@@ -60,8 +60,8 @@ class App extends React.Component {
         <div className="App">
           <div className="topbar instaCloneFont">
             <div className="topbar-left">
-              <span><Link to="/users/home"><i className="fab fa-instagram fa-2x" /></Link></span>
-              <span><Link to="/users/home">Instagram</Link></span>
+              <Link to="/users/home"><i className="fab fa-instagram fa-2x" /></Link>
+              <span className="topbar-sitename"><Link to="/users/home">Instagram</Link></span>
             </div> {/* End topbar-left */}
 
             <div className="topbar-middle">
