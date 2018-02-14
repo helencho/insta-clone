@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
 import { Route, Link, Switch } from "react-router-dom";
-import NewUserEmail from "./NewUserEmail";
+
 import Profile from "../LoggedInUser/profile";
 import "../App.css";
 
