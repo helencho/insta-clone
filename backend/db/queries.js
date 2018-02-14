@@ -83,6 +83,7 @@ function getSingleUserID(req, res, next) {
             })
         })
         .catch(err => {
+            console.log('  ERRORRRR' , err)
             return next(err)
         })
 }

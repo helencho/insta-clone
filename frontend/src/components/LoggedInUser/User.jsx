@@ -9,32 +9,37 @@ import SinglePhoto from './SinglePhoto'
 class User extends Component {
     constructor(props) {
         super(props);
-
-        //made user:null because an object is coming in, not a string
         this.state = {
-            user: null,
+            user: '',
             following: [],
             followers: [],
             photos: [],
         }
     }
 
-    getUserInfo = () => {
-        const id = this.props.match.params.id
 
-        console.log(id)
-        axios.get(`/users/u/${id}/`)
-        .then(res=>{
-            console.log(res.data)
-            console.log(res.data.data)
-            let UserInfo= res.data.data 
+
+
+getUserInfo= () =>{
+    const id = this.props.match.params.id
+    console.log('id!!!' + id)
+
+    axios
+    .get(`/users/u/${id}`)
+    .then(res => {
+        let UserInfo = res.data.data 
+        // console.log("res.data",res.data.data)
+
+        this.setState({
+            user: UserInfo
         })
+        console.log('UserINFO: ' , UserInfo)
+    })
+    .catch(err =>{
+        console.log(err)
+    })
 
-        .catch(err =>{
-            console.log(err)
-        })
-    }
-
+}
     componentDidMount() {
         console.log("component mounted")
         this.getUserInfo()
@@ -51,13 +56,15 @@ class User extends Component {
 
     // Render the user's profile based on user ID 
     renderProfile = () => {
-        return (
-            <div>
-                <Profile />
-            </div>
+        const {user} = this.state
+        if (user){
+            return (
+           
+                <Profile user= {user} />
         )
     }
-
+}
+    
     renderFollowing = () => {
         return <Following />
     }
@@ -71,7 +78,7 @@ class User extends Component {
     }
 
     render() {
-        console.log(this.props.match.params.id)
+        console.log("THe fucking state:",this.state)
 
         return (
             <div>
