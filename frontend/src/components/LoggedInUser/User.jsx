@@ -19,7 +19,6 @@ class User extends Component {
 
 
 
-
 getUserInfo= () =>{
     const id = this.props.match.params.id
     console.log('id!!!' + id)
@@ -40,8 +39,9 @@ getUserInfo= () =>{
     })
 
 }
+
     componentDidMount() {
-        console.log("component mounted")
+        console.log("component mounted!!!!!!!!!!!!")
         this.getUserInfo()
        
         // Grab user's information based on user ID (but backend takes username instead of ID) 
@@ -56,14 +56,15 @@ getUserInfo= () =>{
 
     // Render the user's profile based on user ID 
     renderProfile = () => {
-        const {user} = this.state
-        if (user){
-            return (
-           
-                <Profile user= {user} />
-        )
-    }
-}
+        const {user}= this.state
+        if (user) {
+          return <Profile user= {user} />
+        } else {
+          return <h1>Must be logged in</h1>
+        }
+      }
+   
+
     
     renderFollowing = () => {
         return <Following />

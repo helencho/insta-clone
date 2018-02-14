@@ -12,6 +12,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            userID: this.props.user.user_id, 
             user: this.props.user,
             images: [],
             userPhoto: ""
@@ -19,7 +20,25 @@ class Profile extends React.Component {
     }
 
 
+
+    getUserImages = () =>{
+        const {userID}= this.state
+
+        axios
+        .get(`/users/u/${userID}/photos`)
+        .then(res =>{
+            let UserImages = res.data.data
+                        
+            console.log('this is the user images', UserImages)
+            this.setState({
+                images: UserImages
+            })
+        })
+
+    }
     componentDidMount = () => {
+    console.log('user profile is mounted')
+    this.getUserImages()
         
         // axios
         //     .get('/users/') //need to get by username
@@ -41,9 +60,10 @@ class Profile extends React.Component {
         }
    
     render() {
-        const { images,user } = this.state
+        const { images,user, userID } = this.state
     console.log(this.state)
         console.log("the user is:", user)
+        console.log('the user ID is', userID)
         // console.log("single photo info", SinglePhoto.authorUsername)
         return (
             <div>
