@@ -23,7 +23,7 @@ class ProfileImages extends React.Component {
                 
                     {this.props.images.map(img => (
                         <figure id={img.photo_id}>
-                        <Link to= {`profile/${img.photo_id}`}> 
+                        <Link to= {`photo/${img.photo_id}`}> 
                             <img  alt='img' src={img.photo_link} width='223' height='223'/>
                         </Link>
                         </figure>
