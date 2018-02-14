@@ -241,3 +241,23 @@ font-family: 'Quicksand', sans-serif;
 .noUnderline{
   text-decoration: none;
 }
+/*****PROFILE PAGE********/
+
+.infoContainer{
+  display: flex;
+justify-content: center;
+
+}
+.userIMG{
+  display: flex;
+  justify-content: flex-start;
+width: 130px;
+height: 130px;
+border-radius: 5em;
+}
+.userImageContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: space-between;
+}
