@@ -31,6 +31,10 @@
   to { transform: rotate(360deg); }
 }
 
+/*--------------------------------------------*/
+/*               App.js topbar                */
+/*--------------------------------------------*/
+
 .topbar {
   background-color: #ffff;
   border-bottom: 1px solid rgba(0,0,0,.0975);
@@ -143,16 +147,30 @@ font-family: 'Quicksand', sans-serif;
   background-color: rgb(255, 255, 255);
 }
 
-.loginBox{
+
+/*--------------------------------------------*/
+/*           Login Page and Login Box         */
+/*--------------------------------------------*/
+.login-user-container,
+.register-user-container {
+  /* background-color: salmon; */
+  margin-top: 100px;
+  /* height: 100%; */
+}
+
+.loginBox,
+.registerBox {
   text-align: center;
-  width: 22.25%;
+  /* width: 22.25%; */
+  width: 300px;
   height: 45%;
   position: relative;
   background-color: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 1px;
-  margin-left: 38.4%;
-  margin-top: 5%;
+  /* margin-left: 38.4%; */
+  /* margin-top: 5%; */
+  margin: 0 auto;
   padding: 10px 0;
 }
 
@@ -208,14 +226,16 @@ font-family: 'Quicksand', sans-serif;
   text-align: center;
 }
 
-.smallerBox{
+.smallerBox {
   text-align: center;
-  width: 22.25%;
+  /* width: 22.25%; */
+  width: 300px;
   background-color: #fff;
   border: 1px solid #e6e6e6;
-  border-radius: 1px;
-  margin-left: 38.4%;
+  /* border-radius: 1px; */
+  /* margin-left: 38.4%; */
   top: 10px;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -224,18 +244,41 @@ font-family: 'Quicksand', sans-serif;
   color: #262626;
 }
 
+.getAppBox { 
+  /* width: 270px; */
+  text-align: center;
+  background-color: #fff;
+  width: 300px;
+  /* height: 130px; */
+  margin: 0 auto;
+  margin-top: 22px;
+  padding-bottom: 3%;
+  border: 1px solid rgba(255, 255, 255, 0);
+
+}
+
 .getTheApp{
   font-size: 14px;
   color: #262626;
   padding-top: 1.5%;
 }
 
-.appStore{
-  padding-right: .5%;
+.appStore-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
+.c4q-container {
+  padding-top: 3%;
+}
+
+/* .appStore{
+  padding-right: .5%;
+} */
+
 /* NewUserMain page */
-.registerBox{
+/* .registerBox{
   text-align: center;
   width: 22.25%;
   height: 45%;
@@ -246,9 +289,9 @@ font-family: 'Quicksand', sans-serif;
   margin-left: 38.4%;
   margin-top: 5%;
   padding: 10px 0;
-}
+} */
 
-.inputBoxes{
+.inputBoxes {
   height: 38px;
   border-radius: 3px;
   box-sizing: border-box;
@@ -260,7 +303,7 @@ font-family: 'Quicksand', sans-serif;
   border: 1px solid #efefef;
 }
 
-.topSpacing1{
+/* .topSpacing1{
   top: 8px;
 }
 
@@ -274,7 +317,7 @@ font-family: 'Quicksand', sans-serif;
 
 .topSpacing4{
   top: 32px;
-}
+} */
 
 .messageColor{
   color: #999;
