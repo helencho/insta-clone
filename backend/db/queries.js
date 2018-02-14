@@ -57,12 +57,12 @@ function updateSingleUser(req, res, next) {
       db.any('SELECT users.user_id, photos.photo_id FROM users JOIN photos ON users.user_id =            photos.user_id WHERE users.user_id = $1', 
         [req.params.id])
         .then(data => {
-        console.log("Data from backend single user:", data)
+        console.log("Data from backend single user photo:", data)
         res.status(200)
         .json({
             status: 'Success',
             data: data,
-            message: 'Retrieved the selected user'
+            message: 'Retrieved the selected users photos'
         })
     })
         .catch(err => {
