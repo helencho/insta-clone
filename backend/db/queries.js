@@ -7,6 +7,7 @@ const passport = require('../auth/local')
 function getAllUsers(req, res, next) {
     db.any('SELECT * FROM users')
         .then((data) => {
+            console.log("data:", data)
             res.status(200).json({
                 status: 'success',
                 data: data,
@@ -32,6 +33,24 @@ function getSingleUser(req, res, next) {
             return next(err)
         })
 }
+//Updating a single user's username, email, full name, profile ic, and user description
+function updateSingleUser(req, res, next) {
+    db
+    .none('UPDATE users SET users.username = ${username}, users.email_add = ${email_add}, users.fullname = ${fullname}, users.profile_pic = ${profile_pic}, users.user_description = ${user_description} WHERE users.username = ${username}',
+      req.body)
+      .then(function (data) {
+          console.log("data:", data, "req.body:", req.body)
+        res.status(200)
+          .json({
+            status: 'success',
+            message: 'Changed one user'
+          });
+      })
+      .catch(function (err) {
+          console.log(`backennd err`,err)
+        return next(err);
+      });
+  }
 
 function getSingleUserID(req, res, next) {
     db.one('SELECT * FROM users WHERE user_id=$1', [req.params.id])
@@ -179,6 +198,7 @@ function logoutUser(req, res, next) {
 module.exports = {
     getAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
+    updateSingleUser: updateSingleUser,
     getUserFollowing: getUserFollowing,
     getUserFollowers: getUserFollowers,
     getAllPhotos: getAllPhotos,
