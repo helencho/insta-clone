@@ -14,7 +14,6 @@ class Home extends Component {
 
     componentDidMount() {
         this.mountLoggedInUser()
-        // this.getFollowing()
     }
 
     // Set loggedInAs as the current user logged in 
@@ -22,27 +21,28 @@ class Home extends Component {
         this.setState({
             loggedInAs: this.props.user
         }, () => {
+            // Then get users that logged in user follows 
             this.getFollowingUsers()
-        }, () => {
-            this.getPhotosFromFollowing()
         })
     }
 
     // Make ajax request to see who the user follows 
     getFollowingUsers = () => {
         const { loggedInAs } = this.state
-        // console.log(loggedInAs.user_id)
+
         if (loggedInAs) {
             axios
                 .get(`/users/u/${loggedInAs.user_id}/following`)
                 .then(res => {
-                    // console.log('inside get following')
-                    // console.log(res.data)
                     let followings = res.data.data
+
+                    // Set state in followings array 
                     this.setState({
                         followings: followings
+                    }, () => {
+                        // Then get photos that these users have 'posted'
+                        this.getPhotosFromFollowing()
                     })
-                    // Set state under followings array 
                 })
                 .catch(err => {
                     console.log(err)
@@ -53,17 +53,25 @@ class Home extends Component {
     // Grab all photos posted by these users 
     getPhotosFromFollowing = () => {
         const { followings } = this.state
-        console.log('Inside getPhotosFromFollowing')
         if (followings.length > 0) {
-            console.log('Get photos from users!')
-            // axios
-            //     .get(`/get photo by id`)
-            //     .then(res => {
-            //         console.log(res.data)
-            //     })
-            //     .catch(err => {
-            //         console.log(err)
-            //     })
+            // Map through each user 
+            followings.map(user => {
+                // Get photos by current user 
+                // axios
+                //     .get(`/users/something/${user.user_id}`)
+                //     .then(res => {
+                // let photos = res.data.data
+                // console.log(photos)
+                // add to photoFeed using spread operator
+                // this.setState({
+                //     photoFeed: [...this.state.photoFeed, photos]
+                // })
+                //     })
+                //     .catch(err => {
+                //         console.log(err)
+                //     })
+            })
+
         }
     }
 
