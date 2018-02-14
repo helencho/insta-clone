@@ -1,30 +1,53 @@
 import React, { Component } from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
+import Profile from './profile'
+import Followers from './Followers'
+import Following from './Following'
+import SinglePhoto from './SinglePhoto'
 
 class User extends Component {
     constructor() {
-        super() 
+        super()
         this.state = {
-            user: ''
+            user: '',
+            following: [],
+            followers: [],
+            photos: []
         }
     }
 
+    componentDidMount() {
+        // Grab user's information based on user ID (but backend takes username instead of ID) 
+        // Ajax get request here
+        // Set state! 
+
+        // Probably need a couple of ajax requests for: 
+        // Following users 
+        // Follower users 
+        // All photos under the active user 
+    }
+
+    // Render the user's profile based on user ID 
     renderProfile = () => {
-        return <h1>Full profile to go here. Call 'Profile' component.</h1>
+        return (
+            <div>
+                <Profile />
+            </div>
+        )
     }
 
     renderFollowing = () => {
-        return <h1>List of people user follows.</h1>
+        return <Following />
     }
 
     renderFollowers = () => {
-        return <h1>List of people who follow the user!!</h1>
+        return <Followers />
     }
 
     renderPhoto = () => {
-        return <h1>Single photo here. Call 'SinglePhoto' component.</h1>
+        return <SinglePhoto />
     }
-    
+
     render() {
         console.log(this.props.match.params.id)
 
@@ -33,7 +56,7 @@ class User extends Component {
                 <Route path="/users/u/:id/profile" render={this.renderProfile} />
                 <Route path="/users/u/:id/following" render={this.renderFollowing} />
                 <Route path="/users/u/:id/followers" render={this.renderFollowers} />
-                <Route path="/users/u/:id/photo/:id" render={this.renderPhoto} />
+                <Route path="/users/u/:id/photo/:photoid" render={this.renderPhoto} />
             </div>
         )
     }

@@ -35,8 +35,8 @@ class Home extends Component {
                     <h1>This is the home feed.</h1>
                     <p>Store logged in user in state.Look for users that the logged in user follows. Grab all photos that these users have posted, and feed them to this 'Home' page.</p>
                     <div>
-                        <p><Link to='/users/u/:id/profile'>OptimusPrime</Link></p>
-                        <img alt='awesomeness' />
+                        <p><Link to={`/users/u/${1}/profile`}>OptimusPrime</Link></p>
+                        <img alt='awesome photo url from an ajax request' />
 
                     </div>
                 </div>

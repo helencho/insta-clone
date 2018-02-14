@@ -8,7 +8,7 @@ import "../App.css"
 
 class LoginUser extends React.Component {
   state = {
-    user:'', 
+    user: '',
     usernameInput: "",
     passwordInput: "",
     message: "Forgot password?",
@@ -38,11 +38,11 @@ class LoginUser extends React.Component {
         username: usernameInput,
         password: passwordInput
       })
-    
+
       .then(res => {
         this.props.setUser(res.data.username);
         this.setState({
-            user: res.data.username, 
+          user: res.data.username,
           loggedIn: true
         });
       })
@@ -55,11 +55,11 @@ class LoginUser extends React.Component {
       });
   };
 
-   setUser= ()=>{
-      const {user}= this.state
-      return(
-    <Profile user={user}/>
-      )
+  setUser = () => {
+    const { user } = this.state
+    return (
+      <Profile user={user} />
+    )
   }
 
 
@@ -67,17 +67,16 @@ class LoginUser extends React.Component {
     const { usernameInput, passwordInput, message, loggedIn } = this.state;
 
     if (loggedIn) {
-        this.setUser()
-      return <Redirect to="/users/profile" />;
+      return <Redirect to="/users/home" />;
     }
 
     return (
       <div>
-      <div className="loginBox">
-        <h1 className="siteFont"> Instagram </h1>
+        <div className="loginBox">
+          <h1 className="siteFont"> Instagram </h1>
 
-        <form onSubmit={this.submitForm}>
-          
+          <form onSubmit={this.submitForm}>
+
             <input
               className="usernameBox"
               placeholder="Username"
@@ -86,31 +85,31 @@ class LoginUser extends React.Component {
               value={usernameInput}
               onChange={this.handleInput}
             />
-          <br></br>
-          
+            <br></br>
+
             <input
-            className="passwordBox"
+              className="passwordBox"
               placeholder="Password"
               type="password"
               name="passwordInput"
               value={passwordInput}
               onChange={this.handleInput}
             />
+            <br></br>
+            <input className="loginBtn" type="submit" value="Log in" />
+          </form>
           <br></br>
-          <input className="loginBtn" type="submit" value="Log in" />
-        </form>
-        <br></br>
-        <p className="messageSize">{message}</p>
-      </div>
-      <div className="smallerBox">
-      <p className="dontHaveAcct">Don't have an account?<Link to="/users/new"> Sign up</Link></p>
-      </div>
-      <div>
-        <p className="getTheApp">Get the app.</p>
-      </div>
-      <div>
-        <img src="./app-store-badge-128x128.png" alt="available on the app store" width="200" height="100"/>
-      </div>
+          <p className="messageSize">{message}</p>
+        </div>
+        <div className="smallerBox">
+          <p className="dontHaveAcct">Don't have an account?<Link to="/users/new"> Sign up</Link></p>
+        </div>
+        <div>
+          <p className="getTheApp">Get the app.</p>
+        </div>
+        <div>
+          <img src="./app-store-badge-128x128.png" alt="available on the app store" width="200" height="100" />
+        </div>
       </div>
     );
   }
