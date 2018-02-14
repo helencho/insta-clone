@@ -9,21 +9,45 @@
 
   }
   #usernameH1{
-      color:green
+      color:black
 
   }
 
-  .userImageContainer,.usernameDiv, Followingbtn,.userStats, .containerForNumberStats{
+  .userImageContainer,.usernameDiv, .Followingbtn,.userStats, .containerForNumberStats{
       display:flex;
       flex-wrap:wrap;
   }
-  .userImageContainer{
-      margin-left:-30%
+
+  .allUserInfo{
+      width:500px
   }
+  /* .userImageContainer{
+      margin-left:-40%
+  } */
   .usernameDiv{
-      margin-left:75px;
+      margin-left:70px;
   }
 
   .Followingbtn{
-      margin-left:20px;
+      margin-left:70px;
+     
+      width:100px
   }
+  .containerForNumberStats{
+      margin-left:70px;
+      margin-top:10px
+  }
+  .numbers{
+      margin-left:10px
+  }
+
+  .rowOfPics{
+      width:815.5px;
+      margin-left:15%
+  }
+  .image{
+      width:223px;
+      display:flex;
+      flex-wrap:wrap;
+  }
+
