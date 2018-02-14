@@ -122,6 +122,15 @@ class LoginUser extends React.Component {
             height="40"
           />
         </div>
+        <div>
+          <img 
+          src="https://i.imgur.com/EVU0sxy.png"
+          alt="Coalition for Queens"
+          width="100"
+          height="30"
+          align="center"
+          />
+        </div>
       </div>
     );
   }

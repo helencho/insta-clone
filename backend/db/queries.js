@@ -37,43 +37,52 @@ function getAllUsers(req, res, next) {
 //Updating a single user's username, email, full name, profile ic, and user description
 function updateSingleUser(req, res, next) {
     db
-    .none('UPDATE users SET users.username = ${username}, users.email_add = ${email_add}, users.fullname = ${fullname}, users.profile_pic = ${profile_pic}, users.user_description = ${user_description} WHERE users.username = ${username}',
-      req.body)
-      .then(function (data) {
-          console.log("data:", data, "req.body:", req.body)
-        res.status(200)
-          .json({
-            status: 'success',
-            message: 'Changed one user'
-          });
-      })
-      .catch(function (err) {
-          console.log(`backennd err`,err)
-        return next(err);
-      });
-  }
-  //Get all the photos from a single user
-  function getAllPhotosFromSingleUser(req, res, next){
-      db.any('SELECT users.user_id, photos.photo_id FROM users JOIN photos ON users.user_id =            photos.user_id WHERE users.user_id = $1', 
+        .none('UPDATE users SET users.username = ${username}, users.email_add = ${email_add}, users.fullname = ${fullname}, users.profile_pic = ${profile_pic}, users.user_description = ${user_description} WHERE users.username = ${username}',
+            req.body)
+        .then(function (data) {
+            console.log("data:", data, "req.body:", req.body)
+            res.status(200)
+                .json({
+                    status: 'success',
+                    message: 'Changed one user'
+                });
+        })
+        .catch(function (err) {
+            console.log(`backennd err`, err)
+            return next(err);
+        });
+}
+//Get all the photos from a single user
+function getAllPhotosFromSingleUser(req, res, next) {
+    db.any('SELECT photos.photo_id, photos.user_id, photos.photo_link, photos.caption, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON photos.user_id=users.user_id WHERE photos.user_id=$1;',
         [req.params.id])
         .then(data => {
+<<<<<<< HEAD
         console.log("Data from backend single user photo:", data)
         res.status(200)
         .json({
             status: 'Success',
             data: data,
             message: 'Retrieved the selected users photos'
+=======
+            console.log("Data from backend single user:", data)
+            res.status(200)
+                .json({
+                    status: 'Success',
+                    data: data,
+                    message: 'Retrieved the selected user'
+                })
+>>>>>>> 220c7d9f3ca827e103c962b70b841a55972d4b7b
         })
-    })
         .catch(err => {
-        return next(err)
-    })
-  }
+            return next(err)
+        })
+}
 
-  //get a user by userid
+//get a user by userid
 function getSingleUserID(req, res, next) {
-    db.one('SELECT * FROM users WHERE user_id = $1', 
-    [req.params.id])
+    db.one('SELECT * FROM users WHERE user_id = $1',
+        [req.params.id])
         .then(data => {
             console.log("Data from backend single user:", data)
             res.status(200).json({
@@ -226,7 +235,7 @@ module.exports = {
     getSinglePhoto: getSinglePhoto,
     getAllPhotosFromSingleUser: getAllPhotosFromSingleUser,
     getPhotoDetails: getPhotoDetails,
-    getSingleUserID: getSingleUserID, 
+    getSingleUserID: getSingleUserID,
     // loginUser: loginUser,
     registerUser: registerUser,
     logoutUser: logoutUser
