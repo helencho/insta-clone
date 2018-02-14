@@ -19,7 +19,6 @@ class User extends Component {
         }
     }
 
-<<<<<<< HEAD
 
 
 getUserInfo= () =>{
@@ -34,17 +33,6 @@ getUserInfo= () =>{
 
         this.setState({
             user: UserInfo
-=======
-    getUserInfo = () => {
-        const id = this.props.match.params.id
-
-        console.log(id)
-        axios.get(`/users/u/${id}/`)
-        .then(res=>{
-            console.log(res.data)
-            console.log(res.data.data)
-            let UserInfo= res.data.data 
->>>>>>> 220c7d9f3ca827e103c962b70b841a55972d4b7b
         })
         console.log('UserINFO: ' , UserInfo)
     })
@@ -54,18 +42,8 @@ getUserInfo= () =>{
 
 }
 
-<<<<<<< HEAD
     componentDidMount() {
         console.log("component mounted!!!!!!!!!!!!")
-=======
-        .catch(err =>{
-            console.log(err)
-        })
-    }
-
-    componentDidMount() {
-        console.log("component mounted")
->>>>>>> 220c7d9f3ca827e103c962b70b841a55972d4b7b
         this.getUserInfo()
        
         // Grab user's information based on user ID (but backend takes username instead of ID) 
