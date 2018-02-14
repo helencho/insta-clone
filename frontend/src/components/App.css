@@ -54,7 +54,7 @@
 }
 
 .topbar-left {
-  background-color: salmon;
+  /* background-color: salmon; */
   width: 30%;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .topbar-middle {
-  background-color: goldenrod;
+  /* background-color: goldenrod; */
   width: 30%;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .topbar-right {
-  background-color: yellowgreen;
+  /* background-color: yellowgreen; */
   width: 30%;
 }
 
@@ -126,16 +126,21 @@ font-family: 'Quicksand', sans-serif;
 .searchBar {
   padding: 3%;
   text-align: center;
-  /* position: fixed;
-  margin-top: 1%;
-  left: 43.35%;
-  width: 13%;
-  height: 26px;
-  text-align: center; */
+  background-color: rgb(250,250,250);
+  border: none;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 0.5%;
+  transition: 0.3s all;
+  font-size: 1.4em;
+}
+
+.searchBar::placeholder {
+  color: rgb(221, 221, 221);
 }
 
 .searchBar:focus {
   outline: none;
+  background-color: rgb(255, 255, 255);
 }
 
 .loginBox{
