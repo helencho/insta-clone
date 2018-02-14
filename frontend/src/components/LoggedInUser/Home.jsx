@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import '../Home.css'
 
 class Home extends Component {
     constructor(props) {
@@ -56,8 +57,8 @@ class Home extends Component {
         if (followings.length > 0) {
             // Map through each user 
             followings.map(user => {
+
                 // Get photos by current user 
-                // console.log(user)
                 axios
                     .get(`/users/u/${user.user_id}/photos`)
                     .then(res => {
@@ -65,7 +66,7 @@ class Home extends Component {
                         // console.log(photos)
                         // add to photoFeed using spread operator
                         this.setState({
-                            photoFeed: [...this.state.photoFeed, photos]
+                            photoFeed: photos
                         })
                     })
                     .catch(err => {
@@ -89,7 +90,7 @@ class Home extends Component {
                     photoFeed.map(photo => (
                         <div className='homefeed-card-container'>
                             <div className='homefeed-card-meta'>
-                                <img src={photo.profile_pic} alt={`Profile picture`} className='homefeed-card-userprof' />
+                                <img src={photo.profile_pic} alt={`Picture`} className='homefeed-card-userprof' />
                                 <p className='homefeed-card-username'><Link to={`/users/u/:id/profile`}>{photo.username}</Link></p>
                             </div>
                             <div className='homefeed-card-img'>
@@ -97,6 +98,9 @@ class Home extends Component {
                             </div>
                             <div className='homefeed-card-likes'>
                                 <p>___ likes</p>
+                            </div>
+                            <div className='homefeed-card-caption'>
+                                <p>{photo.caption}</p>
                             </div>
                         </div>
                     ))
