@@ -150,7 +150,7 @@ class NewUserMain extends Component {
         </div>
         <div className="smallerBox">
           <p className="haveAnAcct">
-            Have an account? <Link to="/users/login">Login</Link>
+            Have an account? <Link to="/users/login" className="noUnderline">Login</Link>
           </p>
         </div>
         <div>

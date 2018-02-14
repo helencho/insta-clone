@@ -5,8 +5,8 @@ import "./App.css";
 import LoginUser from "./users/LoginUser";
 // import Profile from "./LoggedInUser/profile";
 import LogOut from "./users/LogOut";
-import User from './LoggedInUser/User';
-import Home from './LoggedInUser/Home';
+import User from "./LoggedInUser/User";
+import Home from "./LoggedInUser/Home";
 import NewUserMain from "./users/NewUserMain";
 
 class App extends React.Component {
@@ -35,46 +35,66 @@ class App extends React.Component {
   };
 
   renderNew = () => {
-    return <NewUserMain />
-  } 
+    return <NewUserMain />;
+  };
 
-  // Home is the feed screen 
+  // Home is the feed screen
   renderHome = () => {
-    const {user}= this.state
+    const { user } = this.state;
     if (user) {
-      return <Home user={user} />
+      return <Home user={user} />;
     } else {
-      return <h1>Must be logged in</h1>
+      return <h1>Must be logged in</h1>;
     }
-  }
+  };
 
   render() {
     const { user, newUser } = this.state;
-    console.log(user)
-    if(user){
-    console.log(user.fullname)
+    console.log(user);
+    if (user) {
+      console.log(user.fullname);
     }
-  
-  
+
     return (
       <div className="App">
         <div className="topbar instaCloneFont">
           <div className="cameraIcon">
             <span className="cursor">
-            <Link to ='/users/home'><i className="fab fa-instagram fa-2x" /></Link></span>
+
+              <Link to="/users/home">
+                <i className="fab fa-instagram fa-2x" />
+              </Link>
+            </span>
             <span className="site cursor">
-            <Link to ='/users/home'><h1> Instagram </h1></Link> </span>
+              <Link to="/users/home">
+                <h1> Instagram </h1>
+              </Link>{" "}
+            </span>
+
           </div>
           <div>
-            <input className="inputBar"
-              placeholder="Search"
-            />
+            <input className="searchBar" placeholder="Search" />
           </div>
           <div className="iconTop">
-            <span className="cursor"><i className="far fa-compass fa-2x" /></span>
-            <span className="iconDistance cursor"><i className="far fa-heart fa-2x" /></span>
-            {user ? <span className="iconDistance cursor"><Link to ={`/users/u/${user.user_id}/profile`}><i className="far fa-user fa-2x" /> </Link></span> : 
-            <span className="iconDistance cursor"><Link to ={`/users/u/id/profile`}><i className="far fa-user fa-2x" /> </Link></span>}
+            <span className="cursor">
+              <i className="far fa-compass fa-2x" />
+            </span>
+            <span className="iconDistance cursor">
+              <i className="far fa-heart fa-2x" />
+            </span>
+            {user ? (
+              <span className="iconDistance cursor">
+                <Link to={`/users/u/${user.user_id}/profile`}>
+                  <i className="far fa-user fa-2x" />{" "}
+                </Link>
+              </span>
+            ) : (
+              <span className="iconDistance cursor">
+                <Link to={`/users/u/id/profile`}>
+                  <i className="far fa-user fa-2x" />{" "}
+                </Link>
+              </span>
+            )}
           </div>
         </div>
 
@@ -84,8 +104,7 @@ class App extends React.Component {
         <Route path="/users/new" render={this.renderNew} />
         <Route path="/users/logout" render={this.renderLogout} />
         <Route path="/users/home" render={this.renderHome} />
-        <Route path="/users/u/:id" component= {User} />
-
+        <Route path="/users/u/:id" component={User} />
       </div>
     );
   }
