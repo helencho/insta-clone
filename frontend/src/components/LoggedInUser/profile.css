@@ -1,0 +1,53 @@
+.infoContainer{
+    display: flex;
+  justify-content: center;
+  margin-top:61px;
+  margin-left:15%;
+  padding-top:20px;
+  margin-bottom:44px;
+  width: 70%;
+
+  }
+  #usernameH1{
+      color:black
+
+  }
+
+  .userImageContainer,.usernameDiv, .Followingbtn,.userStats, .containerForNumberStats{
+      display:flex;
+      flex-wrap:wrap;
+  }
+
+  .allUserInfo{
+      width:500px
+  }
+  /* .userImageContainer{
+      margin-left:-40%
+  } */
+  .usernameDiv{
+      margin-left:70px;
+  }
+
+  .Followingbtn{
+      margin-left:70px;
+     
+      width:100px
+  }
+  .containerForNumberStats{
+      margin-left:70px;
+      margin-top:10px
+  }
+  .numbers{
+      margin-left:10px
+  }
+
+  .rowOfPics{
+      width:815.5px;
+      margin-left:15%
+  }
+  .image{
+      width:223px;
+      display:flex;
+      flex-wrap:wrap;
+  }
+
