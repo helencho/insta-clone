@@ -12,7 +12,12 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        // set loggedInAs as the current user logged in 
+        this.mountLoggedInUser() 
+        this.getFollowing() 
+    }
+
+    // Set loggedInAs as the current user logged in 
+    mountLoggedInUser = () => {
         this.setState({
             loggedInAs: this.props.user
         })
@@ -26,12 +31,12 @@ class Home extends Component {
                 .get(`/u/${loggedInAs.user_id}/following`)
                 .then(res => {
                     console.log(res.data)
+                    // Set state under followings array 
                 })
                 .catch(err => {
                     console.log(err)
                 })
         }
-
     }
 
     // Grab all photos posted by these users 
@@ -41,8 +46,8 @@ class Home extends Component {
     // Display inside render() 
 
     render() {
-        const { loggedInAs } = this.state
-        console.log(loggedInAs)
+        const { loggedInAs, followings } = this.state
+        console.log(this.state)
 
         return (
             <div>
