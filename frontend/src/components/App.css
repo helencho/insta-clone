@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  margin-top:161px;
+  font-size: 10px;
 }
 
 .App-logo {
@@ -34,12 +34,47 @@
 .topbar {
   background-color: #ffff;
   border-bottom: 1px solid rgba(0,0,0,.0975);
-  /* position: fixed; */
   top: 0;
   width: 100%;
   z-index: 1;
   height: 6em;
   position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.topbar .fa-2x {
+  padding: 0 3%;
+}
+
+.topbar-left {
+  /* background-color: salmon; */
+  width: 30%;
+}
+
+.topbar-sitename {
+  font-size: 2.2em;
+}
+
+.topbar-middle {
+  /* background-color: goldenrod; */
+  width: 30%;
+}
+
+.topbar-middle form {
+  padding: 0;
+  margin: 0;
+}
+
+.topbar-right {
+  /* background-color: yellowgreen; */
+  width: 30%;
 }
 
 .fontColor{
@@ -59,42 +94,53 @@ font-family: 'Grand Hotel', cursive;
 font-family: 'Quicksand', sans-serif;
 }
 
-.cameraIcon {
+/* .cameraIcon {
   padding-left: 15%;
   top: 1.5em;
   width: 2em;
   height: 1.5em;
   color: black;
   position: fixed;
-}
+} */
 
-.site{
+/* .site{
   position: fixed;
   padding-left: 2em;
   top: 0;
-}
+} */
 
-.iconDistance{
+/* .iconDistance{
   padding-left: 2em;
-}
+} */
 
-.iconTop{
+/* .iconTop{
   padding-top: 1.5em;
   padding-left: 80%;
   position: fixed;
-}
+} */
 
 .cursor {
   cursor: pointer;
 }
 
-.searchBar{
-  position: fixed;
-  margin-top: 1%;
-  left: 43.35%;
-  width: 13%;
-  height: 26px;
+.searchBar {
+  padding: 3%;
   text-align: center;
+  background-color: rgb(250,250,250);
+  border: none;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 0.5%;
+  transition: 0.3s all;
+  font-size: 1.4em;
+}
+
+.searchBar::placeholder {
+  color: rgb(221, 221, 221);
+}
+
+.searchBar:focus {
+  outline: none;
+  background-color: rgb(255, 255, 255);
 }
 
 .loginBox{
