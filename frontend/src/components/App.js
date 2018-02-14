@@ -60,6 +60,7 @@ class App extends React.Component {
         <div className="topbar instaCloneFont">
           <div className="cameraIcon">
             <span className="cursor">
+
               <Link to="/users/home">
                 <i className="fab fa-instagram fa-2x" />
               </Link>
@@ -69,6 +70,7 @@ class App extends React.Component {
                 <h1> Instagram </h1>
               </Link>{" "}
             </span>
+
           </div>
           <div>
             <input className="searchBar" placeholder="Search" />
