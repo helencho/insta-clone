@@ -46,7 +46,15 @@ CREATE TABLE likes (
 INSERT INTO likes (user_id, photo_id)
     VALUES (1, 1),
     (2, 1),
-    (3, 1);
+    (3, 1),
+    (1, 2), 
+    (1, 3),
+    (1, 4),
+    (1, 5),
+    (1, 6),
+    (2, 7),
+    (2, 8),
+    (2, 9);
 
 
 CREATE TABLE user_followers (
@@ -55,7 +63,9 @@ CREATE TABLE user_followers (
 );
 
 INSERT INTO user_followers (user_id, follower_id)
-    VALUES (1, 3);
+    VALUES (1, 3),
+    (1, 2),
+    (3, 2);
 
 CREATE TABLE user_following (
     user_id INTEGER REFERENCES users,
@@ -64,4 +74,4 @@ CREATE TABLE user_following (
 
 INSERT INTO user_following (user_id, following_id)
     VALUES (1, 2),
-    (1, 3);
+    (2, 1);
