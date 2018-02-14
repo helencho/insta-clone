@@ -37,7 +37,12 @@
   top: 0;
   width: 100%;
   z-index: 1;
-  height: 4.5em;
+  height: 6em;
+  position: fixed;
+}
+
+.fontColor{
+  color: #003569;
 }
 
 .userPhotos {
@@ -74,17 +79,21 @@ font-family: 'Quicksand', sans-serif;
 
 .iconTop{
   padding-top: 1.5em;
-  padding-left: 60%;
+  padding-left: 80%;
+  position: fixed;
 }
 
 .cursor {
   cursor: pointer;
 }
 
-.inputBar{
+.searchBar{
   position: fixed;
-  margin-top: 2%;
-  left: 46%
+  margin-top: 1%;
+  left: 43.35%;
+  width: 13%;
+  height: 26px;
+  text-align: center;
 }
 
 .loginBox{
@@ -95,7 +104,7 @@ font-family: 'Quicksand', sans-serif;
   background-color: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 1px;
-  margin-left: 38%;
+  margin-left: 38.4%;
   margin-top: 5%;
   padding: 10px 0;
 }
@@ -158,7 +167,7 @@ font-family: 'Quicksand', sans-serif;
   background-color: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 1px;
-  margin-left: 38%;
+  margin-left: 38.4%;
   top: 10px;
   position: relative;
 }
@@ -187,7 +196,7 @@ font-family: 'Quicksand', sans-serif;
   background-color: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 1px;
-  margin-left: 38%;
+  margin-left: 38.4%;
   margin-top: 5%;
   padding: 10px 0;
 }
@@ -227,4 +236,8 @@ font-family: 'Quicksand', sans-serif;
 .haveAnAcct{
   font-size: 14px;
   color: #262626;
+}
+
+.noUnderline{
+  text-decoration: none;
 }

@@ -57,6 +57,14 @@ function getAllPhotosFromSingleUser(req, res, next) {
     db.any('SELECT photos.photo_id, photos.user_id, photos.photo_link, photos.caption, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON photos.user_id=users.user_id WHERE photos.user_id=$1;',
         [req.params.id])
         .then(data => {
+<<<<<<< HEAD
+        console.log("Data from backend single user photo:", data)
+        res.status(200)
+        .json({
+            status: 'Success',
+            data: data,
+            message: 'Retrieved the selected users photos'
+=======
             console.log("Data from backend single user:", data)
             res.status(200)
                 .json({
@@ -64,6 +72,7 @@ function getAllPhotosFromSingleUser(req, res, next) {
                     data: data,
                     message: 'Retrieved the selected user'
                 })
+>>>>>>> 220c7d9f3ca827e103c962b70b841a55972d4b7b
         })
         .catch(err => {
             return next(err)
@@ -83,6 +92,7 @@ function getSingleUserID(req, res, next) {
             })
         })
         .catch(err => {
+            console.log('  ERRORRRR' , err)
             return next(err)
         })
 }

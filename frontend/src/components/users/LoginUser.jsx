@@ -101,7 +101,7 @@ class LoginUser extends React.Component {
         </div>
         <div className="smallerBox">
           <p className="dontHaveAcct">
-            Don't have an account?<Link to="/users/new"> Sign up</Link>
+            Don't have an account?<Link to="/users/new" className="noUnderline"> Sign up</Link>
           </p>
         </div>
         <div>
