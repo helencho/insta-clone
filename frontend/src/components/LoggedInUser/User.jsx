@@ -19,9 +19,7 @@ class User extends Component {
         }
     }
 
-
-
-getUserInfo= () =>{
+getUserInfo= () => {
     const id = this.props.match.params.id
     axios
     .get(`/users/u/${id}`)
@@ -105,7 +103,10 @@ getUserInfo= () =>{
     // renderPhoto = () => {
     //     return <SinglePhoto />
     // }
-
+editUser = () => {
+    const { user } = this.state;
+    return <EditUser user = {user}/>
+}
     render() {
         console.log("THe fucking state:",this.state)
 
