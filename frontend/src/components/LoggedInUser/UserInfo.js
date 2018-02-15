@@ -2,6 +2,8 @@ import React from 'react'
 import { Route, Link, Switch } from "react-router-dom"
 import './profile.css';
 import axios from 'axios'
+import Followers from './Followers'
+import Following from './Following'
 
 class UserInfo extends React.Component {
     constructor(props) {
@@ -28,8 +30,9 @@ class UserInfo extends React.Component {
             .then(res => {
                 let Following = res.data.data
                 let NumberOfFollowing = Following.length
+                console.log(Following)
                 console.log('THE USER IS FOLLOWING NUMBER', NumberOfFollowing)
-                this.setState({
+                this.setState({ 
                     numOfFollowing: NumberOfFollowing
                 })
 
@@ -44,6 +47,7 @@ class UserInfo extends React.Component {
             .get(`/users/u/${id}/followers`)
             .then(res => {
                 let Followers = res.data.data
+                
                 let NumberOfFollowers = Followers.length
                 console.log('THE USER HAS FOLLOWER NUMBER', NumberOfFollowers)
                 this.setState({
@@ -82,12 +86,24 @@ class UserInfo extends React.Component {
 
 
 
+    // clickFollowers = ()=>{
+    //     return(
+    //         <Followers followers={this.state.followers}/>
+    //     )
+    // }
 
-
+    // clickFollowing = () =>{
+    //     console.log('hiiiiii FOLLOWING')
+    //     return (
+    //         <Following following ={this.state.following} />
+            
+    //     )
+    // }
     render() {
         const { user, userID, userName, numOfFollowers, numOfPosts, numOfFollowing, userImageURL, fullName, userDescription } = this.state
         console.log('USERID IS ', userID)
         console.log(this.state)
+        console.log('HELLUUUURRRR')
         return (
             <div>
                 <div className="infoContainer" width='905px'>
@@ -120,8 +136,8 @@ class UserInfo extends React.Component {
 
                                 <div className="containerForNumberStats">
                                     <div className="stat"><bold>{numOfPosts} </bold> {"Posts"} </div>
-                                    <div className="statFollow"><bold>{numOfFollowers} </bold> {"Followers"} </div>
-                                    <div className="statFollow"> <bold>{numOfFollowing} </bold> {"Following"} </div>
+                                    <div className="statFollow" > <Link to={`/users/u/${userID}/followers`}><bold>{numOfFollowers} </bold> {"Followers"} </Link> </div>
+                                    <div className="statFollow" > <Link to={`/users/u/${userID}/following`}><bold>{numOfFollowing} </bold> {"Following"} </Link></div>
                                 </div>
                                 <div className='nameAndBio'>
                                     <div className='name'>
