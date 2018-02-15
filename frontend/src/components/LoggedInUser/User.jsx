@@ -10,9 +10,10 @@ class User extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: '',
-            following: [],
-            followers: [],
+            user:'',
+            userID: '', 
+            following:'',
+            followers:'', 
             photos: [],
         }
     }
@@ -21,8 +22,6 @@ class User extends Component {
 
 getUserInfo= () =>{
     const id = this.props.match.params.id
-
-
     axios
     .get(`/users/u/${id}`)
     .then(res => {
@@ -30,9 +29,13 @@ getUserInfo= () =>{
         // console.log("res.data",res.data.data)
 
         this.setState({
-            user: UserInfo
+            user: UserInfo,
+            userID: UserInfo.user_id
         })
         console.log('UserINFO: ' , UserInfo)
+
+        this.getUserFollowers()
+        this.getUserFollowing()
     })
     .catch(err =>{
         console.log(err)
@@ -44,14 +47,6 @@ getUserInfo= () =>{
         console.log("component mounted!!!!!!!!!!!!")
         this.getUserInfo()
        
-        // Grab user's information based on user ID (but backend takes username instead of ID) 
-        // Ajax get request here
-        // Set state! 
-
-        // Probably need a couple of ajax requests for: 
-        // Following users 
-        // Follower users 
-        // All photos under the active user 
     }
 
     // Render the user's profile based on user ID 
@@ -64,8 +59,38 @@ getUserInfo= () =>{
         }
       }
    
+      getUserFollowing = () => {
+        const { userID } = this.state
+        const id = userID
+        console.log('we is ABOUT to call axios')
+        axios
+            .get(`/users/u/${id}/following`)
+            .then(res => {
+                let Following = res.data.data
+                console.log(Following)
+                this.setState({
+                    following:Following, 
+                })
 
+            })
+    }
     
+    getUserFollowers = () => {
+        const { userID } = this.state
+        const id = userID
+        console.log('FROM USERS: GETTING THE FOLLOWERS')
+        axios
+            .get(`/users/u/${id}/followers`)
+            .then(res => {
+                let Followers = res.data.data
+                console.log('FROM USERS: GETTING THE FOLLOWERS:' , Followers)
+                this.setState({
+                    followers:Followers
+                })
+
+            })
+    }
+
     renderFollowing = () => {
         const { following } = this.state;
         return <Following following = { following }/>
