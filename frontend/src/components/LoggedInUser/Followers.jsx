@@ -14,9 +14,10 @@ class Followers extends Component {
 
     onClick = (user) =>{
         return <Profile user={user} />
-
     }
 
+
+    
     render() {
         const { allFollowing } = this.state
         console.log('HELLLLOOOO PRINCESS', allFollowing)
