@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Link, Switch } from "react-router-dom"
+import { Route, Link, Switch, Redirect } from "react-router-dom"
 import './profile.css';
 import axios from 'axios'
 
@@ -95,9 +95,9 @@ class UserInfo extends React.Component {
                     <div className="userImageContainer">
                         <div className="containerForBtn">
                             <div className="divForBtn">
-                                <button>
+                               <Link to={`edit`}> <button>
                                     <img className="userIMG" src={userImageURL} alt={`Image of ${userName}`} />
-                                </button>
+                                </button> </Link>
                             </div>
                         </div>
                     </div>
