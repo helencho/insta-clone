@@ -16,6 +16,7 @@ router.get('/u/:id/photos', db.getAllPhotosFromSingleUser)
 router.get('/p', db.getAllPhotos)
 router.get('/p/:id', db.getSinglePhoto)
 router.get('/p/:id/details', db.getPhotoDetails)
+router.get('/p/:id/likes', db.getPhotoLikes)
 
 // User authentication functions 
 router.post('/login', passport.authenticate('local'), (req, res) => res.json(req.user))

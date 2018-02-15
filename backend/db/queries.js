@@ -244,6 +244,7 @@ module.exports = {
     getSinglePhoto: getSinglePhoto,
     getAllPhotosFromSingleUser: getAllPhotosFromSingleUser,
     getPhotoDetails: getPhotoDetails,
+    getPhotoLikes: getPhotoLikes,
     getSingleUserID: getSingleUserID,
     // loginUser: loginUser,
     registerUser: registerUser,
