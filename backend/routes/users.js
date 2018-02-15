@@ -4,7 +4,6 @@ var router = express.Router()
 const { loginRequired } = require('../auth/helpers')
 const passport = require('../auth/local')
 
-
 // User information functions 
 router.get('/', db.getAllUsers)
 // router.get('/u/:username', db.getSingleUser)
