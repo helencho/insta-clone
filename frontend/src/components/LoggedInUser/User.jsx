@@ -5,6 +5,7 @@ import Profile from './profile'
 import Followers from './Followers'
 import Following from './Following'
 import SinglePhoto from './SinglePhoto'
+import EditUser from './EditUser'
 
 class User extends Component {
     constructor(props) {
@@ -86,6 +87,7 @@ getUserInfo= () =>{
         return (
             <div>
                 <Route path="/users/u/:id/profile" render={this.renderProfile} />
+                <Route path="/users/u/:id/edit" render={this.editUser} />
                 <Route path="/users/u/:id/following" render={this.renderFollowing} />
                 <Route path="/users/u/:id/followers" render={this.renderFollowers} />
                 <Route exact path="/users/u/:id/photo/:photoid" component={SinglePhoto} />
