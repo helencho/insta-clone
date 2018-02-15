@@ -17,17 +17,21 @@ class ProfileImages extends React.Component {
         console.log(this.state)
 
         return (
-           
+            <div>
+            <div className='suggested'>
+            <h2 className='suggestedFollow'> Suggested </h2>
+            </div>
                 <div class='rowOfPics'> 
               
                 
                     {this.props.images.map(img => (
                         <div className= 'image'id={img.photo_id}>
                         <Link to= {`photo/${img.photo_id}`}> 
-                            <img  alt='img' src={img.photo_link} width='223' height='223'/>
+                            <img  class='allimages' alt='img' src={img.photo_link} width='275' height='250'/>
                         </Link>
                         </div>
                     ))}
+                    </div>
                     </div>
           
         )

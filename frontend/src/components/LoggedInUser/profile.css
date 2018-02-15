@@ -13,7 +13,7 @@
 
   }
 
-  .userImageContainer,.usernameDiv, .Followingbtn,.userStats, .containerForNumberStats{
+  .userImageContainer,.suggested, .usernameDiv, .Followingbtn,.userStats, .containerForNumberStats{
       display:flex;
       flex-wrap:wrap;
   }
@@ -35,22 +35,87 @@
   }
   .containerForNumberStats{
       margin-left:70px;
-      margin-top:10px
+      margin-top:-1px
   }
   .numbers{
       margin-left:10px
   }
 
   .rowOfPics{
-      width:815.5px;
+      width:855px;
       margin-left:15%
   }
   .image{
       width:223px;
       margin-left:40px;
       margin-top:20px;
+      margin-right:22px;
     display:inline-block;
       /* display:flex;
       flex-wrap:wrap; */
   }
+
+  .allimages{
+      border: 1px solid grey;
+      margin-left: -40px;
+  }
+.nameAndBio{
+    width:613px;
+    font-size:12px
+}
+
+.name{
+    width:543px;
+    margin-left:70px;
+}
+
+h1,span{
+    display:inline-block
+}
+h3,span{
+    display:inline-block
+}
+.bio{
+    margin-left:15px
+}
+.button{
+    margin-left:15px
+}
+
+#usernameH1{
+    font-size: 24px;
+    /* line-height: 40px; */
+    font-weight: 200;
+}
+
+.stat, .statFollow, {
+    font-size:13px
+}
+
+.stat{
+    margin-left:3px
+}
+.statFollow{
+    margin-left: 30px;
+}
+
+.suggested{
+    margin-left: 180px;
+    width: 856px;
+    height: 53px;
+    
+    border-radius: 4px;
+    border: 1px solid #efefef;
+    background:white;
+    margin-top: -16px;
+    position: relative;
+}
+
+.suggestedFollow{
+    color: grey;
+    margin-left: 15px;
+    font: inherit;
+    font-size: 14px;
+    margin-top: 17px;
+}
 
