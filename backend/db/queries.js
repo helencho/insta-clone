@@ -38,7 +38,7 @@ function getAllUsers(req, res, next) {
 
 function editUser(req, res, next) {
     db.any('UPDATE users SET username = $1, email_add = $2, fullname = $3, profile_pic = $4, user_description = $5 WHERE user_id = $6',
-    [req.body.newName, req.body.newEmail, req.body.newFullname, req.body.newProfile_pic, req.body.newDescription, req.params.id])
+        [req.body.newName, req.body.newEmail, req.body.newFullname, req.body.newProfile_pic, req.body.newDescription, req.params.id])
         .then(function (data) {
             console.log("data:", data, "req.body:", req.body)
             res.status(200)
@@ -59,23 +59,23 @@ function getAllPhotosFromSingleUser(req, res, next) {
     db.any('SELECT photos.photo_id, photos.user_id, photos.photo_link, photos.caption, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON photos.user_id=users.user_id WHERE photos.user_id=$1',
         [req.params.id])
         .then(data => {
-        console.log("Data from backend single user photo:", data)
-        res.status(200)
-        .json({
-            status: 'Success',
-            data: data,
-            message: 'Retrieved the selected users photos'
+            // console.log("Data from backend single user photo:", data)
+            res.status(200)
+                .json({
+                    status: 'Success',
+                    data: data,
+                    message: 'Retrieved the selected users photos'
+                })
+                .catch(err => {
+                    return next(err)
+                })
         })
-        .catch(err => {
-            return next(err)
-        })
-})
 }
 
 function getPhotoLikes(req, res, next) {
     db
-    .one('SELECT photos.photo_id, COUNT(likes.user_id) AS total_likes FROM likes JOIN photos ON photos.photo_id=likes.photo_id WHERE photos.photo_id=$1 GROUP BY photos.photo_id;',
-        [req.params.id])
+        .one('SELECT photos.photo_id, COUNT(likes.user_id) AS total_likes FROM likes JOIN photos ON photos.photo_id=likes.photo_id WHERE photos.photo_id=$1 GROUP BY photos.photo_id;',
+            [req.params.id])
         .then(data => {
             res.status(200).json({
                 status: 'Success',
@@ -100,7 +100,7 @@ function getSingleUserID(req, res, next) {
             })
         })
         .catch(err => {
-            console.log('  ERRORRRR' , err)
+            console.log('  ERRORRRR', err)
             return next(err)
         })
 }
