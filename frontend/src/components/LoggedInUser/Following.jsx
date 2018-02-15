@@ -20,9 +20,9 @@ class Following extends Component {
                     <h1>Following</h1>
                 <div>
                     {this.props.following.map(user => (
-                        <div className='users' id= {user.follower_id}>
+                        <div className='users' id= {user.following_id}>
                         <div>
-                            <Link to ={`/users/u/${user.follower_id}/profile`} >
+                            <Link to ={`/users/u/${user.following_id}/profile`} >
                             <div class='FollowingProfilePic'>
                             <img src={user.profile_pic} />
                             </div>
