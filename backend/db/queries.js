@@ -38,7 +38,7 @@ function getAllUsers(req, res, next) {
 
 function editUser(req, res, next) {
     db
-        .none('UPDATE users SET username = ${newName}, email_add = ${newEmail}, fullname = ${newFullname}, profile_pic = ${newProfile_pic}, user_description = ${newDescription} WHERE id = ${id}',req.body)
+        .any('UPDATE users SET username = ${newName}, email_add = ${newEmail}, fullname = ${newFullname}, profile_pic = ${newProfile_pic}, user_description = ${newDescription} WHERE id = ${id}',req.body)
         .then(function (data) {
             console.log("data:", data, "req.body:", req.body)
             res.status(200)
