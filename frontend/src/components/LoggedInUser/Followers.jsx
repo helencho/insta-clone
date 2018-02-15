@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
@@ -40,4 +41,4 @@ class Followers extends Component {
 }
 }
 
-export default Followers 
+export default Followers;

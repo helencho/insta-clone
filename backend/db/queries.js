@@ -72,6 +72,21 @@ function getAllPhotosFromSingleUser(req, res, next) {
 })
 }
 
+function getPhotoLikes(req, res, next) {
+    db
+    .one('SELECT photos.photo_id, COUNT(likes.user_id) AS total_likes FROM likes JOIN photos ON photos.photo_id=likes.photo_id WHERE photos.photo_id=$1 GROUP BY photos.photo_id;',
+        [req.params.id])
+        .then(data => {
+            res.status(200).json({
+                status: 'Success',
+                data: data,
+                message: 'Retrieved total photo likes'
+            })
+        })
+        .catch(err => {
+            return next(err)
+        })
+}
 //get a user by userid
 function getSingleUserID(req, res, next) {
     db.one('SELECT * FROM users WHERE user_id = $1',
@@ -229,6 +244,7 @@ module.exports = {
     getSinglePhoto: getSinglePhoto,
     getAllPhotosFromSingleUser: getAllPhotosFromSingleUser,
     getPhotoDetails: getPhotoDetails,
+    getPhotoLikes: getPhotoLikes,
     getSingleUserID: getSingleUserID,
     // loginUser: loginUser,
     registerUser: registerUser,
