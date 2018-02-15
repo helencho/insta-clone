@@ -1,4 +1,5 @@
 .App {
+  margin-top: 80px;
   text-align: center;
   font-size: 10px;
 }
@@ -30,6 +31,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/*--------------------------------------------*/
+/*               App.js topbar                */
+/*--------------------------------------------*/
 
 .topbar {
   background-color: #ffff;
@@ -143,16 +148,30 @@ font-family: 'Quicksand', sans-serif;
   background-color: rgb(255, 255, 255);
 }
 
-.loginBox{
+
+/*--------------------------------------------*/
+/*         Login/Register Page and Box        */
+/*--------------------------------------------*/
+.login-user-container,
+.register-user-container {
+  /* background-color: salmon; */
+  margin-top: 100px;
+  /* height: 100%; */
+}
+
+.loginBox,
+.registerBox {
   text-align: center;
-  width: 22.25%;
+  /* width: 22.25%; */
+  width: 300px;
   height: 45%;
   position: relative;
   background-color: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 1px;
-  margin-left: 38.4%;
-  margin-top: 5%;
+  /* margin-left: 38.4%; */
+  /* margin-top: 5%; */
+  margin: 0 auto;
   padding: 10px 0;
 }
 
@@ -177,7 +196,44 @@ font-family: 'Quicksand', sans-serif;
   font-weight: bold;
 }
 
-.usernameBox{
+.login-user-container form input[type='text'],
+.login-user-container form input[type='password'],
+.register-user-container form input[type='text'],
+.register-user-container form input[type='email'],
+.register-user-container form input[type='password'] {
+  background-color: rgb(250, 250, 250);
+  outline: none;
+  height: 38px;
+  width: 80%;
+  padding: 3%;
+  border: none;
+  border: 1px solid #efefef;
+  border-radius: 3px;
+  box-sizing: border-box;
+  flex-direction: row;
+  position: relative;
+  color: #262626;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.login-user-container form input[type='text']::placeholder,
+.login-user-container form input[type='password']::placeholder,
+.register-user-container form input[type='text']::placeholder,
+.register-user-container form input[type='email']::placeholder,
+.register-user-container form input[type='password']::placeholder {
+  color: rgb(200, 200, 200);
+}
+
+.login-user-container form input[type='text']:focus,
+.login-user-container form input[type='password']:focus,
+.register-user-container form input[type='text']:focus,
+.register-user-container form input[type='email']:focus,
+.register-user-container form input[type='password']:focus {
+  outline: 1px solid #b8b8b8;
+}
+
+/* .usernameBox{
   height: 38px;
   border-radius: 3px;
   box-sizing: border-box;
@@ -200,7 +256,7 @@ font-family: 'Quicksand', sans-serif;
   position: relative;
   width: 80%;
   border: 1px solid #efefef;
-}
+} */
 
 .messageSize{
   font-size: 12px;
@@ -208,14 +264,16 @@ font-family: 'Quicksand', sans-serif;
   text-align: center;
 }
 
-.smallerBox{
+.smallerBox {
   text-align: center;
-  width: 22.25%;
+  /* width: 22.25%; */
+  width: 300px;
   background-color: #fff;
   border: 1px solid #e6e6e6;
-  border-radius: 1px;
-  margin-left: 38.4%;
+  /* border-radius: 1px; */
+  /* margin-left: 38.4%; */
   top: 10px;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -224,18 +282,41 @@ font-family: 'Quicksand', sans-serif;
   color: #262626;
 }
 
+.getAppBox { 
+  /* width: 270px; */
+  text-align: center;
+  background-color: #fff;
+  width: 300px;
+  /* height: 130px; */
+  margin: 0 auto;
+  margin-top: 22px;
+  padding-bottom: 3%;
+  border: 1px solid rgba(255, 255, 255, 0);
+
+}
+
 .getTheApp{
   font-size: 14px;
   color: #262626;
   padding-top: 1.5%;
 }
 
-.appStore{
-  padding-right: .5%;
+.appStore-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
+.c4q-container {
+  padding-top: 3%;
+}
+
+/* .appStore{
+  padding-right: .5%;
+} */
+
 /* NewUserMain page */
-.registerBox{
+/* .registerBox{
   text-align: center;
   width: 22.25%;
   height: 45%;
@@ -246,9 +327,9 @@ font-family: 'Quicksand', sans-serif;
   margin-left: 38.4%;
   margin-top: 5%;
   padding: 10px 0;
-}
+} */
 
-.inputBoxes{
+/* .inputBoxes {
   height: 38px;
   border-radius: 3px;
   box-sizing: border-box;
@@ -258,9 +339,9 @@ font-family: 'Quicksand', sans-serif;
   position: relative;
   width: 80%;
   border: 1px solid #efefef;
-}
+} */
 
-.topSpacing1{
+/* .topSpacing1{
   top: 8px;
 }
 
@@ -274,7 +355,7 @@ font-family: 'Quicksand', sans-serif;
 
 .topSpacing4{
   top: 32px;
-}
+} */
 
 .messageColor{
   color: #999;
@@ -290,11 +371,11 @@ font-family: 'Quicksand', sans-serif;
 }
 /*****PROFILE PAGE********/
 
-.infoContainer{
+/* .infoContainer{
   display: flex;
 justify-content: center;
 
-}
+} */
 .userIMG{
   display: flex;
   justify-content: flex-start;

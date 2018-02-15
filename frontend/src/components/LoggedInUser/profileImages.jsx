@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Link, Switch } from "react-router-dom"
-import '../App.css'
+import './profile.css'
 import axios from "axios";
 
 
@@ -17,18 +17,19 @@ class ProfileImages extends React.Component {
         console.log(this.state)
 
         return (
-            <div>
+           
                 <div class='rowOfPics'> 
-                </div>
+              
                 
                     {this.props.images.map(img => (
-                        <figure id={img.photo_id}>
+                        <div className= 'image'id={img.photo_id}>
                         <Link to= {`photo/${img.photo_id}`}> 
                             <img  alt='img' src={img.photo_link} width='223' height='223'/>
                         </Link>
-                        </figure>
+                        </div>
                     ))}
-            </div>
+                    </div>
+          
         )
     }
 }
