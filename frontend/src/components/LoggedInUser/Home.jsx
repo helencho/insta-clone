@@ -141,10 +141,19 @@ class Home extends Component {
     }
 
 
-    toggleHeart = e => {
-        // 
+    likePhoto = e => {
+        const { loggedInAs } = this.state
+        let user_id = loggedInAs.user_id
+        let photo_id = e.target.name
+        console.log(photo_id)
     }
 
+    unlikePhoto = e => {
+        const { loggedInAs } = this.state
+        let user_id = loggedInAs.user_id
+        let photo_id = e.target.name
+        console.log(photo_id)
+    }
 
     render() {
         const { loggedInAs, followings, photoFeed } = this.state
@@ -153,7 +162,7 @@ class Home extends Component {
         return (
             <div className='homefeed-page-container'>
                 {photoFeed.length > 0 ?
-                    photoFeed.map((photo, index) => (
+                    photoFeed.map((photo) => (
                         <div className='homefeed-card-container'>
                             <div className='homefeed-card-meta'>
                                 <img src={photo.profile_pic} alt={`Picture`} className='homefeed-card-userprof' />
@@ -163,7 +172,7 @@ class Home extends Component {
                                 <img src={photo.photo_link} alt='Awesome photo' />
                             </div>
                             <div className='homefeed-card-heart'>
-                                {photo.liked ? <button className='homefeed-card-liked-button'></button> : <button className='homefeed-card-unliked-button'></button>}
+                                {photo.liked ? <button name={photo.photo_id} onClick={this.unlikePhoto} className='homefeed-card-liked-button'></button> : <button name={photo.photo_id} onClick={this.likePhoto} className='homefeed-card-unliked-button'></button>}
                             </div>
                             <div className='homefeed-card-likes'>
                                 <p>{photo.total_likes} likes</p>
