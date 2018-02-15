@@ -11,7 +11,6 @@ class Following extends Component {
 
 
 
-
     render() {
         const {allFollowing} = this.state
         console.log('HELLLLOOOO PRINCESS', allFollowing)
