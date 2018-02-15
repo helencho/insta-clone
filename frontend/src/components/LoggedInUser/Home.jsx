@@ -9,14 +9,16 @@ class Home extends Component {
         this.state = {
             loggedInAs: '',
             followings: [],
-            photoFeed: [],
-            liked: false,
-            // likedByUsers: []
+            photoFeed: []
         }
     }
 
     componentDidMount() {
         this.mountLoggedInUser()
+
+        // if(this.state.photoFeed.length > 0) {
+        //     this.checkIfUserLikesPhoto() 
+        // }
     }
 
     // Set loggedInAs as the current user logged in 
@@ -55,7 +57,7 @@ class Home extends Component {
 
     // Grab all photos posted by these users 
     getPhotosFromFollowing = () => {
-        const { followings } = this.state
+        const { loggedInAs, followings } = this.state
 
         // If user follows people 
         if (followings.length > 0) {
@@ -86,19 +88,86 @@ class Home extends Component {
                                     this.setState({
                                         photoFeed: [...this.state.photoFeed, singlePhotoToFeed]
                                     })
-                                    
+
                                 })
                                 .catch(err => {
                                     console.log(err)
                                 }) // End second ajax request 
+
+
+                            // Get details per photo 
+                            axios
+                                .get(`/users/p/${id}/details`)
+                                .then(res => {
+                                    let details = res.data.data
+                                    let userFound = details.find(item => item.liked_by_user_id === loggedInAs.user_id)
+                                    // console.log(userFound) 
+                                    if (userFound) {
+                                        // console.log('user liked photo')
+                                        singlePhotoToFeed.liked = true
+                                        // console.log(newPhoto)
+                                        this.setState({
+                                            photoFeed: [...this.state.photoFeed, singlePhotoToFeed]
+                                        })
+                                    } else {
+                                        singlePhotoToFeed.liked = false
+                                        this.setState({
+                                            photoFeed: [...this.state.photoFeed, singlePhotoToFeed]
+                                        })
+                                    }
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                }) // End third ajax request 
                         })
                     })
                     .catch(err => {
                         console.log(err)
-                    })
+                    }) // End first ajax request 
             })
 
         }
+    }
+
+    // checkIfUserLikesPhoto = () => {
+    //     const { loggedInAs, photoFeed } = this.state
+
+    //     // Map through each photo in photo feed 
+    //     photoFeed.map(photo => {
+    //         let newPhoto = { ...photo }
+    //         let id = photo.photo_id
+
+    //         // Get details per photo 
+    //         axios
+    //             .get(`/users/p/${id}/details`)
+    //             .then(res => {
+    //                 let details = res.data.data
+    //                 let userFound = details.find(item => item.liked_by_user_id === loggedInAs.user_id)
+    //                 // console.log(userFound) 
+    //                 if (userFound) {
+    //                     // console.log('user liked photo')
+    //                     newPhoto.liked = true
+    //                     // console.log(newPhoto)
+    //                     this.setState({
+    //                         photoFeed: [...this.state.photoFeed, newPhoto]
+    //                     })
+    //                 } else {
+    //                     newPhoto.liked = false
+    //                     this.setState({
+    //                         photoFeed: [...this.state.photoFeed, newPhoto]
+    //                     })
+    //                 }
+    //             })
+    //             .catch(err => {
+    //                 console.log(err)
+    //             })
+    //     })
+
+    // }
+
+
+    toggleHeart = e => {
+        // 
     }
 
 
