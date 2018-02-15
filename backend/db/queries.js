@@ -3,7 +3,7 @@ const db = pgp('postgres://localhost/instaclone')
 const authHelpers = require('../auth/helpers')
 const passport = require('../auth/local')
 
-// Information on all users 
+// Information on all users
 function getAllUsers(req, res, next) {
     db.any('SELECT * FROM users')
         .then((data) => {
@@ -19,7 +19,7 @@ function getAllUsers(req, res, next) {
         })
 }
 
-// Information on the single user, including username and password 
+// Information on the single user, including username and password
 // function getSingleUser(req, res, next) {
 //     db.one('SELECT * FROM users WHERE username=$1', [req.params.username])
 //         .then(data => {
@@ -152,7 +152,7 @@ function getAllPhotos(req, res, next) {
         })
 }
 
-// Information on photo, including caption and image url 
+// Information on photo, including caption and image url
 function getSinglePhoto(req, res, next) {
     db.one('SELECT photos.photo_id, photos.photo_link, photos.caption, users.user_id, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON users.user_id=photos.user_id WHERE photos.photo_id=$1',
         [req.params.id])
@@ -168,7 +168,7 @@ function getSinglePhoto(req, res, next) {
         })
 }
 
-// Information on users who liked the photo 
+// Information on users who liked the photo
 function getPhotoDetails(req, res, next) {
     db.any('SELECT photos.photo_id, users.user_id AS liked_by_user_id, users.username, users.profile_pic FROM photos JOIN likes ON photos.photo_id=likes.photo_id JOIN users ON likes.user_id=users.user_id WHERE photos.photo_id=$1;',
         [req.params.id])
@@ -207,7 +207,21 @@ function getPhotoDetails(req, res, next) {
 //     })(req, res, next)
 // }
 
-// Registers user using email, username, password, fullname 
+function addUserLikes(req, res, next) {
+  db.none('INSERT INTO likes (user_id, photo_id) VALUES ($1, $2)',
+    [req.params.user_id, req.params.photo_id])
+    .then(() => {
+      res.status(200).json({
+        message: 'Liked photo'
+      })
+    })
+    .catch(err => {
+      return next(err)
+    })
+}
+
+
+// Registers user using email, username, password, fullname
 function registerUser(req, res, next) {
     let hash = authHelpers.createHash(req.body.password)
     db.none('INSERT INTO users (username, password_digest, email_add, fullname) VALUES ($1, $2, $3, $4)',
