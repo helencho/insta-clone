@@ -81,12 +81,14 @@ class Home extends Component {
                                 .get(`/users/p/${id}/likes`)
                                 .then(res => {
                                     let detailData = res.data.data
-                                    // let { likedByUsers } = this.state
+
+                                    // Filter through state to drop duplicates 
+                                    let newPhotoFeed = this.state.photoFeed.filter(photo => photo.photo_id !== id)
                                     singlePhotoToFeed.total_likes = detailData.total_likes
 
-                                    // Add photo information to photo feed 
+                                    // Add total liked information to photo feed 
                                     this.setState({
-                                        photoFeed: [...this.state.photoFeed, singlePhotoToFeed]
+                                        photoFeed: [...newPhotoFeed, singlePhotoToFeed]
                                     })
 
                                 })
@@ -100,19 +102,28 @@ class Home extends Component {
                                 .get(`/users/p/${id}/details`)
                                 .then(res => {
                                     let details = res.data.data
+
+                                    // Find user's name in liked by details 
                                     let userFound = details.find(item => item.liked_by_user_id === loggedInAs.user_id)
-                                    // console.log(userFound) 
+
+                                    // Filter through state to drop duplicates 
+                                    let newPhotoFeed = this.state.photoFeed.filter(photo => photo.photo_id !== id)
+
+
+                                    // If user is found, toggle liked to true for photo 
                                     if (userFound) {
-                                        // console.log('user liked photo')
                                         singlePhotoToFeed.liked = true
-                                        // console.log(newPhoto)
+
+                                        // Add photo liked information to photo feed 
                                         this.setState({
-                                            photoFeed: [...this.state.photoFeed, singlePhotoToFeed]
+                                            photoFeed: [...newPhotoFeed, singlePhotoToFeed]
                                         })
+
+                                        // If user isn't found, toggle liked to false 
                                     } else {
                                         singlePhotoToFeed.liked = false
                                         this.setState({
-                                            photoFeed: [...this.state.photoFeed, singlePhotoToFeed]
+                                            photoFeed: [...newPhotoFeed, singlePhotoToFeed]
                                         })
                                     }
                                 })
@@ -128,42 +139,6 @@ class Home extends Component {
 
         }
     }
-
-    // checkIfUserLikesPhoto = () => {
-    //     const { loggedInAs, photoFeed } = this.state
-
-    //     // Map through each photo in photo feed 
-    //     photoFeed.map(photo => {
-    //         let newPhoto = { ...photo }
-    //         let id = photo.photo_id
-
-    //         // Get details per photo 
-    //         axios
-    //             .get(`/users/p/${id}/details`)
-    //             .then(res => {
-    //                 let details = res.data.data
-    //                 let userFound = details.find(item => item.liked_by_user_id === loggedInAs.user_id)
-    //                 // console.log(userFound) 
-    //                 if (userFound) {
-    //                     // console.log('user liked photo')
-    //                     newPhoto.liked = true
-    //                     // console.log(newPhoto)
-    //                     this.setState({
-    //                         photoFeed: [...this.state.photoFeed, newPhoto]
-    //                     })
-    //                 } else {
-    //                     newPhoto.liked = false
-    //                     this.setState({
-    //                         photoFeed: [...this.state.photoFeed, newPhoto]
-    //                     })
-    //                 }
-    //             })
-    //             .catch(err => {
-    //                 console.log(err)
-    //             })
-    //     })
-
-    // }
 
 
     toggleHeart = e => {
@@ -188,7 +163,7 @@ class Home extends Component {
                                 <img src={photo.photo_link} alt='Awesome photo' />
                             </div>
                             <div className='homefeed-card-heart'>
-                                <i class="far fa-heart"></i>
+                                {photo.liked ? <button className='homefeed-card-liked-button'></button> : <button className='homefeed-card-unliked-button'></button>}
                             </div>
                             <div className='homefeed-card-likes'>
                                 <p>{photo.total_likes} likes</p>
