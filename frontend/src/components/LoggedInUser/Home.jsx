@@ -11,7 +11,7 @@ class Home extends Component {
             followings: [],
             photoFeed: [],
             liked: false,
-            likedByUsers: []
+            // likedByUsers: []
         }
     }
 
@@ -56,8 +56,11 @@ class Home extends Component {
     // Grab all photos posted by these users 
     getPhotosFromFollowing = () => {
         const { followings } = this.state
+
+        // If user follows people 
         if (followings.length > 0) {
-            // Map through each user 
+
+            // Map through each following user 
             followings.map(user => {
 
                 // Get photos by current user 
@@ -66,13 +69,28 @@ class Home extends Component {
                     .then(res => {
                         let photos = res.data.data
 
-                        // add to photoFeed using spread operator
-                        this.setState({
-                            photoFeed: photos
-                        }, () => {
+                        // Map through each photo by user 
+                        photos.map(singlePhoto => {
+                            let id = singlePhoto.photo_id
+                            let singlePhotoToFeed = { ...singlePhoto }
 
-                            // Then get all users who like each photo 
-                            this.usersWhoLikePhoto()
+                            // Get likes per photo 
+                            axios
+                                .get(`/users/p/${id}/likes`)
+                                .then(res => {
+                                    let detailData = res.data.data
+                                    // let { likedByUsers } = this.state
+                                    singlePhotoToFeed.total_likes = detailData.total_likes
+
+                                    // Add photo information to photo feed 
+                                    this.setState({
+                                        photoFeed: [...this.state.photoFeed, singlePhotoToFeed]
+                                    })
+                                    
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                }) // End second ajax request 
                         })
                     })
                     .catch(err => {
@@ -82,42 +100,16 @@ class Home extends Component {
 
         }
     }
-    // Map through liked by users 
-    // If photo_id matches photo_id, 
-    // Count the total 
-    // Render into ___ likes 
 
-    usersWhoLikePhoto = () => {
-        // Get request to grab information on who liked the photo 
-        const { photoFeed } = this.state
-
-        // Map through each photo information 
-        photoFeed.map(photo => {
-            let id = photo.photo_id
-
-            // Get detailed information on each photo 
-            axios
-                .get(`/users/p/${id}/details`)
-                .then(res => {
-                    let detailData = res.data.data
-                    this.setState({
-                        likedByUsers: [...this.state.likedByUsers, detailData]
-                    })
-                })
-                .catch(err => {
-                    console.log(err)
-                }) // End ajax request 
-        })
-    }
 
     render() {
-        const { loggedInAs, followings, photoFeed, likedByUsers } = this.state
+        const { loggedInAs, followings, photoFeed } = this.state
         console.log(this.state)
 
         return (
             <div className='homefeed-page-container'>
                 {photoFeed.length > 0 ?
-                    photoFeed.map(photo => (
+                    photoFeed.map((photo, index) => (
                         <div className='homefeed-card-container'>
                             <div className='homefeed-card-meta'>
                                 <img src={photo.profile_pic} alt={`Picture`} className='homefeed-card-userprof' />
@@ -130,15 +122,10 @@ class Home extends Component {
                                 <i class="far fa-heart"></i>
                             </div>
                             <div className='homefeed-card-likes'>
-                                {likedByUsers.map(item => {
-                                    if (item.photo_id === photo.photo_id) {
-                                        // do this 
-                                    }
-                                })}
-                                <p>___ likes</p>
+                                <p>{photo.total_likes} likes</p>
                             </div>
                             <div className='homefeed-card-caption'>
-                                <p>{photo.caption}</p>
+                                <p><span className='homefeed-caption-username'>{photo.username}</span> {photo.caption}</p>
                             </div>
                         </div>
                     ))
