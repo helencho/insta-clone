@@ -37,8 +37,8 @@ function getAllUsers(req, res, next) {
 //Updating a single user's username, email, full name, profile ic, and user description
 
 function editUser(req, res, next) {
-    db
-        .any('UPDATE users SET username = ${newName}, email_add = ${newEmail}, fullname = ${newFullname}, profile_pic = ${newProfile_pic}, user_description = ${newDescription} WHERE id = ${id}',req.body)
+    db.any('UPDATE users SET username = $1, email_add = $2, fullname = $3, profile_pic = $4, user_description = $5 WHERE user_id = $6',
+    [req.body.newName, req.body.newEmail, req.body.newFullname, req.body.newProfile_pic, req.body.newDescription, req.params.id])
         .then(function (data) {
             console.log("data:", data, "req.body:", req.body)
             res.status(200)
