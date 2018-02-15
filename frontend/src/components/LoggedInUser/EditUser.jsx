@@ -71,7 +71,7 @@ class EditUser extends React.Component {
                         New email:
                         <input type="text" name="email" placeholder={this.props.user.email_add} onChange={this.handleInputChange}/>
                     </label>
-                    <input type="submit" value="Submit"/>
+                    <input type="submit" value="Submit" disabled={!username && !fullname && !profilepicUrl && !userdescription && !email }/>
                 </form>
             </div>
         )
