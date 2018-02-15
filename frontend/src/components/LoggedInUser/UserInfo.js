@@ -96,15 +96,15 @@ getNumberOfPosts = () =>{
                     <div className="usernameDiv">
                         <h1 id="usernameH1">{userName}</h1>
                     </div>
-                    <div className="userImageContainer">
-                        <div className="containerForBtn">
-                            <div className="divForBtn">
-                                <button>
+                    {/* <div className="userImageContainer"> */}
+                        {/* <div className="containerForBtn"> */}
+                            {/* <div className="divForBtn"> */}
+                                <button id="userImageButton">
                                     <img className="userIMG" src={userImageURL} alt={`Image of ${userName}`}/>
                                 </button>
-                            </div>
-                        </div>
-                    </div>
+                            {/* </div> */}
+                        {/* </div> */}
+                    {/* </div> */}
                     <div className="containerForNumberStats">
                         <div className="numOfPosts">{"Posts"} {numOfPosts}</div>
                         <div className="numOfFollowers">{"Followers"} {numOfFollowers}</div>

@@ -35,10 +35,10 @@ function getAllUsers(req, res, next) {
 // }
 
 //Updating a single user's username, email, full name, profile ic, and user description
-function updateSingleUser(req, res, next) {
+
+function editUser(req, res, next) {
     db
-        .none('UPDATE users SET users.username = ${username}, users.email_add = ${email_add}, users.fullname = ${fullname}, users.profile_pic = ${profile_pic}, users.user_description = ${user_description} WHERE users.username = ${username}',
-            req.body)
+        .none('UPDATE users SET username = ${newName}, email_add = ${newEmail}, fullname = ${newFullname}, profile_pic = ${newProfile_pic}, user_description = ${newDescription} WHERE id = ${id}',req.body)
         .then(function (data) {
             console.log("data:", data, "req.body:", req.body)
             res.status(200)
@@ -52,9 +52,11 @@ function updateSingleUser(req, res, next) {
             return next(err);
         });
 }
+
+
 //Get all the photos from a single user
 function getAllPhotosFromSingleUser(req, res, next) {
-    db.any('SELECT photos.photo_id, photos.user_id, photos.photo_link, photos.caption, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON photos.user_id=users.user_id WHERE photos.user_id=$1;',
+    db.any('SELECT photos.photo_id, photos.user_id, photos.photo_link, photos.caption, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON photos.user_id=users.user_id WHERE photos.user_id=$1',
         [req.params.id])
         .then(data => {
         console.log("Data from backend single user photo:", data)
@@ -220,7 +222,7 @@ function logoutUser(req, res, next) {
 module.exports = {
     getAllUsers: getAllUsers,
     // getSingleUser: getSingleUser,
-    updateSingleUser: updateSingleUser,
+    editUser: editUser,
     getUserFollowing: getUserFollowing,
     getUserFollowers: getUserFollowers,
     getAllPhotos: getAllPhotos,

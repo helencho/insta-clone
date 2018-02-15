@@ -302,9 +302,12 @@ width: 130px;
 height: 130px;
 border-radius: 5em;
 }
-.userImageContainer{
+.userImageContainer, .containerForBtn{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-content: space-between;
+}
+#userImageButton{
+  border-radius: 10em;
 }
