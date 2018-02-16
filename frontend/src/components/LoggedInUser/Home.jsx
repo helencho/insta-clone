@@ -138,14 +138,27 @@ class Home extends Component {
     }
 
 
-    likePhoto = e => {
+    favePhoto = e => {
         const { loggedInAs } = this.state
         let user_id = loggedInAs.user_id
         let photo_id = e.target.name
         console.log(photo_id)
+
+        // axios
+        //     .post(`/users/p/${photo_id}/faved`, {
+        //         user_id: user_id,
+        //         photo_id: photo_id
+        //     })
+        //     .then(res => {
+        //         // console.log(res.data)
+        //         this.getPhotosFromFollowing()
+        //     })
+        //     .then(err => {
+        //         console.log(err)
+        //     })
     }
 
-    unlikePhoto = e => {
+    unfavePhoto = e => {
         const { loggedInAs } = this.state
         let user_id = loggedInAs.user_id
         let photo_id = e.target.name
@@ -169,7 +182,7 @@ class Home extends Component {
                                 <img src={photo.photo_link} alt='Awesome photo' />
                             </div>
                             <div className='homefeed-card-heart'>
-                                {photo.liked ? <button name={photo.photo_id} onClick={this.unlikePhoto} className='homefeed-card-liked-button'></button> : <button name={photo.photo_id} onClick={this.likePhoto} className='homefeed-card-unliked-button'></button>}
+                                {photo.liked ? <button name={photo.photo_id} onClick={this.unfavePhoto} className='homefeed-card-liked-button'></button> : <button name={photo.photo_id} onClick={this.favePhoto} className='homefeed-card-unliked-button'></button>}
                             </div>
                             <div className='homefeed-card-likes'>
                                 <p>{photo.total_likes} likes</p>
