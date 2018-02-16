@@ -23,7 +23,7 @@ class ProfileImages extends React.Component {
                 </div> */}
                 <div className='rowOfPics'>
                     {this.props.images.map(img => (
-                        <div className='grid-image-container' id={img.photo_id}>
+                        <div className='grid-image-single-container' id={img.photo_id}>
                             <Link to={`photo/${img.photo_id}`}>
                                 <img className='grid-image-single' alt='img' src={img.photo_link} />
                                 {/* <img className='allimages' alt='img' src={img.photo_link} width='275' height='250' /> */}
