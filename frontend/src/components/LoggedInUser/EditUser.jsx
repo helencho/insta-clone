@@ -75,25 +75,25 @@ class EditUser extends React.Component {
     <form className="form" id="form1" onSubmit={this.submitForm}>
       
       <p className="name">
-        <input name="username" type="text" className="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Full Name" id="username" />
+        <input name="username" type="text" className="validate[required,custom[onlyLetter],length[0,100]] feedback-input editInput" placeholder="Full Name" id="username" />
       </p>
       
       <p className="fullname">
-        <input name="fullname" type="text" className="validate[required,custom[email]] feedback-input" id="email" placeholder="Username" />
+        <input name="fullname" type="text" className="validate[required,custom[email]] feedback-input editInput" id="email" placeholder="Username" />
       </p>
       <p className="profilepicUrl">
-        <input name="profilepicUrl" type="text" className="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
+        <input name="profilepicUrl" type="text" className="validate[required,custom[email]] feedback-input editInput" id="email" placeholder="Email" />
       </p>
       <p className="email">
-        <input name="email" type="text" className="validate[required,custom[email]] feedback-input" id="email" placeholder="New Profile Pic" />
+        <input name="email" type="text" className="validate[required,custom[email]] feedback-input editInput" id="email" placeholder="New Profile Pic" />
       </p>
       
       <p className="text">
-        <textarea name="userdescription" className="validate[required,length[6,300]] feedback-input" id="comment" placeholder="User Description"></textarea>
+        <textarea name="userdescription" className="validate[required,length[6,300]] feedback-input editInput" id="comment" placeholder="User Description"></textarea>
       </p>
       
       
-      <div className="submit">
+      <div className="submit-BTN">
         <input type="submit" id="button-blue" value="Submit"/>
         <div className="ease"></div>
       </div>
