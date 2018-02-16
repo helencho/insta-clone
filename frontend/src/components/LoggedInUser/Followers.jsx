@@ -4,40 +4,41 @@ import "../Followers.css";
 import Profile from "./profile";
 
 class Followers extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      allFollowing: this.props.followers
-    };
-  }
 
-  onClick = user => {
-    return <Profile user={user} />;
-  };
+    constructor(props) {
+        super(props);
+        this.state = {
+            allFollowing: this.props.followers
+        }
+    }
 
-  render() {
-    const { allFollowing } = this.state;
-    console.log("HELLLLOOOO PRINCESS", allFollowing);
-    return (
-      <div className="followers-container">
-        <div className="followers-title">Followers</div>
 
-        {/* <div className="follower-list-box"> */}
-          {this.props.followers.map(user => (
-            <div className="users" id={user.follower_id}>
-              <div  onClick={this.onClick(user)}>
-                {/* <Link to={`/users/u/${user.follower_id}/profile`} > */}
-                <div >
-                  <img
-                    className="follower-profile-pic"
-                    src={user.profile_pic}
-                  />
-                </div>
+    onClick = (user) =>{
+        return <Profile user={user} />
+    }
+
+
+
+    render() {
+        const { allFollowing } = this.state
+        console.log('HELLLLOOOO PRINCESS', allFollowing)
+        return (
+            <div className="followers-container">
+                <div className="followers-title">Followers</div>
+
+
                 <div>
-                  <h2 className="follower-username">{user.username} </h2>
-                </div>
-                {/* </Link> */}
-
+                    {this.props.followers.map(user => (
+                        <div className='users' id={user.follower_id}>
+                            <div onClick={this.onClick(user)} >
+                                <Link to={`/users/u/${user.follower_id}/profile`} >
+                                    <div class='FollowerProfilePic'>
+                                        <img src={user.profile_pic} />
+                                    </div>
+                                    <div className='FollowerUsername'>
+                                        <h2>{user.username} </h2>
+                                    </div>
+                                </Link>
                 <div>
                   <h2 className="follower-fullname"> {user.fullname} </h2>
                 </div>
