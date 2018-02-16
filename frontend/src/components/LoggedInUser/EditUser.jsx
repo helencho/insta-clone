@@ -70,65 +70,39 @@ class EditUser extends React.Component {
             editing
         } = this.state;
             return (
-                <div className="mainContainer">                
-                <div className="newInfoForm">                
-                    <form onSubmit={this.submitForm}>
-                        <label>
-                            New username:
-                            <input
-                                className="formInput"
-                                type="text"
-                                name="username"
-                                placeholder={this.props.user.username}
-                                onChange={this.handleInputChange}/>
-                        </label>
-                        <label>
-                            New full name:
-                            <input
-                            className="formInput"
-                                type="text"
-                                name="fullname"
-                                placeholder={this.props.user.fullname}
-                                onChange={this.handleInputChange}/>
-                        </label>
-                        <label>
-                            New profile pic:
-                            <input
-                            className="formInput"
-                                type="text"
-                                name="profilepicUrl"
-                                placeholder="Enter url here."
-                                onChange={this.handleInputChange}/>
-                        </label>
-                        <label>
-                            New user description:
-                            <input
-                            className="formInput"
-                                type="text"
-                                name="userdescription"
-                                placeholder={this.props.user_description}onChange={this.handleInputChange}/>
-                        </label>
-                        <label>
-                            New email:
-                            <input
-                            className="formInput"
-                                type="text"
-                                name="email"
-                                placeholder={this.props.user.email_add}
-                                onChange={this.handleInputChange}/>
-                        </label>
-                        <input
-                        className="formInput"
-                            type="submit"
-                            value="Submit"
-                            disabled={!username && !fullname && !profilepicUrl && !userdescription && !email}/>
-                    </form>
-                    {/* {this redirects to the user's profile page after hitting submit.} */}
-                    {editing && (
+                <div id="form-main">
+  <div id="form-div">
+    <form className="form" id="form1" onSubmit={this.submitForm}>
+      
+      <p className="name">
+        <input name="username" type="text" className="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Full Name" id="username" />
+      </p>
+      
+      <p className="fullname">
+        <input name="fullname" type="text" className="validate[required,custom[email]] feedback-input" id="email" placeholder="Username" />
+      </p>
+      <p className="profilepicUrl">
+        <input name="profilepicUrl" type="text" className="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
+      </p>
+      <p className="email">
+        <input name="email" type="text" className="validate[required,custom[email]] feedback-input" id="email" placeholder="New Profile Pic" />
+      </p>
+      
+      <p className="text">
+        <textarea name="userdescription" className="validate[required,length[6,300]] feedback-input" id="comment" placeholder="User Description"></textarea>
+      </p>
+      
+      
+      <div className="submit">
+        <input type="submit" id="button-blue" value="Submit"/>
+        <div className="ease"></div>
+      </div>
+    </form>
+    {editing && (
           <Redirect to={'profile/'}/>
         )}
-                </div>
-                </div>
+  </div>
+  </div>
             )
     }
 };
