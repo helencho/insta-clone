@@ -43,7 +43,7 @@ class Followers extends Component {
                                     
                                         <p> <h2 className="follower-fullname"> {user.fullname} </h2> </p>
                                     </div>
-                                    <button> Follow </button>
+                                    <button className="button-follow"> Follow </button>
                                   
                             </div>
                         </div>
