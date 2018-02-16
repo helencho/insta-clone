@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import Profile from './profile'
 
 class Following extends Component {
     constructor(props){
@@ -10,6 +11,9 @@ class Following extends Component {
     }
 
 
+    onClick = (user) =>{
+        return <Profile user={user} />
+    }
 
     render() {
         const {allFollowing} = this.state
@@ -20,7 +24,7 @@ class Following extends Component {
                 <div>
                     {this.props.following.map(user => (
                         <div className='users' id= {user.following_id}>
-                        <div>
+                        <div onClick={this.onClick(user)}>
                             <Link to ={`/users/u/${user.following_id}/profile`} >
                             <div class='FollowingProfilePic'>
                             <img src={user.profile_pic} />

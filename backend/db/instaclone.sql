@@ -55,6 +55,8 @@ INSERT INTO photos (user_id, photo_link, caption)
     (4, 'https://i.imgur.com/BumKSM3.jpg', 'Doggo'),
     (4, 'https://i.imgur.com/rfnizG7.jpg', 'Dogs'),
     (4, 'https://i.imgur.com/PqduKpK.jpg', 'Dogz');
+    
+    
 
 
 CREATE TABLE likes (

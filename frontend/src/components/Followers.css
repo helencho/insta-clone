@@ -1,5 +1,6 @@
 .followers-container {
     display: flex;
+    flex-wrap:wrap;
     width: 600px;
     height: 600px;
     border: 1.3px solid rgb(230, 230, 230);
@@ -25,7 +26,17 @@
     width: 100%;
 }
 
-.each-follower-box{
+/* .follower-list-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+} */
+/* .followers-title, .each-follower-box{
+    display:flex;
+    flex-wrap:wrap;
+} */
+
+/* .each-follower-box{
     font-size: 14px;
     font-weight: 600;
     line-height: 18px;
@@ -33,4 +44,36 @@
     padding-left: 5px;
     margin-left: 5px;
     cursor: pointer;
+    float: left;
+    width:900px
+} */
+
+.follower-profile-pic{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.follower-username{
+    font-size: 14px;
+    color: #262626;
+    font-weight: 600;
+    line-height: 18px;
+    text-decoration: none;
+}
+
+.follower-fullname{
+    color: #999;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.users{
+    display: flex;
+    justify-content: flex-start;
+}
+.follower-list-box{
+    margin-top: -43%;
+    margin-left:20px
 }

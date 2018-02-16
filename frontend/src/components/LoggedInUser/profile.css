@@ -16,7 +16,7 @@
     color: black;
 }
 
-  .userImageContainer,.suggested, .usernameDiv, .Followingbtn,.userStats, .containerForNumberStats{
+  .suggested, .usernameDiv, .Followingbtn,.userStats, .containerForNumberStats{
       display:flex;
       flex-wrap:wrap;
   }

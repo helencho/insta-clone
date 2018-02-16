@@ -111,9 +111,9 @@ class UserInfo extends React.Component {
                     <div className="userImageContainer">
                         <div className="containerForBtn">
                             <div className="divForBtn">
-                               <Link to={`edit`}> <button>
+                               <Link to={`edit`}> 
                                     <img className="userIMG" src={userImageURL} alt={`Image of ${userName}`} />
-                                </button> </Link>
+                                </Link>
                             </div>
                         </div>
                     </div>
