@@ -1,17 +1,20 @@
+/*--------------------------------------------*/
+/*                Profile Page                */
+/*--------------------------------------------*/
+
 .infoContainer{
     display: flex;
-  justify-content: center;
-  margin-top:61px;
-  margin-left:15%;
-  padding-top:20px;
-  margin-bottom:44px;
-  width: 70%;
+    justify-content: center;
+    margin-top:61px;
+    margin-left:15%;
+    padding-top:20px;
+    margin-bottom:44px;
+    width: 70%;
+}
 
-  }
-  #usernameH1{
-      color:black
-
-  }
+#usernameH1{
+    color: black;
+}
 
   .userImageContainer,.suggested, .usernameDiv, .Followingbtn,.userStats, .containerForNumberStats{
       display:flex;
@@ -41,30 +44,12 @@
       margin-left:10px
   }
 
-  .rowOfPics{
-      width:855px;
-      margin-left:15%
-  }
-  .image{
-      width:223px;
-      margin-left:40px;
-      margin-top:20px;
-      margin-right:22px;
-    display:inline-block;
-      /* display:flex;
-      flex-wrap:wrap; */
-  }
-
-  .allimages{
-      border: 1px solid grey;
-      margin-left: -40px;
-  }
-.nameAndBio{
-    width:613px;
-    font-size:12px
+  .nameAndBio {
+    width: 613px;
+    font-size: 12px;
 }
 
-.name{
+.name {
     width:543px;
     margin-left:70px;
 }
@@ -119,3 +104,65 @@ h3,span{
     margin-top: 17px;
 }
 
+
+/*--------------------------------------------*/
+/*         Profile Page Image Grid            */
+/*--------------------------------------------*/
+
+.rowOfPics {
+    width: 935px;
+    /* margin-left: 15%; */
+    display: flex;
+    flex-wrap: wrap;
+    background-color: salmon;
+    justify-content: space-between;
+    margin: 0 auto;
+    /* text-align: center; */
+
+}
+
+.grid-image-container {
+    width: 300px;
+    height: 300px;
+    background-color: aquamarine;
+    transition: 0.2s all;
+    /* width: 300px;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-right: 22px;
+    display:inline-block; */
+      /* display:flex;
+      flex-wrap:wrap; */
+}
+
+.grid-image-single {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid grey; */
+    /* margin-left: -40px; */
+}
+
+@media screen and (max-width: 1010px) {
+    .rowOfPics {
+        width: 90%;
+    }
+
+    .grid-image-container {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .grid-image-container {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 698px) {
+    .grid-image-container {
+        width: 100%;
+        height: auto;
+    }
+}

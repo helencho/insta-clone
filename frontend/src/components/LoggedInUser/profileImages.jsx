@@ -11,29 +11,28 @@ class ProfileImages extends React.Component {
             images: this.props.images
         }
     }
-       
+
     render() {
         const { images } = this.state
         console.log(this.state)
 
         return (
             <div>
-            <div className='suggested'>
-            <h2 className='suggestedFollow'> Suggested </h2>
-            </div>
-                <div class='rowOfPics'> 
-              
-                
+                {/* <div className='suggested'>
+                    <h2 className='suggestedFollow'> Suggested </h2>
+                </div> */}
+                <div className='rowOfPics'>
                     {this.props.images.map(img => (
-                        <div className= 'image'id={img.photo_id}>
-                        <Link to= {`photo/${img.photo_id}`}> 
-                            <img  class='allimages' alt='img' src={img.photo_link} width='275' height='250'/>
-                        </Link>
+                        <div className='grid-image-container' id={img.photo_id}>
+                            <Link to={`photo/${img.photo_id}`}>
+                                <img className='grid-image-single' alt='img' src={img.photo_link} />
+                                {/* <img className='allimages' alt='img' src={img.photo_link} width='275' height='250' /> */}
+                            </Link>
                         </div>
                     ))}
-                    </div>
-                    </div>
-          
+                </div>
+            </div>
+
         )
     }
 }
