@@ -207,17 +207,30 @@ function getPhotoDetails(req, res, next) {
 //     })(req, res, next)
 // }
 
+// function addUserLikes(req, res, next) {
+//     db.none('INSERT INTO likes (user_id, photo_id) VALUES ($1, $2);',
+//         [req.params.userid, req.params.id])
+//         .then(() => {
+//             res.status(200).json({
+//                 message: 'Liked photo'
+//             })
+//         })
+//         .catch(err => {
+//             return next(err)
+//         })
+// }
+
 function addUserLikes(req, res, next) {
-  db.none('INSERT INTO likes (user_id, photo_id) VALUES ($1, $2)',
-    [req.params.user_id, req.params.photo_id])
-    .then(() => {
-      res.status(200).json({
-        message: 'Liked photo'
-      })
-    })
-    .catch(err => {
-      return next(err)
-    })
+    db.none('INSERT INTO likes (user_id, photo_id) VALUES ($1, $2);',
+        [req.body.user_id, req.body.photo_id])
+        .then(() => {
+            res.status(200).json({
+                message: 'Liked photo'
+            })
+        })
+        .catch(err => {
+            return next(err)
+        })
 }
 
 
@@ -261,6 +274,7 @@ module.exports = {
     getPhotoLikes: getPhotoLikes,
     getSingleUserID: getSingleUserID,
     // loginUser: loginUser,
+    addUserLikes: addUserLikes,
     registerUser: registerUser,
     logoutUser: logoutUser
 }
