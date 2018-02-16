@@ -16,9 +16,6 @@ class Home extends Component {
     componentDidMount() {
         this.mountLoggedInUser()
 
-        // if(this.state.photoFeed.length > 0) {
-        //     this.checkIfUserLikesPhoto() 
-        // }
     }
 
     // Set loggedInAs as the current user logged in 
