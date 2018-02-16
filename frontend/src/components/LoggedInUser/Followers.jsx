@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import "../Followers.css"
-import Profile from './profile'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "../Followers.css";
+import Profile from "./profile";
 
 class Followers extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -38,17 +39,16 @@ class Followers extends Component {
                                         <h2>{user.username} </h2>
                                     </div>
                                 </Link>
-
-                                <div className='FollowerFullName'>
-                                    <h2> {user.fullname} </h2>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                <div>
+                  <h2 className="follower-fullname"> {user.fullname} </h2>
                 </div>
+              </div>
             </div>
-        )
-    }
+          ))}
+        {/* </div> */}
+      </div>
+    );
+  }
 }
 
 export default Followers;
