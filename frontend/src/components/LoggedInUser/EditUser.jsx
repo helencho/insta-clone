@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
+import '../App.css';
 
 class EditUser extends React.Component {
     constructor(props) {
@@ -68,13 +69,14 @@ class EditUser extends React.Component {
             email,
             editing
         } = this.state;
-        // if (!editing) {
             return (
-                <div>
+                <div className="mainContainer">                
+                <div className="newInfoForm">                
                     <form onSubmit={this.submitForm}>
                         <label>
                             New username:
                             <input
+                                className="formInput"
                                 type="text"
                                 name="username"
                                 placeholder={this.props.user.username}
@@ -83,6 +85,7 @@ class EditUser extends React.Component {
                         <label>
                             New full name:
                             <input
+                            className="formInput"
                                 type="text"
                                 name="fullname"
                                 placeholder={this.props.user.fullname}
@@ -91,6 +94,7 @@ class EditUser extends React.Component {
                         <label>
                             New profile pic:
                             <input
+                            className="formInput"
                                 type="text"
                                 name="profilepicUrl"
                                 placeholder="Enter url here."
@@ -99,6 +103,7 @@ class EditUser extends React.Component {
                         <label>
                             New user description:
                             <input
+                            className="formInput"
                                 type="text"
                                 name="userdescription"
                                 placeholder={this.props.user_description}onChange={this.handleInputChange}/>
@@ -106,23 +111,25 @@ class EditUser extends React.Component {
                         <label>
                             New email:
                             <input
+                            className="formInput"
                                 type="text"
                                 name="email"
                                 placeholder={this.props.user.email_add}
                                 onChange={this.handleInputChange}/>
                         </label>
                         <input
+                        className="formInput"
                             type="submit"
                             value="Submit"
                             disabled={!username && !fullname && !profilepicUrl && !userdescription && !email}/>
                     </form>
+                    {/* {this redirects to the user's profile page after hitting submit.} */}
                     {editing && (
           <Redirect to={'profile/'}/>
         )}
                 </div>
+                </div>
             )
-        // } 
-        
     }
 };
 export default EditUser

@@ -393,3 +393,22 @@ border-radius: 5em;
 .userIMG{
   border-radius: 50%;
 }
+
+/****************user info*/
+.newInfoForm{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: solid 2px black;
+}
+.formInput{
+  display: flex;
+  color: blue;
+  justify-content: center;
+
+}
+.mainContainer{
+  display: flex;
+  justify-content: center;
+  font-size: 2.5em;
+}

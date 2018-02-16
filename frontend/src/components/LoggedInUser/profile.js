@@ -59,7 +59,7 @@ class Profile extends React.Component {
    
     render() {
         const { images,user, userID, userPhoto } = this.state
-
+        // this.forceUpdate()
 
         // console.log("single photo info", SinglePhoto.authorUsername)
         return (
