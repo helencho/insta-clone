@@ -1,17 +1,20 @@
+/*--------------------------------------------*/
+/*                Profile Page                */
+/*--------------------------------------------*/
+
 .infoContainer{
     display: flex;
-  justify-content: center;
-  margin-top:61px;
-  margin-left:15%;
-  padding-top:20px;
-  margin-bottom:44px;
-  width: 70%;
+    justify-content: center;
+    margin-top:61px;
+    margin-left:15%;
+    padding-top:20px;
+    margin-bottom:44px;
+    width: 70%;
+}
 
-  }
-  #usernameH1{
-      color:black
-
-  }
+#usernameH1{
+    color: black;
+}
 
   .suggested, .usernameDiv, .Followingbtn,.userStats, .containerForNumberStats{
       display:flex;
@@ -41,30 +44,12 @@
       margin-left:10px
   }
 
-  .rowOfPics{
-      width:855px;
-      margin-left:15%
-  }
-  .image{
-      width:223px;
-      margin-left:40px;
-      margin-top:20px;
-      margin-right:22px;
-    display:inline-block;
-      /* display:flex;
-      flex-wrap:wrap; */
-  }
-
-  .allimages{
-      border: 1px solid grey;
-      margin-left: -40px;
-  }
-.nameAndBio{
-    width:613px;
-    font-size:12px
+  .nameAndBio {
+    width: 613px;
+    font-size: 12px;
 }
 
-.name{
+.name {
     width:543px;
     margin-left:70px;
 }
@@ -119,3 +104,38 @@ h3,span{
     margin-top: 17px;
 }
 
+
+/*--------------------------------------------*/
+/*         Profile Page Image Grid            */
+/*--------------------------------------------*/
+
+.rowOfPics {
+    width: 955px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    /* height: 100%; */
+}
+
+.grid-image-single-container {
+    width: 30%;
+    padding-bottom: 30%;
+    background-color: rgb(255, 255, 255);
+    transition: 0.2s all;
+    overflow: hidden;
+    margin-bottom: 3%;
+    position: relative;
+}
+
+.grid-image-single {
+    position: absolute;
+    height: 100%;
+    width: auto;
+}
+
+@media screen and (max-width: 1060px) {
+    .rowOfPics {
+        width: 90%;
+    }
+}
