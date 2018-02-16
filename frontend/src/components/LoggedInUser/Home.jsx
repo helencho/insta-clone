@@ -144,18 +144,18 @@ class Home extends Component {
         let photo_id = e.target.name
         console.log(photo_id)
 
-        axios
-            .post(`/users/p/${photo_id}/faved`, {
-                user_id: user_id,
-                photo_id: photo_id
-            })
-            .then(res => {
-                // console.log(res.data)
-                this.getPhotosFromFollowing()
-            })
-            .then(err => {
-                console.log(err)
-            })
+        // axios
+        //     .post(`/users/p/${photo_id}/faved`, {
+        //         user_id: user_id,
+        //         photo_id: photo_id
+        //     })
+        //     .then(res => {
+        //         // console.log(res.data)
+        //         this.getPhotosFromFollowing()
+        //     })
+        //     .then(err => {
+        //         console.log(err)
+        //     })
     }
 
     unfavePhoto = e => {
