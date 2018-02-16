@@ -15,7 +15,6 @@ class Home extends Component {
 
     componentDidMount() {
         this.mountLoggedInUser()
-
     }
 
     // Set loggedInAs as the current user logged in 
@@ -71,62 +70,91 @@ class Home extends Component {
                         // Map through each photo by user 
                         photos.map(singlePhoto => {
                             let id = singlePhoto.photo_id
-                            let singlePhotoToFeed = { ...singlePhoto }
+                            let newPhoto = { ...singlePhoto }
 
                             // Get likes per photo 
                             axios
                                 .get(`/users/p/${id}/likes`)
                                 .then(res => {
                                     let detailData = res.data.data
+                                    let newPhotoFeedState = [...this.state.photoFeed]
 
-                                    // Filter through state to drop duplicates 
-                                    let newPhotoFeed = this.state.photoFeed.filter(photo => photo.photo_id !== id)
-                                    singlePhotoToFeed.total_likes = detailData.total_likes
+                                    // If there's something in the photo feed already 
+                                    if (newPhotoFeedState.length > 0) {
 
-                                    // Add total liked information to photo feed 
-                                    this.setState({
-                                        photoFeed: [...newPhotoFeed, singlePhotoToFeed]
-                                    })
+                                        // Look through the feed 
+                                        newPhotoFeedState.map(current => {
 
+                                            // Find a photo that matches current photo 
+                                            if (current.photo_id === id) {
+
+                                                // Add to the total likes 
+                                                current.total_likes = detailData.total_likes
+                                                this.setState({
+                                                    photoFeed: newPhotoFeedState
+                                                })
+                                            }
+
+                                            // If no photo matches current photo 
+                                            else {
+                                                // Add total likes to the new photo object 
+                                                newPhoto.total_likes = detailData.total_likes
+
+                                                // Add this new photo to the feed 
+                                                newPhotoFeedState = [...newPhotoFeedState, newPhoto]
+                                                this.setState({
+                                                    photoFeed: newPhotoFeedState
+                                                })
+                                            }
+
+                                        })
+                                    } // If there's nothing in the photo feed 
+                                    else {
+                                        // Add new photo 
+                                        // Add total likes to the new photo object 
+                                        newPhoto.total_likes = detailData.total_likes
+
+                                        // Add this new photo to the feed 
+                                        newPhotoFeedState = [...newPhotoFeedState, newPhoto]
+                                        this.setState({
+                                            photoFeed: newPhotoFeedState
+                                        })
+                                    }
+
+                                    // console.log(newPhotoFeedState)
+                                    // return [...this.state.photoFeed, newPhotoFeedState]
                                 })
+                                // .then(feed => {
+                                //     this.setState({
+                                //         photoFeed: feed
+                                //     })
+                                // })
                                 .catch(err => {
                                     console.log(err)
                                 }) // End second ajax request 
 
-
                             // Get details per photo 
-                            axios
-                                .get(`/users/p/${id}/details`)
-                                .then(res => {
-                                    let details = res.data.data
-
-                                    // Find user's name in liked by details 
-                                    let userFound = details.find(item => item.liked_by_user_id === loggedInAs.user_id)
-
-                                    // Filter through state to drop duplicates 
-                                    let newPhotoFeed = this.state.photoFeed.filter(photo => photo.photo_id !== id)
-
-
-                                    // If user is found, toggle liked to true for photo 
-                                    if (userFound) {
-                                        singlePhotoToFeed.liked = true
-
-                                        // Add photo liked information to photo feed 
-                                        this.setState({
-                                            photoFeed: [...newPhotoFeed, singlePhotoToFeed]
-                                        })
-
-                                        // If user isn't found, toggle liked to false 
-                                    } else {
-                                        singlePhotoToFeed.liked = false
-                                        this.setState({
-                                            photoFeed: [...newPhotoFeed, singlePhotoToFeed]
-                                        })
-                                    }
-                                })
-                                .catch(err => {
-                                    console.log(err)
-                                }) // End third ajax request 
+                            // axios
+                            //     .get(`/users/p/${id}/details`)
+                            //     .then(res => {
+                            //         let details = res.data.data
+                            //         let userFound = details.find(item => item.liked_by_user_id === loggedInAs.user_id)
+                            //         let newPhotoFeedState = [...this.state.photoFeed]
+                            //         newPhotoFeedState.map(current => {
+                            //             if (current.photo_id === id) {
+                            //                 current.liked = true
+                            //             }
+                            //         })
+                            //         return newPhotoFeedState
+                            //     })
+                            //     .then(feed => {
+                            //         this.setState({
+                            //             photoFeed: feed
+                            //         })
+                            //     })
+                            //     .catch(err => {
+                            //         console.log(err)
+                            //     }) // End third ajax request 
                         })
                     })
                     .catch(err => {
@@ -138,14 +166,27 @@ class Home extends Component {
     }
 
 
-    likePhoto = e => {
+    favePhoto = e => {
         const { loggedInAs } = this.state
         let user_id = loggedInAs.user_id
         let photo_id = e.target.name
         console.log(photo_id)
+
+        axios
+            .post(`/users/p/${photo_id}/faved`, {
+                user_id: user_id,
+                photo_id: photo_id
+            })
+            .then(res => {
+                // console.log(res.data)
+                this.getPhotosFromFollowing()
+            })
+            .then(err => {
+                console.log(err)
+            })
     }
 
-    unlikePhoto = e => {
+    unfavePhoto = e => {
         const { loggedInAs } = this.state
         let user_id = loggedInAs.user_id
         let photo_id = e.target.name
@@ -169,7 +210,16 @@ class Home extends Component {
                                 <img src={photo.photo_link} alt='Awesome photo' />
                             </div>
                             <div className='homefeed-card-heart'>
-                                {photo.liked ? <button name={photo.photo_id} onClick={this.unlikePhoto} className='homefeed-card-liked-button'></button> : <button name={photo.photo_id} onClick={this.likePhoto} className='homefeed-card-unliked-button'></button>}
+                                {photo.liked ?
+                                    <button
+                                        name={photo.photo_id}
+                                        onClick={this.unfavePhoto}
+                                        className='homefeed-card-liked-button'></button>
+                                    :
+                                    <button
+                                        name={photo.photo_id}
+                                        onClick={this.favePhoto}
+                                        className='homefeed-card-unliked-button'></button>}
                             </div>
                             <div className='homefeed-card-likes'>
                                 <p>{photo.total_likes} likes</p>
