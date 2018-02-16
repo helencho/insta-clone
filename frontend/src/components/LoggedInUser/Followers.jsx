@@ -12,7 +12,7 @@ class Followers extends Component {
         }
     }
 
-    onClick = (user) =>{
+    onClick = (user) => {
         return <Profile user={user} />
     }
 
@@ -22,36 +22,37 @@ class Followers extends Component {
         return (
             <div className="followers-container">
                 <div className="followers-title">Followers</div>
-                <div className = 'follower-list-box'>
+                <div className='follower-list-box'>
 
-                
+
                     {this.props.followers.map(user => (
                         <div className='users' id={user.follower_id}>
-                            <div onClick={this.onClick(user)} >
+                            <div className='onClick' onClick={this.onClick(user)} >
                                 <Link to={`/users/u/${user.follower_id}/profile`} >
                                     <div className='follower-image'>
                                         <img className='follower-profile-pic' src={user.profile_pic} />
                                     </div>
-                              
-                                    <div >
-                                        <h2 className='follower-username'>{user.username} </h2>
-                                        </div>
-                                        </Link>
-                                        <div>
+                                    </Link>
+                            
+                                        <div className='username-fullname'>
+                                        <Link to={`/users/u/${user.follower_id}/profile`} >
+                                            <h2 className='follower-username'>{user.username} </h2>
+                                           {/* <span> <button> Follow </button> </span> */}
+                                       
+                                         </Link>
+                                    
                                         <p> <h2 className="follower-fullname"> {user.fullname} </h2> </p>
                                     </div>
-                            
-                <div>
-                 
+                                    <button> Follow </button>
+                                  
+                            </div>
+                        </div>
+                    ))}
+
                 </div>
-              </div>
             </div>
-          ))}
-        
-        </div> 
-      </div>
-    );
-  }
+        );
+    }
 }
 
 export default Followers;

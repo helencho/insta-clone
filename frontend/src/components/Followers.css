@@ -50,8 +50,8 @@
 
 .follower-profile-pic{
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
 }
 
 .follower-username{
@@ -67,13 +67,37 @@
     display: block;
     font-size: 14px;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 5px;
 }
 .users{
     display: flex;
     justify-content: flex-start;
+    border-bottom: solid 2px #dbdbdb;
+    width: 600px;
+    margin-left: -20px;
 }
 .follower-list-box{
-    margin-top: -43%;
+    margin-top: -45%;
     margin-left:20px
+}
+
+.username-fullname, .follower-image{
+    display:inline-block;
+}
+
+.username-fullname{
+    padding-left: 25px;
+    margin-left: -5px;
+    width:400px
+}
+
+.onClick{
+    width:600px;
+    margin-left:10px;
+    margin-bottom:5px;
+    margin-top:5px
+}
+button{
+    /* margin-right:300px; */
+   
 }
