@@ -530,8 +530,8 @@ textarea {
     resize:vertical;
 }
 
-input:hover, textarea:hover,
-input:focus, textarea:focus {
+editInput:hover, textarea:hover,
+editInput:focus, textarea:focus {
 	background-color:white;
 }
 
@@ -558,7 +558,7 @@ input:focus, textarea:focus {
 	color: #0493bd;
 }
 	
-.submit:hover {
+.submit-BTN:hover {
 	color: #3498db;
 }
 	
@@ -573,7 +573,7 @@ input:focus, textarea:focus {
 	transition: .3s ease;
 }
 
-.submit:hover .ease{
+.submit-BTN:hover .ease{
   width:100%;
   background-color:white;
 }
