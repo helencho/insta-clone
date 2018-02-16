@@ -389,6 +389,7 @@ border-radius: 5em;
   justify-content: flex-start;
   align-content: space-between;
 }
-#userImageButton{
-  border-radius: 10em;
+
+.userIMG{
+  border-radius: 50%;
 }
