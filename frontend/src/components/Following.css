@@ -1,4 +1,4 @@
-.followers-container {
+.following-container {
     display: flex;
     flex-wrap:wrap;
     width: 600px;
@@ -12,7 +12,7 @@
     background-color: #ffff;
 }
 
-.followers-title{
+.following-title{
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     padding: 16px;
@@ -48,13 +48,13 @@
     width:900px
 } */
 
-.follower-profile-pic{
+.following-profile-pic{
     border-radius: 50%;
     width: 50px;
     height: 50px;
 }
 
-.follower-username{
+.following-username{
     font-size: 14px;
     color: #262626;
     font-weight: 600;
@@ -62,7 +62,7 @@
     text-decoration: none;
 }
 
-.follower-fullname{
+.following-fullname{
     color: #999;
     display: block;
     font-size: 14px;
@@ -76,12 +76,12 @@
     width: 600px;
     margin-left: -20px;
 }
-.follower-list-box{
+.following-list-box{
     margin-top: -45%;
     margin-left:20px
 }
 
-.username-fullname, .follower-image{
+.username-fullname, .following-image{
     display:inline-block;
 }
 
@@ -98,13 +98,14 @@
     margin-top:5px
 }
 
-.button-follow{
-    cursor: pointer;
-    background-color: #3897f0;
-    color: #fff;
-    border-radius: 3px; 
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 26px;
-    text-align: center;   
+.button-following{
+ cursor: pointer;
+ border-color: #dbdbdb;
+ color: #262626;
+ border-radius: 3px; 
+ font-size: 14px;
+ font-weight: 600;
+ line-height: 26px;
+ text-align: center;   
 }
+
