@@ -12,12 +12,9 @@ class Followers extends Component {
         }
     }
 
-
     onClick = (user) =>{
         return <Profile user={user} />
     }
-
-
 
     render() {
         const { allFollowing } = this.state
@@ -25,27 +22,33 @@ class Followers extends Component {
         return (
             <div className="followers-container">
                 <div className="followers-title">Followers</div>
+                <div className = 'follower-list-box'>
 
-
-                <div>
+                
                     {this.props.followers.map(user => (
                         <div className='users' id={user.follower_id}>
                             <div onClick={this.onClick(user)} >
                                 <Link to={`/users/u/${user.follower_id}/profile`} >
-                                    <div class='FollowerProfilePic'>
-                                        <img src={user.profile_pic} />
+                                    <div className='follower-image'>
+                                        <img className='follower-profile-pic' src={user.profile_pic} />
                                     </div>
-                                    <div className='FollowerUsername'>
-                                        <h2>{user.username} </h2>
+                              
+                                    <div >
+                                        <h2 className='follower-username'>{user.username} </h2>
+                                        </div>
+                                        </Link>
+                                        <div>
+                                        <p> <h2 className="follower-fullname"> {user.fullname} </h2> </p>
                                     </div>
-                                </Link>
+                            
                 <div>
-                  <h2 className="follower-fullname"> {user.fullname} </h2>
+                 
                 </div>
               </div>
             </div>
           ))}
-        {/* </div> */}
+        
+        </div> 
       </div>
     );
   }

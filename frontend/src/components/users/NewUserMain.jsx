@@ -69,6 +69,7 @@ class NewUserMain extends Component {
                 username: "",
                 password: "",
                 message: "Registered user"
+                
               });
             })
             .catch(err => {

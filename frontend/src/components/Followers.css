@@ -1,5 +1,6 @@
 .followers-container {
     display: flex;
+    flex-wrap:wrap;
     width: 600px;
     height: 600px;
     border: 1.3px solid rgb(230, 230, 230);
@@ -30,10 +31,10 @@
     flex-direction: column;
     justify-content: flex-start;
 } */
-.followers-title, .each-follower-box{
+/* .followers-title, .each-follower-box{
     display:flex;
     flex-wrap:wrap;
-}
+} */
 
 /* .each-follower-box{
     font-size: 14px;
@@ -71,4 +72,8 @@
 .users{
     display: flex;
     justify-content: flex-start;
+}
+.follower-list-box{
+    margin-top: -43%;
+    margin-left:20px
 }
