@@ -17,7 +17,7 @@ class Followers extends Component {
     }
 
 
-    
+
     render() {
         const { allFollowing } = this.state
         console.log('HELLLLOOOO PRINCESS', allFollowing)
@@ -30,14 +30,14 @@ class Followers extends Component {
                     {this.props.followers.map(user => (
                         <div className='users' id={user.follower_id}>
                             <div onClick={this.onClick(user)} >
-                                {/* <Link to={`/users/u/${user.follower_id}/profile`} > */}
+                                <Link to={`/users/u/${user.follower_id}/profile`} >
                                     <div class='FollowerProfilePic'>
                                         <img src={user.profile_pic} />
                                     </div>
                                     <div className='FollowerUsername'>
                                         <h2>{user.username} </h2>
                                     </div>
-                                {/* </Link> */}
+                                </Link>
 
                                 <div className='FollowerFullName'>
                                     <h2> {user.fullname} </h2>
