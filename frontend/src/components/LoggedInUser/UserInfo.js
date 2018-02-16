@@ -32,7 +32,7 @@ class UserInfo extends React.Component {
                 let NumberOfFollowing = Following.length
                 console.log(Following)
                 console.log('THE USER IS FOLLOWING NUMBER', NumberOfFollowing)
-                this.setState({ 
+                this.setState({
                     numOfFollowing: NumberOfFollowing
                 })
 
@@ -47,7 +47,7 @@ class UserInfo extends React.Component {
             .get(`/users/u/${id}/followers`)
             .then(res => {
                 let Followers = res.data.data
-                
+
                 let NumberOfFollowers = Followers.length
                 console.log('THE USER HAS FOLLOWER NUMBER', NumberOfFollowers)
                 this.setState({
@@ -96,7 +96,7 @@ class UserInfo extends React.Component {
     //     console.log('hiiiiii FOLLOWING')
     //     return (
     //         <Following following ={this.state.following} />
-            
+
     //     )
     // }
     render() {
@@ -106,56 +106,42 @@ class UserInfo extends React.Component {
         console.log('HELLUUUURRRR')
         return (
             <div>
-                <div className="infoContainer" width='905px'>
+                <div className="infoContainer">
 
                     <div className="userImageContainer">
-                        <div className="containerForBtn">
-                            <div className="divForBtn">
-                               <Link to={`edit`}> 
-                                    <img className="userIMG" src={userImageURL} alt={`Image of ${userName}`} />
-                                </Link>
+                        {/* <div className="containerForBtn"> */}
+                        <Link to={`edit`}>
+                            <img className="userIMG" src={userImageURL} alt={`Image of ${userName}`} />
+                        </Link>
+                        {/* </div> */}
+                    </div>
+
+                    <div className="allUserInfo">
+                        {/* <div className="userStats"> */}
+                        {/* <div className='overAllUserInfo' width='613.33px'> */}
+
+                        <div className="usernameDiv">
+                            <h1 id="usernameH1">{userName}</h1>
+                            <div className='following-button'>
+                                <button>Following</button>
                             </div>
                         </div>
+
+                        <div className="containerForNumberStats">
+                            <div className="stat"><strong>{numOfPosts} </strong> {"Posts"} </div>
+                            <div className="statFollow" > <Link to={`/users/u/${userID}/followers`}><strong>{numOfFollowers} </strong> {"Followers"} </Link> </div>
+                            <div className="statFollow" > <Link to={`/users/u/${userID}/following`}><strong>{numOfFollowing} </strong> {"Following"} </Link></div>
+                        </div>
+
+                        <div className="nameAndBio">
+                            <h3>{fullName}</h3>
+                            <span className='bio'>{userDescription}</span>
+                        </div>
+
+                        {/* </div> */}
+                        {/* </div> */}
                     </div>
-                    <header className="allUserInfo">
-                        <section className="userStats">
 
-
-
-                            <div className='overAllUserInfo' width='613.33px'>
-                                <div className="usernameDiv">
-                                    <span className='username'> <h1 id="usernameH1">{userName}</h1>
-                                        <span className='button'>
-                                            <button> FOLLOWING </button>
-                                        </span>
-                                    </span>
-
-
-
-                                </div>
-
-                                <div className="containerForNumberStats">
-                                    <div className="stat"><bold>{numOfPosts} </bold> {"Posts"} </div>
-                                    <div className="statFollow" > <Link to={`/users/u/${userID}/followers`}><bold>{numOfFollowers} </bold> {"Followers"} </Link> </div>
-                                    <div className="statFollow" > <Link to={`/users/u/${userID}/following`}><bold>{numOfFollowing} </bold> {"Following"} </Link></div>
-                                </div>
-                                <div className='nameAndBio'>
-                                    <div className='name'>
-                                        <span className='fullname'>
-                                            <h3>{fullName} </h3>
-                                            <span className='bio'>
-                                                {userDescription}
-                                            </span>
-                                        </span>
-
-                                    </div>
-
-                                </div>
-                                
-                            </div>
-                        </section>
-                    </header>
-                    
                 </div>
             </div>
 

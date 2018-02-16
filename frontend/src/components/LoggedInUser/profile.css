@@ -1,55 +1,139 @@
 /*--------------------------------------------*/
-/*                Profile Page                */
+/*          Profile Page - User Info          */
 /*--------------------------------------------*/
-
-.infoContainer{
+.infoContainer {
     display: flex;
     justify-content: center;
-    margin-top:61px;
+    /* margin-top:61px;
     margin-left:15%;
     padding-top:20px;
-    margin-bottom:44px;
+    margin-bottom:44px; */
+    width: 955px;
+    height: 152px;
+    margin: 0 auto;
+    padding-top: 22px;
+    margin-bottom: 42px;
+    /* background-color: salmon; */
+}
+
+.userImageContainer {
+    /* background-color: yellowgreen; */
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: flex-start; */
+    /* align-content: space-between; */
+}
+
+.userIMG {
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+}
+
+.allUserInfo{
+    /* width:500px; */
+    display: flex;
+    flex-direction: column;
+    /* background-color: grey; */
     width: 70%;
 }
 
-#usernameH1{
+
+.usernameDiv,
+.containerForNumberStats,
+.nameAndBio {
+    /* background-color: slateblue; */
+    height: 33%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.6em;
+    align-items: center;
+    /* padding: 0 6%; */
+    padding-left: 7%;
+}
+
+#usernameH1 {
+    color: black;
+    padding: 0;
+    margin: 0;
+}
+
+.following-button {
+    margin-left: 5%;
+}
+
+.following-button button {
+    padding: 0 24px;
+    border-radius: 2px;
+    border: none;
+    border: 1px solid rgba(0,0,0,.0975);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    height: 30px;
+    background-color: rgb(250, 250, 250);
+}
+
+.containerForNumberStats a {
+    text-decoration: none;
     color: black;
 }
 
-  .suggested, .usernameDiv, .Followingbtn,.userStats, .containerForNumberStats{
-      display:flex;
-      flex-wrap:wrap;
-  }
+/* .stat, .statFollow, {
+    font-size:13px
+} */
 
-  .allUserInfo{
-      width:500px
-  }
+/* .stat {
+    margin-left: 3px;
+} */
+
+.statFollow {
+    margin-left: 8%;
+} 
+
+.nameAndBio h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.bio{
+    margin-left: 3%; 
+}
+
+
   /* .userImageContainer{
       margin-left:-40%
   } */
-  .usernameDiv{
-      margin-left:70px;
-  }
+/* .usernameDiv{
+    margin-left:70px;
+} */
 
-  .Followingbtn{
-      margin-left:70px;
-     
-      width:100px
-  }
-  .containerForNumberStats{
-      margin-left:70px;
-      margin-top:-1px
-  }
-  .numbers{
-      margin-left:10px
-  }
+/* .Followingbtn{
+    margin-left:70px;
+    width:100px;
+} */
 
-  .nameAndBio {
+/* .containerForNumberStats{
+    margin-left:70px;
+    margin-top:-1px;
+} */
+
+/* .numbers{
+    margin-left:10px;
+} */
+
+/* .nameAndBio {
     width: 613px;
     font-size: 12px;
-}
+} */
 
-.name {
+/* .name {
     width:543px;
     margin-left:70px;
 }
@@ -57,19 +141,17 @@
 h1,span{
     display:inline-block
 }
+
 h3,span{
     display:inline-block
-}
-.bio{
-    margin-left:15px
-}
-.button{
-    margin-left:15px
-}
+} */
 
-#usernameH1{
+/* .bio{
+    margin-left:15px
+} */
+
+/* #usernameH1{
     font-size: 24px;
-    /* line-height: 40px; */
     font-weight: 200;
 }
 
@@ -82,9 +164,9 @@ h3,span{
 }
 .statFollow{
     margin-left: 30px;
-}
+} */
 
-.suggested{
+/* .suggested{
     margin-left: 180px;
     width: 856px;
     height: 53px;
@@ -102,7 +184,7 @@ h3,span{
     font: inherit;
     font-size: 14px;
     margin-top: 17px;
-}
+} */
 
 
 /*--------------------------------------------*/
@@ -122,11 +204,34 @@ h3,span{
     width: 30%;
     padding-bottom: 30%;
     background-color: rgb(255, 255, 255);
-    transition: 0.2s all;
+    transition: 0.1s all;
     overflow: hidden;
     margin-bottom: 3%;
     position: relative;
 }
+
+/* .grid-image-single-container:hover {
+    background-color: red;
+} */
+
+/* .overlay {
+    position: relative;
+}
+.overlay:after {
+    position: absolute;
+    content:"";
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+}
+.overlay:hover:after  {
+    opacity: .2;
+}
+.grey:after {
+    background-color: rgb(0, 0, 0);
+} */
 
 .grid-image-single {
     position: absolute;
@@ -135,6 +240,10 @@ h3,span{
 }
 
 @media screen and (max-width: 1060px) {
+    .infoContainer {
+        width: 90%; 
+    }
+
     .rowOfPics {
         width: 90%;
     }
