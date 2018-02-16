@@ -4,18 +4,20 @@ var router = express.Router()
 const { loginRequired } = require('../auth/helpers')
 const passport = require('../auth/local')
 
-
 // User information functions 
 router.get('/', db.getAllUsers)
 // router.get('/u/:username', db.getSingleUser)
 router.get('/u/:id', db.getSingleUserID)
-router.patch('/u/:username', db.updateSingleUser)
+router.patch('/u/:id/edit', db.editUser)
+// router.put('/u/:userid/fave/:id', db.addUserLikes)
 router.get('/u/:id/following', db.getUserFollowing)
 router.get('/u/:id/followers', db.getUserFollowers) 
 router.get('/u/:id/photos', db.getAllPhotosFromSingleUser)
 router.get('/p', db.getAllPhotos)
 router.get('/p/:id', db.getSinglePhoto)
 router.get('/p/:id/details', db.getPhotoDetails)
+router.post('/p/:id/faved', db.addUserLikes) 
+router.get('/p/:id/likes', db.getPhotoLikes)
 
 // User authentication functions 
 router.post('/login', passport.authenticate('local'), (req, res) => res.json(req.user))

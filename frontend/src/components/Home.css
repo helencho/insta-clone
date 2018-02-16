@@ -7,6 +7,7 @@
     font-size: 10px;
     color: rgb(55, 55, 55);
     padding-bottom: 3%;
+    /* margin-top: 3%; */
 }
 
 
@@ -66,12 +67,42 @@
 }
 
 .homefeed-card-heart {
-    /* background-color: rgb(255, 255, 255); */
     font-size: 2em;
 }
 
+
+.homefeed-card-liked-button:focus,
+.homefeed-card-unliked-button:focus {
+    outline: none;
+}
+
+.homefeed-card-liked-button,
+.homefeed-card-unliked-button {
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+.homefeed-card-liked-button {
+    background: url('https://i.imgur.com/1g3gy6g.png') no-repeat;
+    background-size: 30px 30px;
+}
+
+.homefeed-card-unliked-button {
+    background: url('https://i.imgur.com/ACdwplH.png') no-repeat;
+    background-size: 30px 30px;
+}
+
+.homefeed-card-unliked-button:hover {
+    background: url('https://i.imgur.com/1g3gy6g.png') no-repeat;
+    background-size: 30px 30px;
+}
+
 .homefeed-card-likes {
-    /* background-color: rgb(255, 255, 255); */
+    font-weight: 600;
+}
+
+.homefeed-caption-username {
     font-weight: 600;
 }
 

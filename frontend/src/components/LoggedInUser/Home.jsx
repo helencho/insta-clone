@@ -9,14 +9,13 @@ class Home extends Component {
         this.state = {
             loggedInAs: '',
             followings: [],
-            photoFeed: [],
-            liked: false,
-            likedByUsers: []
+            photoFeed: []
         }
     }
 
     componentDidMount() {
         this.mountLoggedInUser()
+
     }
 
     // Set loggedInAs as the current user logged in 
@@ -55,9 +54,12 @@ class Home extends Component {
 
     // Grab all photos posted by these users 
     getPhotosFromFollowing = () => {
-        const { followings } = this.state
+        const { loggedInAs, followings } = this.state
+
+        // If user follows people 
         if (followings.length > 0) {
-            // Map through each user 
+
+            // Map through each following user 
             followings.map(user => {
 
                 // Get photos by current user 
@@ -66,48 +68,88 @@ class Home extends Component {
                     .then(res => {
                         let photos = res.data.data
 
-                        // add to photoFeed using spread operator
-                        this.setState({
-                            photoFeed: photos
-                        }, () => {
+                        // Map through each photo by user 
+                        photos.map(singlePhoto => {
+                            let id = singlePhoto.photo_id
+                            let singlePhotoToFeed = { ...singlePhoto }
 
-                            // Then get all users who like each photo 
-                            this.usersWhoLikePhoto()
+                            // Get likes per photo 
+                            axios
+                                .get(`/users/p/${id}/likes`)
+                                .then(res => {
+                                    let detailData = res.data.data
+
+                                    // Filter through state to drop duplicates 
+                                    let newPhotoFeed = this.state.photoFeed.filter(photo => photo.photo_id !== id)
+                                    singlePhotoToFeed.total_likes = detailData.total_likes
+
+                                    // Add total liked information to photo feed 
+                                    this.setState({
+                                        photoFeed: [...newPhotoFeed, singlePhotoToFeed]
+                                    })
+
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                }) // End second ajax request 
+
+
+                            // Get details per photo 
+                            axios
+                                .get(`/users/p/${id}/details`)
+                                .then(res => {
+                                    let details = res.data.data
+
+                                    // Find user's name in liked by details 
+                                    let userFound = details.find(item => item.liked_by_user_id === loggedInAs.user_id)
+
+                                    // Filter through state to drop duplicates 
+                                    let newPhotoFeed = this.state.photoFeed.filter(photo => photo.photo_id !== id)
+
+
+                                    // If user is found, toggle liked to true for photo 
+                                    if (userFound) {
+                                        singlePhotoToFeed.liked = true
+
+                                        // Add photo liked information to photo feed 
+                                        this.setState({
+                                            photoFeed: [...newPhotoFeed, singlePhotoToFeed]
+                                        })
+
+                                        // If user isn't found, toggle liked to false 
+                                    } else {
+                                        singlePhotoToFeed.liked = false
+                                        this.setState({
+                                            photoFeed: [...newPhotoFeed, singlePhotoToFeed]
+                                        })
+                                    }
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                }) // End third ajax request 
                         })
                     })
                     .catch(err => {
                         console.log(err)
-                    })
+                    }) // End first ajax request 
             })
 
         }
     }
-    // Map through liked by users 
-    // If photo_id matches photo_id, 
-    // Count the total 
-    // Render into ___ likes 
 
-    usersWhoLikePhoto = () => {
-        // Get request to grab information on who liked the photo 
-        const { photoFeed } = this.state
 
-        // Map through each photo information 
-        photoFeed.map(photo => {
-            let id = photo.photo_id
+    likePhoto = e => {
+        const { loggedInAs } = this.state
+        let user_id = loggedInAs.user_id
+        let photo_id = e.target.name
+        console.log(photo_id)
+    }
 
-            // Get detailed information on each photo 
-            axios
-                .get(`/users/p/${id}/details`)
-                .then(res => {
-                    let detailData = res.data.data
-                    this.setState({
-                        likedByUsers: [...this.state.likedByUsers, detailData]
-                    })
-                })
-                .catch(err => {
-                    console.log(err)
-                }) // End ajax request 
-        })
+    unlikePhoto = e => {
+        const { loggedInAs } = this.state
+        let user_id = loggedInAs.user_id
+        let photo_id = e.target.name
+        console.log(photo_id)
     }
 
     render() {
@@ -117,7 +159,7 @@ class Home extends Component {
         return (
             <div className='homefeed-page-container'>
                 {photoFeed.length > 0 ?
-                    photoFeed.map(photo => (
+                    photoFeed.map((photo) => (
                         <div className='homefeed-card-container'>
                             <div className='homefeed-card-meta'>
                                 <img src={photo.profile_pic} alt={`Picture`} className='homefeed-card-userprof' />
@@ -127,13 +169,13 @@ class Home extends Component {
                                 <img src={photo.photo_link} alt='Awesome photo' />
                             </div>
                             <div className='homefeed-card-heart'>
-                                <i class="far fa-heart"></i>
+                                {photo.liked ? <button name={photo.photo_id} onClick={this.unlikePhoto} className='homefeed-card-liked-button'></button> : <button name={photo.photo_id} onClick={this.likePhoto} className='homefeed-card-unliked-button'></button>}
                             </div>
                             <div className='homefeed-card-likes'>
-                                <p>___ likes</p>
+                                <p>{photo.total_likes} likes</p>
                             </div>
                             <div className='homefeed-card-caption'>
-                                <p>{photo.caption}</p>
+                                <p><span className='homefeed-caption-username'>{photo.username}</span> {photo.caption}</p>
                             </div>
                         </div>
                     ))
